@@ -15,17 +15,17 @@ CMyString::CMyString(char *data) {
     strcpy(p_mData, data);
 }
 
-CMyString::CMyString(const CMyString &cMyString) {
-    if (cMyString.p_mData == nullptr) {
+CMyString::CMyString(const CMyString &other) {
+    if (other.p_mData == nullptr) {
         p_mData = new char[1];
         p_mData[0] = '\0';
         return;
     }
-    p_mData = new char[strlen(cMyString.p_mData) + 1];
-    strcpy(p_mData, cMyString.p_mData);
+    p_mData = new char[strlen(other.p_mData) + 1];
+    strcpy(p_mData, other.p_mData);
 }
 
-CMyString::~CMyString(void) {
+CMyString::~CMyString() {
     std::cout << this << ", data: " << p_mData << ", delete this instance." << std::endl;
     delete[] p_mData;
 }
@@ -48,4 +48,8 @@ CMyString &CMyString::operator=(const CMyString &other) {
 
 char *CMyString::getData() {
     return p_mData;
+}
+
+CMyString::CMyString() {
+    p_mData = nullptr;
 }

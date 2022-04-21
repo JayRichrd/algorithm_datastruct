@@ -11,18 +11,18 @@ private:
 public:
     CMyString();
 
-    CMyString(char *data = nullptr);
+    explicit CMyString(char *data = nullptr);
 
-    CMyString(const CMyString &cMyString);
+    CMyString(const CMyString &other);
 
-    ~CMyString(void);
+    ~CMyString();
 
     /**
      * override operator assign
-     * @param cMyString the data witch use to assign this
+     * @param other the data witch use to assign this
      * @return return this
      */
-    CMyString &operator=(const CMyString &cMyString);
+    CMyString &operator=(const CMyString &other);
 
     char *getData();
 };
