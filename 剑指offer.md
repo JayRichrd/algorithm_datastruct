@@ -38,6 +38,8 @@ CMyString &CMyString::operator=(const CMyString &other/*①*/) {
 
 [源码](/cpp_pro/override_operator_assign)
 
+
+
 # 参考
 
 - 《键指offer》
