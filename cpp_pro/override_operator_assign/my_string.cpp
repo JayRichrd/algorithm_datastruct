@@ -4,6 +4,7 @@
 
 #include "my_string.hpp"
 #include <iostream>
+#include <cstring>
 
 CMyString::CMyString(char *data) {
     if (data == nullptr) {
