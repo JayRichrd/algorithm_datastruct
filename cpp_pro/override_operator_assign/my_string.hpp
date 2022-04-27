@@ -25,6 +25,8 @@ public:
     CMyString &operator=(const CMyString &other);
 
     char *getData();
+
+    static void test();
 };
 
 #endif //ALGORITHM_PRACTICE_MY_STRING_HPP
