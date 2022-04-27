@@ -15,7 +15,6 @@ namespace linked_list {
         node<T> *next;
     };
 
-
     class LinkedList {
     public:
         /**
