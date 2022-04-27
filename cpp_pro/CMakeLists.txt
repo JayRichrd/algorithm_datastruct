@@ -6,4 +6,8 @@ set(CMAKE_CXX_STANDARD 11)
 add_executable(cpp_pro
         main.cpp
         override_operator_assign/my_string.hpp
-        override_operator_assign/my_string.cpp linked_list/linked_list.hpp linked_list/linked_list.cpp array/array.hpp array/array_practice.cpp)
+        override_operator_assign/my_string.cpp
+        linked_list/linked_list.hpp
+        linked_list/linked_list.cpp
+        array/array.hpp
+        array/array_practice.cpp)

@@ -33,8 +33,7 @@ CMyString::~CMyString() {
 
 CMyString &CMyString::operator=(const CMyString &other) {
     std::cout << "call override assign function. other(" << &other << ") data: " << other.p_mData << ", this("
-              << this << ") data: "
-              << this->p_mData << std::endl;
+              << this << ") data: " << this->p_mData << std::endl;
     /**
      * if the same instance, just return it.
      */
