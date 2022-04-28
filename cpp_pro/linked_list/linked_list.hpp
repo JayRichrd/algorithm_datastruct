@@ -18,6 +18,7 @@ namespace linked_list {
     class LinkedList {
     public:
         /**
+         * refe: https://leetcode-cn.com/problems/reverse-linked-list/
          * reverse linked list by iterate
          * before: 1 -> 2 -> 3 -> 4 -> null
          * after: null <- 1 <- 2 <- 3 <- 4
@@ -29,13 +30,22 @@ namespace linked_list {
          */
         template<typename T>
         static node<T> *reverse_iterate(node<T> *head);
+        static void test_reverse_iterate();
 
-        static void test_reverse();
+        /**
+         * refe: https://leetcode-cn.com/problems/merge-two-sorted-lists/
+         * merge sorted linked list
+         * Time complexity: O(m+n)
+         * Spatial complexity: O(1)
+         * @param linked_list_1 ascending linked list
+         * @param linked_list_2 ascending linked list
+         * @return the head pointer of combine linked list
+         */
+        static node<int> *merge_sorted_linked_list(node<int> *linked_list_1, node<int> *linked_list_2);
+        static void test_merge_sorted_linked_list();
     };
 
-    /**
-     * refe: https://leetcode-cn.com/problems/reverse-linked-list/
-     */
+
     template<typename T>
     node<T> *LinkedList::reverse_iterate(node<T> *head) {
         // the previous node of the current

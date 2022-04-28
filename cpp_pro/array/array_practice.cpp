@@ -6,7 +6,7 @@
 
 namespace array_practice {
 
-    void ArrayPractice::mergeSortedArray(int array1[], int n, const int array2[], int m) {
+    void ArrayPractice::merge_sorted_array(int array1[], int n, const int array2[], int m) {
         // sum of array1 and array2
         int sum = n + m;
         for (int i = n - 1, j = m - 1; i >= 0 && j >= 0;) {
@@ -28,7 +28,7 @@ namespace array_practice {
         }
     }
 
-    void ArrayPractice::testMergeSortedArray() {
+    void ArrayPractice::test_merge_sorted_array() {
         using namespace std;
         int array2[] = {3, 6, 8};
         int array1[] = {1, 6, 7, 0, 0, 0};
@@ -40,7 +40,7 @@ namespace array_practice {
 
         cout << endl << "----------------------------------------------------------------------------------" << endl;
 
-        mergeSortedArray(array1, 3, array2, 3);
+        merge_sorted_array(array1, 3, array2, 3);
         cout << "after:" << endl;
         for (auto element: array1) {
             cout << element << ", ";

@@ -5,14 +5,17 @@
 
 int main() {
     using namespace std;
-    cout <<"=========================================================================================" << endl;
-    CMyString::test();
+    cout << "===============================test override assign operator=====================================" << endl;
+    CMyString::test_override_assign_operator();
 
-    cout << endl << "=========================================================================================" << endl;
-    linked_list::LinkedList::test_reverse();
+    cout << endl << "============================test reverse iterate=========================================" << endl;
+    linked_list::LinkedList::test_reverse_iterate();
 
-    cout << endl << "=========================================================================================" << endl;
-    array_practice::ArrayPractice::testMergeSortedArray();
+    cout << endl << "=============================test merge sorted array====================================" << endl;
+    array_practice::ArrayPractice::test_merge_sorted_array();
+
+    cout << endl << "============================test merge sorted linked list================================" << endl;
+    linked_list::LinkedList::test_merge_sorted_linked_list();
 
     return 0;
 }

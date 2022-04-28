@@ -26,7 +26,7 @@ public:
 
     char *getData();
 
-    static void test();
+    static void test_override_assign_operator();
 };
 
 #endif //ALGORITHM_PRACTICE_MY_STRING_HPP

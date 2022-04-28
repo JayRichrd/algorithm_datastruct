@@ -17,8 +17,8 @@ namespace array_practice {
          * @param array2
          * @param m count of array2's valid element
          */
-        static void mergeSortedArray(int array1[], int n, const int array2[], int m);
-        static void testMergeSortedArray();
+        static void merge_sorted_array(int array1[], int n, const int array2[], int m);
+        static void test_merge_sorted_array();
     };
 
 }

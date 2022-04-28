@@ -54,7 +54,7 @@ CMyString::CMyString() {
     p_mData = nullptr;
 }
 
-void CMyString::test() {
+void CMyString::test_override_assign_operator() {
     CMyString cMyString1("111");
     CMyString cMyString2("222");
     CMyString cMyString3("333");
