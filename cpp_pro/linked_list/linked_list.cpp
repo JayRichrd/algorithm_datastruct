@@ -70,5 +70,37 @@ namespace linked_list {
         }
         cout << endl;
     }
+
+    void LinkedList::test_find_mid_node() {
+        node<int> list1_node4 = {4, nullptr};
+        node<int> list1_node3 = {3, &list1_node4};
+        node<int> list1_node2 = {2, &list1_node3};
+        node<int> list1_node1 = {1, &list1_node2};
+        node<int> *head = &list1_node1;
+        cout << "list1:" << endl;
+        while (head) {
+            cout << head->data << ", ";
+            head = head->next;
+        }
+        node<int> *mid = find_mid_node(&list1_node1);
+        cout << endl << "list1 middle node: " << mid->data << endl;
+
+        cout << endl << "------------------------------------------------------------------------------------" << endl;
+
+        node<int> list2_node6 = {6, nullptr};
+        node<int> list2_node5 = {5, &list2_node6};
+        node<int> list2_node4 = {4, &list2_node5};
+        node<int> list2_node3 = {3, &list2_node4};
+        node<int> list2_node2 = {2, &list2_node3};
+        node<int> list2_node1 = {1, &list2_node2};
+        head = &list2_node1;
+        cout << "list2:" << endl;
+        while (head) {
+            cout << head->data << ", ";
+            head = head->next;
+        }
+        mid = find_mid_node(&list2_node1);
+        cout << endl << "list2 middle node: " << mid->data << endl;
+    }
 }
 

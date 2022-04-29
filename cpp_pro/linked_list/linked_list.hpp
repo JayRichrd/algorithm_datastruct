@@ -37,12 +37,26 @@ namespace linked_list {
          * merge sorted linked list
          * Time complexity: O(m+n)
          * Spatial complexity: O(1)
+         *
          * @param linked_list_1 ascending linked list
          * @param linked_list_2 ascending linked list
          * @return the head pointer of combine linked list
          */
         static node<int> *merge_sorted_linked_list(node<int> *linked_list_1, node<int> *linked_list_2);
         static void test_merge_sorted_linked_list();
+
+        /**
+         * refe: https://leetcode-cn.com/problems/middle-of-the-linked-list/ method3
+         * ues two slow pointer and fast pointer to find middle node of liked list
+         * Time complexity: O(n)
+         * Spatial complexity: O(1)
+         *
+         * @param head the head pointer of linked list
+         * @return the middle node's pointer
+         */
+        template<typename T>
+        static node<T> *find_mid_node(node<T> *head);
+        static void test_find_mid_node();
     };
 
 
@@ -66,6 +80,21 @@ namespace linked_list {
             cur = temp;
         }
         return pre;
+    }
+
+    template<typename T>
+    node<T> *LinkedList::find_mid_node(node<T> *head) {
+        // one step every time
+        node<T> *p_one_step = head;
+        // two step every time
+        node<T> *p_two_step = head;
+
+        while (p_two_step != nullptr && p_two_step->next != nullptr) {
+            p_one_step = p_one_step->next;
+            p_two_step = p_two_step->next->next;
+        }
+
+        return p_one_step;
     }
 }
 

@@ -17,5 +17,8 @@ int main() {
     cout << endl << "============================test merge sorted linked list================================" << endl;
     linked_list::LinkedList::test_merge_sorted_linked_list();
 
+    cout << endl << "============================test find mid node================================" << endl;
+    linked_list::LinkedList::test_find_mid_node();
+
     return 0;
 }
