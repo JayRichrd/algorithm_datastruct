@@ -20,5 +20,8 @@ int main() {
     cout << endl << "============================test find mid node================================" << endl;
     linked_list::LinkedList::test_find_mid_node();
 
+    cout << endl << "============================test major element================================" << endl;
+    array_practice::ArrayPractice::test_major_element();
+
     return 0;
 }

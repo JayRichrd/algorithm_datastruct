@@ -3,8 +3,10 @@
 //
 #include <iostream>
 #include "array.hpp"
+#include <unordered_map>
 
 namespace array_practice {
+    using namespace std;
 
     void ArrayPractice::merge_sorted_array(int array1[], int n, const int array2[], int m) {
         // sum of array1 and array2
@@ -29,10 +31,9 @@ namespace array_practice {
     }
 
     void ArrayPractice::test_merge_sorted_array() {
-        using namespace std;
         int array2[] = {3, 6, 8};
         int array1[] = {1, 6, 7, 0, 0, 0};
-        
+
         cout << "before:" << endl;
         for (auto element: array1) {
             cout << element << ", ";
@@ -45,5 +46,52 @@ namespace array_practice {
         for (auto element: array1) {
             cout << element << ", ";
         }
+    }
+
+    int ArrayPractice::majorElement1(vector<int> &nums) {
+        /**
+         * record every element's count
+         */
+        unordered_map<int, int> counts;
+        int major = 0, count = 0;
+        for (int num: nums) {
+            ++counts[num];
+            // find the max count
+            if (counts[num] > count) {
+                count = counts[num];
+                major = num;
+            }
+        }
+        return major;
+    }
+
+    int ArrayPractice::majorElement2(vector<int> &nums) {
+        int count = 0, candidate = nums[0];
+        for (int num: nums) {
+            if (count == 0) {
+                candidate = num;
+            }
+            count += (num == candidate) ? 1 : -1;
+        }
+        return candidate;
+    }
+
+    void ArrayPractice::test_major_element() {
+        vector<int> nums;
+        nums.push_back(2);
+        nums.push_back(2);
+        nums.push_back(1);
+        nums.push_back(1);
+        nums.push_back(1);
+        nums.push_back(2);
+        nums.push_back(2);
+        cout << "data: ";
+        for (int num: nums) {
+            cout << num << ", ";
+        }
+        cout << endl;
+        int major1 = majorElement1(nums);
+        int major2 = majorElement2(nums);
+        cout << "major1: " << major1 << ", major2: " << major2 << endl;
     }
 }
