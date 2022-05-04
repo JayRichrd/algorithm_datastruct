@@ -8,11 +8,8 @@ public class ArrayPractice {
     public static void main(String[] args) {
         System.out.println("==========test threeSum==========");
         testThreeSum();
-    }
-
-    static void testThreeSum() {
-        int[] nums = {-1, 0, 1, 2, -1, -4};
-        System.out.println("result: " + threeSum(nums));
+        System.out.println("==========test firstMissingPositive==========");
+        testFirstMissingPositive();
     }
 
     /**
@@ -101,5 +98,63 @@ public class ArrayPractice {
         }
 
         return resultList;
+    }
+
+    static void testThreeSum() {
+        int[] nums = {-1, 0, 1, 2, -1, -4};
+        System.out.println("result: " + threeSum(nums));
+    }
+
+    /**
+     * refe: https://leetcode-cn.com/problems/first-missing-positive/solution/que-shi-de-di-yi-ge-zheng-shu-by-leetcode-solution/ method1
+     * Time complexity: O(n)
+     * Spatial complexity: O(1)
+     *
+     * @param nums input array
+     * @return the first missing positive
+     */
+    static int firstMissingPositive(int[] nums) {
+        int len = nums.length;
+        int result = len + 1;
+        /*
+         * change negative to len+1 for marking
+         */
+        for (int i = 0; i < len; i++) {
+            if (nums[i] <= 0) {
+                nums[i] = len + 1;
+            }
+        }
+
+        /*
+         * find num that belong to [1,N]
+         * and mark num-1 index num
+         */
+        for (int i = 0; i < len; i++) {
+            int num = Math.abs(nums[i]);
+            if (num <= len) {
+                nums[num - 1] = -Math.abs(nums[num - 1]);
+            }
+        }
+
+        /*
+         * find first positive num's index,
+         * find first missing positive
+         */
+        for (int i = 0; i < len; i++) {
+            if (nums[i] > 0) {
+                return i + 1;
+            }
+        }
+        return result;
+    }
+
+    static void testFirstMissingPositive() {
+        int[] nums = {3, 4, -1, 1, 9};
+        System.out.print("input array: ");
+        for (int num : nums) {
+            System.out.print(num + ", ");
+        }
+        System.out.println();
+        System.out.println("result: " + firstMissingPositive(nums));
     }
 }
