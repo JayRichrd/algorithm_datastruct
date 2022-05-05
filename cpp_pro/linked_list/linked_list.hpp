@@ -57,8 +57,19 @@ namespace linked_list {
         template<typename T>
         static node<T> *find_mid_node(node<T> *head);
         static void test_find_mid_node();
-    };
 
+        /**
+        * refe: https://leetcode-cn.com/problems/linked-list-cycle/solution/huan-xing-lian-biao-by-leetcode-solution/ method2
+        * Time complexity: O(n)
+        * Spatial complexity: O(1)
+        * @tparam T
+        * @param head linked list head node
+        * @return 1: has circle, 0: hasn't circle
+        */
+        template<typename T>
+        static bool has_circle(node<T> *head);
+        static void test_has_circle();
+    };
 
     template<typename T>
     node<T> *LinkedList::reverse_iterate(node<T> *head) {
@@ -95,6 +106,29 @@ namespace linked_list {
         }
 
         return p_one_step;
+    }
+
+    template<typename T>
+    bool LinkedList::has_circle(node<T> *head) {
+        if (head == nullptr || head->next == nullptr) {
+            return false;
+        }
+        node<T> *slow = head, *fast = head->next;
+        while (slow != fast) {
+            if (fast == nullptr || fast->next == nullptr) {
+                return false;
+            }
+            slow = slow->next;
+            fast = fast->next;
+            /**
+             * compare every move
+             */
+            if (fast != nullptr && slow == fast) {
+                return true;
+            }
+            fast = fast->next;
+        }
+        return true;
     }
 }
 
