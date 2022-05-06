@@ -23,6 +23,9 @@ int main() {
     cout << endl << "============================test has circle================================" << endl;
     linked_list::LinkedList::test_has_circle();
 
+    cout << endl << "=========================test merge k sorted linked list=============================" << endl;
+    linked_list::LinkedList::test_merge_k_sorted_linked_list();
+
     cout << endl << "============================test major element================================" << endl;
     array_practice::ArrayPractice::test_major_element();
 

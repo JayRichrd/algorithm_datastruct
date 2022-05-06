@@ -1,7 +1,6 @@
 //
 // Created by cainjiang on 2022/4/27.
 //
-#include <iostream>
 #include "linked_list.hpp"
 
 namespace linked_list {
@@ -29,6 +28,26 @@ namespace linked_list {
             cur->next = linked_list_1;
         }
         return head->next;
+    }
+
+    node<int> *LinkedList::merge_k_sorted_linked_list_1(const vector<node<int> *> &lists) {
+        node<int> *merge = nullptr;
+        for (auto &list: lists) {
+            merge = merge_sorted_linked_list(merge, list);
+        }
+        return merge;
+    }
+
+    node<int> *merge_linked_list(const vector<node<int> *> &lists, size_t left, size_t right) {
+        if (left == right) return lists[left];
+        if (left > right) return nullptr;
+        size_t mid = (left + right) >> 1;
+        return LinkedList::merge_sorted_linked_list(merge_linked_list(lists, left, mid),
+                                                    merge_linked_list(lists, mid + 1, right));
+    }
+
+    node<int> *LinkedList::merge_k_sorted_linked_list_2(const vector<node<int> *> &lists) {
+        return merge_linked_list(lists, 0, lists.size() - 1);
     }
 
     void LinkedList::test_reverse_iterate() {
@@ -119,6 +138,52 @@ namespace linked_list {
         node<int> list2_node1 = {1, &list2_node2};
         head = &list2_node1;
         cout << "list2 has circle: " << has_circle(head) << endl;
+    }
+
+    void LinkedList::test_merge_k_sorted_linked_list() {
+        vector<node<int> *> lists;
+        node<int> *head;
+        node<int> list1_node3 = {5, nullptr};
+        node<int> list1_node2 = {4, &list1_node3};
+        node<int> list1_node1 = {1, &list1_node2};
+        lists.push_back(&list1_node1);
+        head = &list1_node1;
+        cout << "list1: ";
+        while (head) {
+            cout << head->data << ", ";
+            head = head->next;
+        }
+        cout << endl;
+        node<int> list2_node3 = {4, nullptr};
+        node<int> list2_node2 = {3, &list2_node3};
+        node<int> list2_node1 = {1, &list2_node2};
+        lists.push_back(&list2_node1);
+        head = &list2_node1;
+        cout << "list2: ";
+        while (head) {
+            cout << head->data << ", ";
+            head = head->next;
+        }
+        cout << endl;
+        node<int> list3_node2 = {6, nullptr};
+        node<int> list3_node1 = {2, &list3_node2};
+        lists.push_back(&list3_node1);
+        head = &list3_node1;
+        cout << "list3: ";
+        while (head) {
+            cout << head->data << ", ";
+            head = head->next;
+        }
+        cout << endl;
+        //node<int> *merge = merge_k_sorted_linked_list_1(lists);
+        node<int> *merge = merge_k_sorted_linked_list_2(lists);
+        head = merge;
+        cout << "merged list: ";
+        while (head) {
+            cout << head->data << ", ";
+            head = head->next;
+        }
+        cout << endl;
     }
 }
 

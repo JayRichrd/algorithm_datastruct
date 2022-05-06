@@ -4,7 +4,11 @@
 
 #ifndef CPP_PRO_LINKED_LIST_HPP
 #define CPP_PRO_LINKED_LIST_HPP
+
+#include <iostream>
+#include <vector>
 namespace linked_list {
+    using namespace std;
     /**
      * linked list node
      * @tparam T
@@ -69,6 +73,30 @@ namespace linked_list {
         template<typename T>
         static bool has_circle(node<T> *head);
         static void test_has_circle();
+
+        /**
+         * refe: https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/he-bing-kge-pai-xu-lian-biao-by-leetcode-solutio-2/ method1
+         * relay on merge_sorted_linked_list function,
+         * max num of every sorted linked list: n
+         * size of lists: k
+         * Time complexity: O(k^2*n)
+         * Spatial complexity: O(1)
+         * @param lists vector of sorted linked list
+         * @return head node of merged sorted linked list
+         */
+        static node<int> *merge_k_sorted_linked_list_1(const vector<node<int> *>& lists);
+        /**
+         * refe: https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/he-bing-kge-pai-xu-lian-biao-by-leetcode-solutio-2/ method2
+         * relay on merge_sorted_linked_list function,
+         * max num of every sorted linked list: n
+         * size of lists: k
+         * Time complexity: O(k*logk*n)
+         * Spatial complexity: O(logk)
+         * @param lists vector of sorted linked list
+         * @return head node of merged sorted linked list
+         */
+        static node<int> *merge_k_sorted_linked_list_2(const vector<node<int> *>& lists);
+        static void test_merge_k_sorted_linked_list();
     };
 
     template<typename T>
