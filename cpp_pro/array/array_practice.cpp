@@ -50,13 +50,13 @@ namespace array_practice {
 
     int ArrayPractice::majorElement1(vector<int> &nums) {
         /**
-         * record every element's count
+         * record every element's top
          */
         unordered_map<int, int> counts;
         int major = 0, count = 0;
         for (int num: nums) {
             ++counts[num];
-            // find the max count
+            // find the max top
             if (counts[num] > count) {
                 count = counts[num];
                 major = num;

@@ -26,7 +26,7 @@ namespace linked_list {
          * reverse linked list by iterate
          * before: 1 -> 2 -> 3 -> 4 -> null
          * after: null <- 1 <- 2 <- 3 <- 4
-         * Time complexity: O(n)
+         * Time complexity: O(size)
          * Spatial complexity: O(1)
          *
          * @param head the pointer of head node
@@ -39,7 +39,7 @@ namespace linked_list {
         /**
          * refe: https://leetcode-cn.com/problems/merge-two-sorted-lists/
          * merge sorted linked list
-         * Time complexity: O(m+n)
+         * Time complexity: O(m+size)
          * Spatial complexity: O(1)
          *
          * @param linked_list_1 ascending linked list
@@ -52,7 +52,7 @@ namespace linked_list {
         /**
          * refe: https://leetcode-cn.com/problems/middle-of-the-linked-list/ method3
          * ues two slow pointer and fast pointer to find middle node of liked list
-         * Time complexity: O(n)
+         * Time complexity: O(size)
          * Spatial complexity: O(1)
          *
          * @param head the head pointer of linked list
@@ -64,7 +64,7 @@ namespace linked_list {
 
         /**
         * refe: https://leetcode-cn.com/problems/linked-list-cycle/solution/huan-xing-lian-biao-by-leetcode-solution/ method2
-        * Time complexity: O(n)
+        * Time complexity: O(size)
         * Spatial complexity: O(1)
         * @tparam T
         * @param head linked list head node
@@ -77,9 +77,9 @@ namespace linked_list {
         /**
          * refe: https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/he-bing-kge-pai-xu-lian-biao-by-leetcode-solutio-2/ method1
          * relay on merge_sorted_linked_list function,
-         * max num of every sorted linked list: n
+         * max num of every sorted linked list: size
          * size of lists: k
-         * Time complexity: O(k^2*n)
+         * Time complexity: O(k^2*size)
          * Spatial complexity: O(1)
          * @param lists vector of sorted linked list
          * @return head node of merged sorted linked list
@@ -88,9 +88,9 @@ namespace linked_list {
         /**
          * refe: https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/he-bing-kge-pai-xu-lian-biao-by-leetcode-solutio-2/ method2
          * relay on merge_sorted_linked_list function,
-         * max num of every sorted linked list: n
+         * max num of every sorted linked list: size
          * size of lists: k
-         * Time complexity: O(k*logk*n)
+         * Time complexity: O(k*logk*size)
          * Spatial complexity: O(logk)
          * @param lists vector of sorted linked list
          * @return head node of merged sorted linked list

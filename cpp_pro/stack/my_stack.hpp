@@ -2,8 +2,8 @@
 // Created by cainjiang on 2022/5/9.
 //
 
-#ifndef CPP_PRO_ARRAY_STACK_HPP
-#define CPP_PRO_ARRAY_STACK_HPP
+#ifndef CPP_PRO_MY_STACK_HPP
+#define CPP_PRO_MY_STACK_HPP
 
 #include "../linked_list/linked_list.hpp"
 
@@ -15,14 +15,14 @@ namespace stack_practice {
     template<typename T>
     class ArrayStack {
     private:
-        // element count
-        int count;
+        // element top
+        int top;
         // array capacity
-        int n;
+        int size;
         // the pointer of array
         T *items;
     public:
-        explicit ArrayStack(int n);
+        explicit ArrayStack(int size);
 
         ~ArrayStack();
 
@@ -41,35 +41,35 @@ namespace stack_practice {
     };
 
     template<typename T>
-    ArrayStack<T>::ArrayStack(int n) {
-        this->n = n;
-        this->count = 0;
-        items = new T[n];
+    ArrayStack<T>::ArrayStack(int size) {
+        this->size = size;
+        this->top = 0;
+        items = new T[size];
     }
 
     template<typename T>
     ArrayStack<T>::~ArrayStack() {
-        this->count = 0;
+        this->top = 0;
         delete[] items;
     }
 
     template<typename T>
     bool ArrayStack<T>::push(T item) {
-        if (count == n) {
+        if (top == size) {
             return false;
         }
-        items[count] = item;
-        count++;
+        items[top] = item;
+        top++;
         return true;
     }
 
     template<typename T>
     T ArrayStack<T>::pop() {
-        if (count == 0) {
+        if (top == 0) {
             return nullptr;
         }
-        T item = items[count - 1];
-        count--;
+        T item = items[top - 1];
+        top--;
         return item;
     }
 
@@ -117,4 +117,4 @@ namespace stack_practice {
     }
 
 }
-#endif //CPP_PRO_ARRAY_STACK_HPP
+#endif //CPP_PRO_MY_STACK_HPP

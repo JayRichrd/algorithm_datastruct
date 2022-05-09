@@ -11,4 +11,5 @@ add_executable(cpp_pro
         linked_list/linked_list.cpp
         array/array.hpp
         array/array_practice.cpp
-        stack/array_stack.hpp)
+        stack/my_stack.hpp
+        queue/my_queue.hpp)
