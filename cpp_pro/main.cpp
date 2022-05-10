@@ -2,6 +2,7 @@
 #include "override_operator_assign/my_string.hpp"
 #include "linked_list/linked_list.hpp"
 #include "array/array.hpp"
+#include "recursion/my_recursion.hpp"
 
 int main() {
     using namespace std;
@@ -28,6 +29,12 @@ int main() {
 
     cout << endl << "============================test major element================================" << endl;
     array_practice::ArrayPractice::test_major_element();
+
+    cout << endl << "============================test fibonacci sequence================================" << endl;
+    recursive_practice::test_fibonacci_sequence();
+
+    cout << endl << "============================test factorial================================" << endl;
+    recursive_practice::test_factorial();
 
     return 0;
 }

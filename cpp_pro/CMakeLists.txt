@@ -12,4 +12,5 @@ add_executable(cpp_pro
         array/array.hpp
         array/array_practice.cpp
         stack/my_stack.hpp
-        queue/my_queue.hpp)
+        queue/my_queue.hpp
+        recursion/my_recursion.hpp)
