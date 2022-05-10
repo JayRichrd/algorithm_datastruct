@@ -136,5 +136,67 @@ namespace queue_practice {
         item->next = nullptr;
         return item;
     }
+
+    //----------------------------------------circle queue-------------------------------------------------------------
+    /**
+     * circle queue by array
+     * @tparam T
+     */
+    template<typename T>
+    class ArrayCircleQueue {
+    private:
+        int capacity;
+        int head = 0;
+        // tail position is always empty
+        int tail = 0;
+        T *items;
+    public:
+        explicit ArrayCircleQueue(int capacity);
+
+        ~ArrayCircleQueue();
+
+        bool enqueue(T item);
+
+        T dequeue();
+    };
+
+    template<typename T>
+    ArrayCircleQueue<T>::ArrayCircleQueue(int capacity) {
+        this->capacity = capacity;
+        this->head = 0;
+        this->tail = 0;
+        items = new T[capacity];
+    }
+
+    template<typename T>
+    ArrayCircleQueue<T>::~ArrayCircleQueue() {
+        delete[] items;
+    }
+
+    template<typename T>
+    bool ArrayCircleQueue<T>::enqueue(T item) {
+        /**
+         * queue is full
+         */
+        if ((tail + 1) % capacity == head) {
+            return false;
+        }
+        items[tail] = item;
+        tail = (tail + 1) % capacity;
+        return true;
+    }
+
+    template<typename T>
+    T ArrayCircleQueue<T>::dequeue() {
+        /**
+         * queue is empty
+         */
+        if (head == tail) {
+            return nullptr;
+        }
+        T item = items[head];
+        head = (head + 1) % capacity;
+        return item;
+    }
 }
 #endif //CPP_PRO_MY_QUEUE_HPP
