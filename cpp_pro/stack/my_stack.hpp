@@ -6,8 +6,11 @@
 #define CPP_PRO_MY_STACK_HPP
 
 #include "../linked_list/linked_list.hpp"
+#include <string>
 
 namespace stack_practice {
+    using namespace std;
+
     /**
      * stack by array
      * @tparam T
@@ -116,5 +119,18 @@ namespace stack_practice {
         return item;
     }
 
+    class MyStack {
+    public:
+        /**
+         * refe: https://leetcode.cn/problems/valid-parentheses/solution/you-xiao-de-gua-hao-by-leetcode-solution/
+         * Time complexity: O(n)
+         * Spatial complexity: O(1)
+         * @param str: source string
+         * @return return true if the source string bracket valid or false
+         */
+        static bool brackets_is_valid(string &str);
+        static void test_brackets_is_valid();
+
+    };
 }
 #endif //CPP_PRO_MY_STACK_HPP

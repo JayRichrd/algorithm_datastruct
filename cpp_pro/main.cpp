@@ -3,6 +3,7 @@
 #include "linked_list/linked_list.hpp"
 #include "array/array.hpp"
 #include "recursion/my_recursion.hpp"
+#include "stack/my_stack.hpp"
 
 int main() {
     using namespace std;
@@ -35,6 +36,9 @@ int main() {
 
     cout << endl << "============================test factorial================================" << endl;
     recursive_practice::test_factorial();
+
+    cout << endl << "============================test brackets is valid================================" << endl;
+    stack_practice::MyStack::test_brackets_is_valid();
 
     return 0;
 }
