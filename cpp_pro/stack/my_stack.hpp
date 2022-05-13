@@ -131,6 +131,23 @@ namespace stack_practice {
         static bool brackets_is_valid(string &str);
         static void test_brackets_is_valid();
 
+        /**
+         * refe: https://leetcode.cn/problems/longest-valid-parentheses/solution/zui-chang-you-xiao-gua-hao-by-leetcode-solution/ method2
+         * Time complexity: O(n)
+         * Spatial complexity: O(n)
+         * @param str source string
+         * @return the max num of valid parentheses
+         */
+        static int longest_valid_parentheses_2(string &str);
+        /**
+         * refe: https://leetcode.cn/problems/longest-valid-parentheses/solution/zui-chang-you-xiao-gua-hao-by-leetcode-solution/ method3
+         * Time complexity: O(n)
+         * Spatial complexity: O(1)
+         * @param str source string
+         * @return the max num of valid parentheses
+         */
+        static int longest_valid_parentheses_3(string &str);
+        static void test_longest_valid_parentheses();
     };
 }
 #endif //CPP_PRO_MY_STACK_HPP

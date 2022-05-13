@@ -40,5 +40,8 @@ int main() {
     cout << endl << "============================test brackets is valid================================" << endl;
     stack_practice::MyStack::test_brackets_is_valid();
 
+    cout << endl << "==========================test longest valid parentheses==============================" << endl;
+    stack_practice::MyStack::test_longest_valid_parentheses();
+
     return 0;
 }
