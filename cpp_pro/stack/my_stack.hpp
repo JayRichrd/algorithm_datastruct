@@ -148,6 +148,9 @@ namespace stack_practice {
          */
         static int longest_valid_parentheses_3(string &str);
         static void test_longest_valid_parentheses();
+
+        static int arithmetic(string &str);
+        static void test_arithmetic();
     };
 }
 #endif //CPP_PRO_MY_STACK_HPP

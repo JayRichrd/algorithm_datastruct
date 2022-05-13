@@ -4,6 +4,7 @@
 #include "array/array.hpp"
 #include "recursion/my_recursion.hpp"
 #include "stack/my_stack.hpp"
+#include "queue/my_queue.hpp"
 
 int main() {
     using namespace std;
@@ -42,6 +43,9 @@ int main() {
 
     cout << endl << "==========================test longest valid parentheses==============================" << endl;
     stack_practice::MyStack::test_longest_valid_parentheses();
+
+    cout << endl << "==========================test max sliding window==============================" << endl;
+    queue_practice::MyQueue::test_max_sliding_window();
 
     return 0;
 }

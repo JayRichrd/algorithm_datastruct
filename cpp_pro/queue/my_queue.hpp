@@ -6,8 +6,11 @@
 #define CPP_PRO_MY_QUEUE_HPP
 
 #include "../linked_list/linked_list.hpp"
+#include <vector>
 
 namespace queue_practice {
+    using namespace std;
+
     /**
      * queue by array
      * @tparam T
@@ -198,5 +201,28 @@ namespace queue_practice {
         head = (head + 1) % capacity;
         return item;
     }
+
+    class MyQueue {
+    public:
+        /**
+         * refe: https://leetcode.cn/problems/sliding-window-maximum/solution/ method1
+         * Time complexity: O(n*logn)
+         * Spatial complexity: O(n)
+         * @param nums
+         * @param k
+         * @return the max sliding window
+         */
+        static vector<int> max_sliding_window1(const vector<int> &nums, int k);
+        /**
+         * refe: https://leetcode.cn/problems/sliding-window-maximum/solution/ method2
+         * Time complexity: O(n)
+         * Spatial complexity: O(k)
+         * @param nums
+         * @param k
+         * @return the max sliding window
+         */
+        static vector<int> max_sliding_window2(const vector<int> &nums, int k);
+        static void test_max_sliding_window();
+    };
 }
 #endif //CPP_PRO_MY_QUEUE_HPP

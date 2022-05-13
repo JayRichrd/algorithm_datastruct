@@ -76,7 +76,7 @@ namespace stack_practice {
         /**
          * left -> right
          */
-        for (char i : str) {
+        for (char i: str) {
             if (i == '(') {
                 left++;
             } else {
@@ -108,4 +108,28 @@ namespace stack_practice {
 
         return max_ans;
     }
+
+    bool isNum(const char &letter) {
+        if (letter >= '0' && letter <= '9') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    int MyStack::arithmetic(string &str) {
+        string reverse_polish_notatio_str;
+        stack<char> symbol_stk;
+        for (char letter: str) {
+
+        }
+        return 0;
+    }
+
+
+    void MyStack::test_arithmetic() {
+
+    }
+
+
 }
