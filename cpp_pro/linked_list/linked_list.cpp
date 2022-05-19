@@ -102,7 +102,7 @@ namespace linked_list {
             head = head->next;
         }
         node<int> *mid = find_mid_node(&list1_node1);
-        cout << endl << "list1 middle node: " << mid->data << endl;
+        cout << endl << "list1 middle Node: " << mid->data << endl;
 
         cout << endl << "------------------------------------------------------------------------------------" << endl;
 
@@ -119,7 +119,7 @@ namespace linked_list {
             head = head->next;
         }
         mid = find_mid_node(&list2_node1);
-        cout << endl << "list2 middle node: " << mid->data << endl;
+        cout << endl << "list2 middle Node: " << mid->data << endl;
     }
 
     void LinkedList::test_has_circle() {
@@ -175,7 +175,7 @@ namespace linked_list {
             head = head->next;
         }
         cout << endl;
-        //node<int> *merge = merge_k_sorted_linked_list_1(lists);
+        //Node<int> *merge = merge_k_sorted_linked_list_1(lists);
         node<int> *merge = merge_k_sorted_linked_list_2(lists);
         head = merge;
         cout << "merged list: ";

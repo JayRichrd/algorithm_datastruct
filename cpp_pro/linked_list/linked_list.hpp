@@ -10,7 +10,7 @@
 namespace linked_list {
     using namespace std;
     /**
-     * linked list node
+     * linked list Node
      * @tparam T
      */
     template<typename T>
@@ -29,8 +29,8 @@ namespace linked_list {
          * Time complexity: O(size)
          * Spatial complexity: O(1)
          *
-         * @param head the pointer of head node
-         * @return the pointer of head node of reversed linked list
+         * @param head the pointer of head Node
+         * @return the pointer of head Node of reversed linked list
          */
         template<typename T>
         static node<T> *reverse_iterate(node<T> *head);
@@ -51,12 +51,12 @@ namespace linked_list {
 
         /**
          * refe: https://leetcode-cn.com/problems/middle-of-the-linked-list/ method3
-         * ues two slow pointer and fast pointer to find middle node of liked list
+         * ues two slow pointer and fast pointer to find middle Node of liked list
          * Time complexity: O(size)
          * Spatial complexity: O(1)
          *
          * @param head the head pointer of linked list
-         * @return the middle node's pointer
+         * @return the middle Node's pointer
          */
         template<typename T>
         static node<T> *find_mid_node(node<T> *head);
@@ -67,7 +67,7 @@ namespace linked_list {
         * Time complexity: O(size)
         * Spatial complexity: O(1)
         * @tparam T
-        * @param head linked list head node
+        * @param head linked list head Node
         * @return 1: has circle, 0: hasn't circle
         */
         template<typename T>
@@ -82,7 +82,7 @@ namespace linked_list {
          * Time complexity: O(k^2*size)
          * Spatial complexity: O(1)
          * @param lists vector of sorted linked list
-         * @return head node of merged sorted linked list
+         * @return head Node of merged sorted linked list
          */
         static node<int> *merge_k_sorted_linked_list_1(const vector<node<int> *>& lists);
         /**
@@ -93,7 +93,7 @@ namespace linked_list {
          * Time complexity: O(k*logk*size)
          * Spatial complexity: O(logk)
          * @param lists vector of sorted linked list
-         * @return head node of merged sorted linked list
+         * @return head Node of merged sorted linked list
          */
         static node<int> *merge_k_sorted_linked_list_2(const vector<node<int> *>& lists);
         static void test_merge_k_sorted_linked_list();
@@ -101,9 +101,9 @@ namespace linked_list {
 
     template<typename T>
     node<T> *LinkedList::reverse_iterate(node<T> *head) {
-        // the previous node of the current
+        // the previous Node of the current
         node<T> *pre = nullptr;
-        // the current node
+        // the current Node
         node<T> *cur = head;
         while (cur != nullptr) {
             /**
