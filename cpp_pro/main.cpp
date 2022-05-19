@@ -3,6 +3,8 @@
 #include "linked_list/linked_list.hpp"
 #include "array/array.hpp"
 #include "recursion/my_recursion.hpp"
+#include "stack/my_stack.hpp"
+#include "queue/my_queue.hpp"
 
 int main() {
     using namespace std;
@@ -31,10 +33,22 @@ int main() {
     array_practice::ArrayPractice::test_major_element();
 
     cout << endl << "============================test fibonacci sequence================================" << endl;
-    recursive_practice::test_fibonacci_sequence();
+    recursive_practice::MyRecursion::test_fibonacci_sequence();
 
     cout << endl << "============================test factorial================================" << endl;
-    recursive_practice::test_factorial();
+    recursive_practice::MyRecursion::test_factorial();
+
+    cout << endl << "============================test brackets is valid================================" << endl;
+    stack_practice::MyStack::test_brackets_is_valid();
+
+    cout << endl << "==========================test longest valid parentheses==============================" << endl;
+    stack_practice::MyStack::test_longest_valid_parentheses();
+
+    cout << endl << "==========================test max sliding window==============================" << endl;
+    queue_practice::MyQueue::test_max_sliding_window();
+
+    cout << endl << "==========================test climb stairs==============================" << endl;
+    recursive_practice::MyRecursion::test_climb_stairs();
 
     return 0;
 }

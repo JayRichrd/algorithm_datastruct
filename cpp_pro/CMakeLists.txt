@@ -12,7 +12,11 @@ add_executable(cpp_pro
         array/array.hpp
         array/array_practice.cpp
         stack/my_stack.hpp
+        stack/my_stack.cpp
         queue/my_queue.hpp
+        queue/my_queue.cpp
         recursion/my_recursion.hpp
+        recursion/my_recursion.cpp
         tree/binary_tree.hpp
-        tree/binary_tree.cpp)
+        tree/binary_tree.cpp
+        )
