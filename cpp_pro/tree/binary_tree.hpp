@@ -1,7 +1,9 @@
 //
 // Created by cainjiang on 2022/5/19.
 //
-
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+#pragma ide diagnostic ignored "OCUnusedStructInspection"
 #ifndef CPP_PRO_BINARY_TREE_HPP
 #define CPP_PRO_BINARY_TREE_HPP
 
@@ -63,7 +65,7 @@ namespace binary_tree {
          * Time complexity: O(n)
          * Spatial complexity: O(n)
          */
-        void preByRecursion(Node<int> *node);
+        static void preByRecursion(Node<int> *node);
 
         /**
          * refe: https://leetcode.cn/problems/binary-tree-preorder-traversal/ method2
@@ -71,7 +73,7 @@ namespace binary_tree {
          * Time complexity: O(n)
          * Spatial complexity: O(n)
          */
-        void preByIteration(Node<int> *node);
+        static void preByIteration(Node<int> *node);
 
         /**
          * refe: https://leetcode.cn/problems/binary-tree-inorder-traversal/ method1
@@ -79,7 +81,7 @@ namespace binary_tree {
          * Time complexity: O(n)
          * Spatial complexity: O(n)
          */
-        void midByRecursion(Node<int> *node);
+        static void midByRecursion(Node<int> *node);
 
         /**
          * refe: https://leetcode.cn/problems/binary-tree-inorder-traversal/ method2
@@ -87,7 +89,7 @@ namespace binary_tree {
          * Time complexity: O(n)
          * Spatial complexity: O(n)
          */
-        void midByIteration(Node<int> *node);
+        static void midByIteration(Node<int> *node);
 
         /**
          * refe: https://leetcode.cn/problems/binary-tree-postorder-traversal/ method1
@@ -95,7 +97,7 @@ namespace binary_tree {
          * Time complexity: O(n)
          * Spatial complexity: O(n)
          */
-        void postByRecursion(Node<int> *node);
+        static void postByRecursion(Node<int> *node);
 
         /**
          * refe: https://leetcode.cn/problems/binary-tree-postorder-traversal/ method2
@@ -103,14 +105,19 @@ namespace binary_tree {
          * Time complexity: O(n)
          * Spatial complexity: O(n)
          */
-        void postIteration(Node<int> *node);
+        static void postIteration(Node<int> *node);
 
         /**
          * refe: https://leetcode.cn/problems/binary-tree-level-order-traversal/solution/er-cha-shu-de-ceng-xu-bian-li-by-leetcode-solution/
+         * Time complexity: O(n)
+         * Spatial complexity: O(n)
          * @param root
          * @return
          */
-        vector<vector<Node<int> *>> leveOrderVisit(Node<int> *root);
+        static vector<vector<Node<int> *>> leveOrderVisit(const Node<int> *root);
+        static void test_level_order_visit();
     };
 }
 #endif //CPP_PRO_BINARY_TREE_HPP
+
+#pragma clang diagnostic pop

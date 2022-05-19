@@ -1,6 +1,11 @@
 //
 // Created by cainjiang on 2022/5/19.
 //
+#pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "LocalValueEscapesScope"
+#pragma ide diagnostic ignored "misc-no-recursion"
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 #include "binary_tree.hpp"
 #include <iostream>
 #include <stack>
@@ -27,9 +32,7 @@ namespace binary_tree {
         this->root = root;
     }
 
-    BinarySearchTree::~BinarySearchTree() {
-
-    }
+    BinarySearchTree::~BinarySearchTree() = default;
 
     void BinarySearchTree::insert(int data) {
         if (root == nullptr) {
@@ -201,18 +204,50 @@ namespace binary_tree {
         }
     }
 
-    vector<vector<Node<int> *>> CommonBinaryTree::leveOrderVisit(Node<int> *root) {
+    vector<vector<Node<int> *>> CommonBinaryTree::leveOrderVisit(const Node<int> *root) {
         vector<vector<Node<int> *>> result;
         if (root == nullptr)
             return result;
 
         queue<Node<int> *> qu;
-        qu.push(root);
+        auto *cur = const_cast<Node<int> *>(root);
+        qu.push(cur);
         while (!qu.empty()) {
             int curLeveSize = qu.size();
             vector<Node<int> *> curLeveVector;
-
+            for (int i = 0; i < curLeveSize; ++i) {
+                Node<int> *node = qu.front();
+                qu.pop();
+                curLeveVector.push_back(node);
+                //push next level node into queue
+                if (node->lChild != nullptr) {
+                    qu.push(node->lChild);
+                }
+                if (node->rChild != nullptr) {
+                    qu.push(node->rChild);
+                }
+            }
+            result.push_back(curLeveVector);
         }
         return result;
     }
+
+    void CommonBinaryTree::test_level_order_visit() {
+        Node<int> node5 = Node<int>{7, nullptr, nullptr};
+        Node<int> node4 = Node<int>{15, nullptr, nullptr};
+        Node<int> node3 = Node<int>{20, &node4, &node5};
+        Node<int> node2 = Node<int>{9, nullptr, nullptr};
+        Node<int> node1 = Node<int>{3, &node2, &node3};
+        vector<vector<Node<int> *>> levelOrderVisitResult = leveOrderVisit(&node1);
+        for (int i = 0; i < levelOrderVisitResult.size(); ++i) {
+            cout << "level " << i + 1 << ": ";
+            vector<Node<int> *> curLevelVector = levelOrderVisitResult[i];
+            for (auto &node: curLevelVector) {
+                cout << node->data << ", ";
+            }
+            cout << endl;
+        }
+    }
 }
+
+#pragma clang diagnostic pop

@@ -5,6 +5,7 @@
 #include "recursion/my_recursion.hpp"
 #include "stack/my_stack.hpp"
 #include "queue/my_queue.hpp"
+#include "tree/binary_tree.hpp"
 
 int main() {
     using namespace std;
@@ -49,6 +50,9 @@ int main() {
 
     cout << endl << "==========================test climb stairs==============================" << endl;
     recursive_practice::MyRecursion::test_climb_stairs();
+
+    cout << endl << "==========================test level order visit==============================" << endl;
+    binary_tree::CommonBinaryTree::test_level_order_visit();
 
     return 0;
 }
