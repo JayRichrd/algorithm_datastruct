@@ -2,8 +2,12 @@
 // Created by cainjiang on 2022/5/19.
 //
 #include "binary_tree.hpp"
+#include <iostream>
+#include <stack>
+#include <queue>
 
 namespace binary_tree {
+    using namespace std;
 
     Node<int> *BinarySearchTree::find(int data) {
         Node<int> *curNode = root;
@@ -100,5 +104,115 @@ namespace binary_tree {
         } else {
             previousNode->rChild = child;
         }
+    }
+
+    void CommonBinaryTree::preByRecursion(Node<int> *node) {
+        if (node == nullptr) {
+            return;
+        }
+        cout << node->data << ", ";
+        preByRecursion(node->lChild);
+        preByRecursion(node->rChild);
+    }
+
+    void CommonBinaryTree::preByIteration(Node<int> *node) {
+        if (node == nullptr) {
+            return;
+        }
+
+        stack<Node<int> *> stk;
+        Node<int> *cur = node;
+        while (cur != nullptr || !stk.empty()) {
+            while (cur != nullptr) {
+                cout << cur->data << ", ";
+                // just as recursion push back stack
+                stk.push(cur);
+                cur = cur->lChild;
+            }
+            // just as recursion push back stack
+            cur = stk.top();
+            stk.pop();
+            cur = cur->rChild;
+        }
+    }
+
+    void CommonBinaryTree::midByRecursion(Node<int> *node) {
+        if (node == nullptr) {
+            return;
+        }
+        midByRecursion(node->lChild);
+        cout << node->data << ", ";
+        midByRecursion(node->rChild);
+    }
+
+    void CommonBinaryTree::midByIteration(Node<int> *node) {
+        if (node == nullptr) {
+            return;
+        }
+
+        stack<Node<int> *> stk;
+        Node<int> *cur = node;
+        while (!stk.empty() || cur != nullptr) {
+            while (cur != nullptr) {
+                stk.push(cur);
+                cur = cur->lChild;
+            }
+            cur = stk.top();
+            stk.pop();
+            cout << cur->data << ", ";
+            cur = cur->rChild;
+        }
+    }
+
+    void CommonBinaryTree::postByRecursion(Node<int> *node) {
+        if (node == nullptr) {
+            return;
+        }
+
+        postByRecursion(node->lChild);
+        postByRecursion(node->rChild);
+        cout << node->data << ", ";
+    }
+
+    void CommonBinaryTree::postIteration(Node<int> *node) {
+        if (node == nullptr) {
+            return;
+        }
+
+        stack<Node<int> *> stk;
+        Node<int> *cur = node;
+        // last visit node
+        Node<int> *pre = nullptr;
+        while (stk.empty() || cur != nullptr) {
+            while (cur != nullptr) {
+                stk.push(cur);
+                cur = cur->lChild;
+            }
+            cur = stk.top();
+            stk.pop();
+            if (cur->rChild == nullptr || cur->rChild->data == pre->data) {// visited condition
+                cout << cur->data << ", ";
+                pre = cur;
+                cur = nullptr;
+            } else {
+                stk.push(cur);
+                cur = cur->rChild;
+            }
+        }
+    }
+
+    vector<vector<Node<int> *>> CommonBinaryTree::leveOrderVisit(Node<int> *root) {
+        vector<vector<Node<int> *>> result;
+        if (root == nullptr)
+            return result;
+
+        queue<Node<int> *> qu;
+        qu.push(root);
+        while (!qu.empty()) {
+            int curLeveSize = qu.size();
+            vector<Node<int> *> curLeveVector;
+
+        }
+        return result;
     }
 }
