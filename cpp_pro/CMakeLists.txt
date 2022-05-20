@@ -19,4 +19,5 @@ add_executable(cpp_pro
         recursion/my_recursion.cpp
         tree/binary_tree.hpp
         tree/binary_tree.cpp
-        )
+        heap/my_heap.cpp
+        heap/my_heap.hpp)

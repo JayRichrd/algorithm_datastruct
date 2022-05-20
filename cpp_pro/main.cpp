@@ -6,6 +6,7 @@
 #include "stack/my_stack.hpp"
 #include "queue/my_queue.hpp"
 #include "tree/binary_tree.hpp"
+#include "heap/my_heap.hpp"
 
 int main() {
     using namespace std;
@@ -53,6 +54,12 @@ int main() {
 
     cout << endl << "==========================test level order visit==============================" << endl;
     binary_tree::CommonBinaryTree::test_level_order_visit();
+
+    cout << endl << "==========================test heap sort==============================" << endl;
+    heap_practice::MaxHeap::test_heap_sort();
+
+    cout << endl << "==========================test_top_k==============================" << endl;
+    heap_practice::MaxHeap::test_top_k();
 
     return 0;
 }
