@@ -58,7 +58,6 @@ namespace heap_practice {
          * @param count size of nums
          */
         static void heapSort(int nums[], int count);
-
         static void test_heap_sort();
 
         /**
