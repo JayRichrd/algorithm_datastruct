@@ -6,10 +6,12 @@
 #pragma ide diagnostic ignored "LocalValueEscapesScope"
 #pragma ide diagnostic ignored "misc-no-recursion"
 #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 #include "binary_tree.hpp"
 #include <iostream>
 #include <stack>
 #include <queue>
+#include <cstdint>
 
 namespace binary_tree {
     using namespace std;
@@ -247,6 +249,52 @@ namespace binary_tree {
             }
             cout << endl;
         }
+    }
+
+    bool CommonBinaryTree::isValidBST(Node<int> *root) {
+        return isValidBstHelper(root, INTMAX_MIN, INTMAX_MAX);
+    }
+
+    bool CommonBinaryTree::isValidBstHelper(Node<int> *root, int min, int max) {
+        if (root == nullptr) return true;
+        if (root->data <= min || root->data >= max) {
+            return false;
+        }
+        return isValidBstHelper(root->lChild, min, root->data) && isValidBstHelper(root->rChild, root->data, max);
+    }
+
+    void CommonBinaryTree::text_is_valid_bst() {
+        Node<int> node5 = {6, nullptr, nullptr};
+        Node<int> node4 = {3, nullptr, nullptr};
+        Node<int> node3 = {4, &node4, &node5};
+        Node<int> node2 = {1, nullptr, nullptr};
+        Node<int> node1 = {5, &node2, &node3};
+        cout << "is valid bst: " << isValidBST(&node1);
+    }
+
+    bool CommonBinaryTree::hasPathSum(Node<int> *root, int sum) {
+        if (root == nullptr) {
+            return false;
+        }
+        // arrive at leaf node
+        if (root->lChild == nullptr && root->rChild == nullptr) {
+            return sum == root->data;
+        }
+        return hasPathSum(root->lChild, sum - root->data) || hasPathSum(root->rChild, sum - root->data);
+    }
+
+    void CommonBinaryTree::test_has_path_sum() {
+        Node<int> node9 = {1, nullptr, nullptr};
+        Node<int> node8 = {2, nullptr, nullptr};
+        Node<int> node7 = {7, nullptr, nullptr};
+        Node<int> node6 = {4, nullptr, &node9};
+        Node<int> node5 = {13, nullptr, nullptr};
+        Node<int> node4 = {11, &node7, &node8};
+        Node<int> node3 = {8, &node5, &node6};
+        Node<int> node2 = {4, &node4, nullptr};
+        Node<int> node1 = {5, &node2, &node3};
+        int sum = 22;
+        cout << "has path = " << sum << " : " << hasPathSum(&node1, sum);
     }
 }
 

@@ -55,6 +55,12 @@ int main() {
     cout << endl << "==========================test level order visit==============================" << endl;
     binary_tree::CommonBinaryTree::test_level_order_visit();
 
+    cout << endl << "==========================text is valid bst==============================" << endl;
+    binary_tree::CommonBinaryTree::text_is_valid_bst();
+
+    cout << endl << "==========================test has path sum==============================" << endl;
+    binary_tree::CommonBinaryTree::test_has_path_sum();
+
     cout << endl << "==========================test heap sort==============================" << endl;
     heap_practice::MaxHeap::test_heap_sort();
 
