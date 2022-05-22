@@ -63,7 +63,8 @@ public class UndiGraph {
                 int edgeVertex = adj[topVertex].get(i);
                 if (!visited[edgeVertex]) {
                     pre[edgeVertex] = topVertex;
-                    if (edgeVertex == target) {// arrive at target
+                    // arrive at target
+                    if (edgeVertex == target) {
                         printPath(pre, source, target);
                         return;
                     }
