@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
+@SuppressWarnings("unused")
 public class UndiGraph {
     // num of vertex
     private final int vertexes;
@@ -30,7 +31,6 @@ public class UndiGraph {
         adj[target].add(source);
     }
 
-    @SuppressWarnings("unused")
     public int getVertexes() {
         return vertexes;
     }
