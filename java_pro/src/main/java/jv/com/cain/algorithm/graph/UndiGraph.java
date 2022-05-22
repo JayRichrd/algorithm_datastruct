@@ -91,6 +91,7 @@ public class UndiGraph {
     /**
      * Time complexity: O(Edge)
      * Spatial complexity: O(Vertex)
+     *
      * @param source the vertex which start from
      * @param target the target vertex
      */
@@ -123,11 +124,6 @@ public class UndiGraph {
         }
     }
 
-    public static void main(String[] args) {
-        System.out.println("==========test BFS and DFS==========");
-        testXFS();
-    }
-
     public static void testXFS() {
         UndiGraph graph = new UndiGraph(8);
         graph.addEdge(0, 1);
@@ -147,6 +143,76 @@ public class UndiGraph {
         System.out.println();
 
         System.out.print("dfs path: ");
-        graph.dfs(0,7);
+        graph.dfs(0, 7);
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/number-of-islands/solution/dao-yu-shu-liang-by-leetcode/ method1
+     * Time complexity: O(rc)
+     * Spatial complexity: O(rc)
+     *
+     * @param grid a two-dimensional array that represents grid
+     * @return the number of island
+     */
+    public static int queryIslandsNum(char[][] grid) {
+        int islandNum = 0;
+        if (grid == null || grid.length == 0) {
+            return islandNum;
+        }
+
+        int row = grid.length;
+        int colum = grid[0].length;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < colum; j++) {
+                if (grid[i][j] == '1') {
+                    // every get in to this if condition, islandNum++
+                    islandNum++;
+                    doDfs(grid, i, j);
+                }
+            }
+        }
+        return islandNum;
+    }
+
+    private static void doDfs(char[][] grid, int r, int c) {
+        int row = grid.length;
+        int colum = grid[0].length;
+        // out of border or it has been visited
+        if (r < 0 || r >= row || c < 0 || c >= colum || grid[r][c] == '0') {
+            return;
+        }
+
+        // mark as visited
+        grid[r][c] = '0';
+        doDfs(grid, r - 1, c);// top
+        doDfs(grid, r + 1, c);// bottom
+        doDfs(grid, r, c - 1);// left
+        doDfs(grid, r, c + 1);// right
+    }
+
+    public static void testQueryIslandNum() {
+        char[][] grid = new char[4][3];
+        grid[0][0] = '1';
+        grid[0][1] = '1';
+        grid[0][2] = '1';
+        grid[1][0] = '0';
+        grid[1][1] = '1';
+        grid[1][2] = '0';
+        grid[2][0] = '1';
+        grid[2][1] = '0';
+        grid[2][2] = '0';
+        grid[3][0] = '1';
+        grid[3][1] = '0';
+        grid[3][2] = '1';
+        System.out.println("number of island: " + queryIslandsNum(grid));
+    }
+
+    public static void main(String[] args) {
+        System.out.println("==========test BFS and DFS==========");
+        testXFS();
+
+        System.out.println();
+        System.out.println("==========test Query Island Num==========");
+        testQueryIslandNum();
     }
 }
