@@ -190,6 +190,38 @@ public class UndiGraph {
         doDfs(grid, r, c + 1);// right
     }
 
+    /**
+     * refe: https://leetcode.cn/problems/valid-sudoku/solution/you-xiao-de-shu-du-by-leetcode-solution-50m6/ method1
+     * Time complexity: O(1)
+     * Spatial complexity: O(1)
+     *
+     * @param board a two-dimensional array
+     * @return return if it is sudoku or false
+     */
+    public static boolean isValidSudoku(char[][] board) {
+        // check row
+        int[][] rows = new int[9][9];
+        // check column
+        int[][] columns = new int[9][9];
+        // check 3 X 3 sub board
+        int[][][] subBoxes = new int[3][3][9];
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                char c = board[i][j];
+                if (c != '.') {
+                    int index = c - '0' - 1;
+                    rows[i][index]++;
+                    columns[j][index]++;
+                    subBoxes[i / 3][j / 3][index]++;
+                    if (rows[i][index] > 1 || columns[j][index] > 1 || subBoxes[i / 3][j / 3][index] > 1) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
     public static void testQueryIslandNum() {
         char[][] grid = new char[4][3];
         grid[0][0] = '1';
