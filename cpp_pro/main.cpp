@@ -7,6 +7,7 @@
 #include "queue/my_queue.hpp"
 #include "tree/binary_tree.hpp"
 #include "heap/my_heap.hpp"
+#include "sort/my_sort.hpp"
 
 int main() {
     using namespace std;
@@ -66,6 +67,9 @@ int main() {
 
     cout << endl << "==========================test_top_k==============================" << endl;
     heap_practice::MaxHeap::test_top_k();
+
+    cout << endl << "==========================test quick sort==============================" << endl;
+    sort_practice::MySort::test_quick_sort();
 
     return 0;
 }

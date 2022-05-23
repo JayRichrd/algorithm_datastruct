@@ -145,7 +145,7 @@ namespace heap_practice {
         }
 
         for (int i = 0; i < k; ++i) {
-            //dose not assign num, can not use []
+            //does not assign num, can not use []
             //result.push_back(minHeap.top());
             result[i] = minHeap.top();
             minHeap.pop();

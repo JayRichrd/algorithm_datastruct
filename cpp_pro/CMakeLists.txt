@@ -20,4 +20,6 @@ add_executable(cpp_pro
         tree/binary_tree.hpp
         tree/binary_tree.cpp
         heap/my_heap.cpp
-        heap/my_heap.hpp)
+        heap/my_heap.hpp
+        sort/my_sort.cpp
+        sort/my_sort.hpp)

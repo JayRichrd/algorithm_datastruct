@@ -176,9 +176,9 @@ public class UndiGraph {
 
     private static void doDfs(char[][] grid, int r, int c) {
         int row = grid.length;
-        int colum = grid[0].length;
+        int column = grid[0].length;
         // out of border or it has been visited
-        if (r < 0 || r >= row || c < 0 || c >= colum || grid[r][c] == '0') {
+        if (r < 0 || r >= row || c < 0 || c >= column || grid[r][c] == '0') {
             return;
         }
 
