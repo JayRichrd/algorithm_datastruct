@@ -71,5 +71,8 @@ int main() {
     cout << endl << "==========================test quick sort==============================" << endl;
     sort_practice::MySort::test_quick_sort();
 
+    cout << endl << "==========================test kth larger==============================" << endl;
+    sort_practice::MySort::test_kth_larger();
+
     return 0;
 }

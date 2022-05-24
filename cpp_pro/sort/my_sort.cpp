@@ -164,6 +164,66 @@ namespace sort_practice {
         nums[i] = nums[j];
         nums[j] = temp;
     }
+
+    int MySort::find_kth_larger(vector<int> nums, int k) {
+        if (nums.size() < k) {
+            return INTMAX_MIN;
+        }
+        return find_kth_larger_recursion(nums, 0, nums.size() - 1, k);
+    }
+
+    int MySort::find_kth_larger_recursion(vector<int> &nums, int left, int right, int k) {
+        if (left >= right) {
+            return INTMAX_MIN;
+        }
+        int pivot = find_kth_larger_partition(nums, left, right);
+        if (pivot == k - 1) {
+            // found
+            return nums[pivot];
+        } else if (pivot < k - 1) {
+            // kth larger should be in the right
+            return find_kth_larger_recursion(nums, pivot + 1, right, k);
+        } else {
+            // kth larger should be in the left
+            return find_kth_larger_recursion(nums, left, pivot - 1, k);
+        }
+    }
+
+    int MySort::find_kth_larger_partition(vector<int> &nums, int left, int right) {
+        // descending
+        int pivot = nums[right];
+        int i = left;
+        for (int j = i; j < right; ++j) {
+            if (nums[j] > pivot) {
+                quick_sort_swap(nums, i, j);
+                i++;
+            }
+        }
+        quick_sort_swap(nums, i, right);
+        return i;
+    }
+
+    void MySort::test_kth_larger() {
+        vector<int> nums = {2, 8, 4, 1, 3, 5, 6, 6, 11, 3, 9, 8};
+        int k = 5;
+        cout << "nums: ";
+        for (auto num: nums) {
+            cout << num << ", ";
+        }
+
+        cout << endl;
+
+        int kth_larger = find_kth_larger(nums, k);
+        cout << k << "th larger num = " << kth_larger;
+
+        cout << endl;
+
+        quick_sort(nums);
+        cout << "nums after quick sort: ";
+        for (auto num: nums) {
+            cout << num << ", ";
+        }
+    }
 }
 
 #pragma clang diagnostic pop

@@ -46,6 +46,9 @@ namespace sort_practice {
          */
         static int quick_sort_partition(vector<int> &nums, int left, int right);
 
+        static int find_kth_larger_recursion(vector<int> &nums, int left,int right,int k);
+        static int find_kth_larger_partition(vector<int> &nums, int left,int right);
+
     public:
         /**
          * Time complexity: O(n^2)
@@ -90,6 +93,17 @@ namespace sort_practice {
          */
         static void quick_sort(vector<int> &nums);
         static void test_quick_sort();
+
+        /**
+         * refe: https://leetcode.cn/problems/kth-largest-element-in-an-array/solution/shu-zu-zhong-de-di-kge-zui-da-yuan-su-by-leetcode-/ method1
+         * Time complexity: O(n)
+         * Spatial complexity: O(1)
+         * @param nums
+         * @param k
+         * @return
+         */
+        static int find_kth_larger(vector<int> nums,int k);
+        static void test_kth_larger();
     };
 }
 #endif //CPP_PRO_MY_SORT_HPP
