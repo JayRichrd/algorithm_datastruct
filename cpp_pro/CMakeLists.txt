@@ -22,4 +22,6 @@ add_executable(cpp_pro
         heap/my_heap.cpp
         heap/my_heap.hpp
         sort/my_sort.cpp
-        sort/my_sort.hpp)
+        sort/my_sort.hpp
+        search/my_search.cpp
+        search/my_search.hpp)

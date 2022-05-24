@@ -8,6 +8,7 @@
 #include "tree/binary_tree.hpp"
 #include "heap/my_heap.hpp"
 #include "sort/my_sort.hpp"
+#include "search/my_search.hpp"
 
 int main() {
     using namespace std;
@@ -73,6 +74,15 @@ int main() {
 
     cout << endl << "==========================test kth larger==============================" << endl;
     sort_practice::MySort::test_kth_larger();
+
+    cout << endl << "==========================test binary search==============================" << endl;
+    search_practice::MySearch::test_binary_search();
+
+    cout << endl << "==========================test search insert==============================" << endl;
+    search_practice::MySearch::test_search_insert();
+
+    cout << endl << "==========================test my sqrt==============================" << endl;
+    search_practice::MySearch::test_my_sqrt();
 
     return 0;
 }
