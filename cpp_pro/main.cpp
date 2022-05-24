@@ -1,5 +1,5 @@
 #include <iostream>
-#include "override_operator_assign/my_string.hpp"
+#include "override_operator_assign/cmy_string.hpp"
 #include "linked_list/linked_list.hpp"
 #include "array/array.hpp"
 #include "recursion/my_recursion.hpp"
@@ -9,6 +9,7 @@
 #include "heap/my_heap.hpp"
 #include "sort/my_sort.hpp"
 #include "search/my_search.hpp"
+#include "string/my_string.hpp"
 
 int main() {
     using namespace std;
@@ -83,6 +84,15 @@ int main() {
 
     cout << endl << "==========================test my sqrt==============================" << endl;
     search_practice::MySearch::test_my_sqrt();
+
+    cout << endl << "==========================test find sub str bf==============================" << endl;
+    string_practice::MyString::test_find_sub_str_bf();
+
+    cout << endl << "==========================test revert string==============================" << endl;
+    string_practice::MyString::test_revert_string();
+
+    cout << endl << "==========================test revert words==============================" << endl;
+    string_practice::MyString::test_revert_words();
 
     return 0;
 }

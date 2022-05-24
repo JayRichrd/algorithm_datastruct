@@ -5,8 +5,8 @@ set(CMAKE_CXX_STANDARD 11)
 
 add_executable(cpp_pro
         main.cpp
-        override_operator_assign/my_string.hpp
-        override_operator_assign/my_string.cpp
+        override_operator_assign/cmy_string.hpp
+        override_operator_assign/cmy_string.cpp
         linked_list/linked_list.hpp
         linked_list/linked_list.cpp
         array/array.hpp
@@ -24,4 +24,6 @@ add_executable(cpp_pro
         sort/my_sort.cpp
         sort/my_sort.hpp
         search/my_search.cpp
-        search/my_search.hpp)
+        search/my_search.hpp
+        string/my_string.cpp
+        string/my_string.hpp)
