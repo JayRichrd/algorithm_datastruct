@@ -75,6 +75,16 @@ while (row >= 0 && column < columns) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.string/MyString/ subject4ReplaceSpace()
 
+# subject 05-从尾到头打印链表
+
+**核心思想：**
+
+- 栈思想或者递归思想
+
+ps:栈和递归之间有着密切联系
+
+**源码：**/java_pro/jv.com.cain.algorithm.linked_list/MyLinkedList/ subject5PrintRevertLinkedList() subject5PrintRevertLinkedListByRecursion()
+
 # 参考
 
 - 《键指offer》
