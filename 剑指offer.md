@@ -66,6 +66,15 @@ while (row >= 0 && column < columns) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.search/MySearch/ subject3Find()
 
+# subject 04-替换字符串
+
+**核心思想：**
+
+- 从空格变成%20，字符串容量扩大了3倍，所以初始就分配一个3倍原字符串长度的空间
+- 从头开始遍历原始字符串，并将内容拷贝到新分配的空间中，同时将空格替换成%20.
+
+**源码：**/java_pro/jv.com.cain.algorithm.string/MyString/ subject4ReplaceSpace()
+
 # 参考
 
 - 《键指offer》

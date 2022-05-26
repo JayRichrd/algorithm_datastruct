@@ -1,5 +1,6 @@
 package jv.com.cain.algorithm.search;
 
+@SuppressWarnings("JavaDoc")
 public class MySearch {
     public static void main(String[] args) {
         System.out.println("==========test Subject3 Find==========");
