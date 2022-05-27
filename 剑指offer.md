@@ -144,7 +144,7 @@ if (numbers[pivot] < numbers[high]) {
 
 **核心思想：**
 
-在迭代方法中，注意fn1和fn2的赋值顺序，需要先将fn1的值赋值给fn2，再将fn的值赋值给fn1
+- 在迭代方法中，注意fn1和fn2的赋值顺序，需要先将fn1的值赋值给fn2，再将fn的值赋值给fn1
 
 ```java
 // 正确示例
@@ -162,6 +162,29 @@ for (int i = 3; i <= n; i++) {
 ```
 
 **源码：**/java_pro/jv.com.cain.algorithm.recursion/MyRecursion/ fibonacciSequenceByRecursive()
+
+# Subject 10-二进制中1的个数
+
+**核心思想：**
+
+- 最直接的方式从地位到高位，依次与2^i^(1 << i)做与(&)，判定当前位是否为1：
+
+```java
+if ((n & (1 << i)) != 0) {
+    result++;
+}
+```
+
+- 与(&)运算有一个特性：n & (n -1)，得到的结果就是把n低位的1转换为0。例如6(110) & (6-1) = 4(100)。那就利用这个性质依次将低位的1变成0:
+
+```java
+while (n != 0) {
+    n = n & (n - 1);
+    result++;
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.bit/BitOperation/ subject9HammingWeight1()
 
 # 参考
 
