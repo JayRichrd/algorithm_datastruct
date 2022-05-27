@@ -97,6 +97,26 @@ ps:栈和递归之间有着密切联系
 
 **源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ buildBinaryTree()
 
+# subject 07-用两个栈实现队列
+
+**核心思想：**
+
+- 用一个栈inStack，每次入队列都压栈进入；
+- 用一个栈outStack，每次出队都从当中弹出，如果没有就将inStack的全部元素“倒”到outStack中来：
+
+```java
+if (outStack.isEmpty()) {
+    if (inStack.isEmpty()) {
+        return null;
+    }
+    while (!inStack.isEmpty()) {
+        outStack.push(inStack.pop());
+    }
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.queue/QueueByStack
+
 # 参考
 
 - 《键指offer》
