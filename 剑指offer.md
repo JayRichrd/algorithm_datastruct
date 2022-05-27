@@ -85,6 +85,18 @@ ps:栈和递归之间有着密切联系
 
 **源码：**/java_pro/jv.com.cain.algorithm.linked_list/MyLinkedList/ subject5PrintRevertLinkedList() subject5PrintRevertLinkedListByRecursion()
 
+# subject 06-重建二叉树
+
+ **迭代核心思想：**
+
+- 前序遍历的第一节点就是根节点，用找到的这个根节点在中序遍历中找出左子树和右子树。
+- 前序遍历根节点后面先是左子树，再是右子树。
+- 找到左右子树后又回到问题本身重建二叉树。
+
+> ps:可以从中序遍历+前序/后序遍历重建出唯一的一颗树
+
+**源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ buildBinaryTree()
+
 # 参考
 
 - 《键指offer》
