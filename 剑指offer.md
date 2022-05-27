@@ -140,6 +140,29 @@ if (numbers[pivot] < numbers[high]) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.search/MySearch/ subject8MinArray()
 
+# subject 09-斐波那契数列
+
+**核心思想：**
+
+在迭代方法中，注意fn1和fn2的赋值顺序，需要先将fn1的值赋值给fn2，再将fn的值赋值给fn1
+
+```java
+// 正确示例
+for (int i = 3; i <= n; i++) {
+    fn = fn1 + fn2;
+    fn2 = fn1;
+    fn1 = fn;
+}
+// 错误示例
+for (int i = 3; i <= n; i++) {
+    fn = fn1 + fn2;
+    fn1 = fn;
+    fn2 = fn1;
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.recursion/MyRecursion/ fibonacciSequenceByRecursive()
+
 # 参考
 
 - 《键指offer》
