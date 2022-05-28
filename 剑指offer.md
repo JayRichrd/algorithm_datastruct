@@ -163,7 +163,7 @@ for (int i = 3; i <= n; i++) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.recursion/MyRecursion/ fibonacciSequenceByRecursive()
 
-# Subject 10-二进制中1的个数
+# subject 10-二进制中1的个数
 
 **核心思想：**
 
@@ -185,6 +185,27 @@ while (n != 0) {
 ```
 
 **源码：**/java_pro/jv.com.cain.algorithm.bit/BitOperation/ subject9HammingWeight1()
+
+# subject 11-数值的整数次方
+
+**递归核心思想：**
+
+- 重点在于写出递归公式：
+
+![](https://picgo-1256537295.cos.ap-guangzhou.myqcloud.com/pictures/20220528112515.png)
+
+```java
+double result = quickPowByRecursion(x, y >> 1);
+return y % 2 == 0 ? result * result : result * result * x;
+```
+
+- 并且注意判定指数的正负:
+
+```java
+return y > 0 ? quickPowByRecursion(x, y) : 1 / quickPowByRecursion(x, -y);
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.recursion/MyRecursion/ subject11MyPow()
 
 # 参考
 
