@@ -248,6 +248,15 @@ if (node.next != null) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.linked_list/MyLinkedList/ subject18DeleteNode()
 
+# subject 21-调整数组顺序使奇数位于偶数前面
+
+**核心思想：**
+
+- 一前一后双指针，保证奇数在前，偶数在后；
+- 前后指针往中间靠拢
+
+**源码：**/java_pro/jv.com.cain.algorithm.array/ArrayPractice/ subject21Exchange()
+
 # 参考
 
 - 《键指offer》

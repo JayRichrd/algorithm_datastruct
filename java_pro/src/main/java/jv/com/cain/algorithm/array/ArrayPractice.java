@@ -10,6 +10,8 @@ public class ArrayPractice {
         testThreeSum();
         System.out.println("==========test firstMissingPositive==========");
         testFirstMissingPositive();
+        System.out.println("==========test Subject21 Exchange==========");
+        testSubject21Exchange();
     }
 
     /**
@@ -20,7 +22,7 @@ public class ArrayPractice {
      * @param inNums input array
      * @return the result list
      */
-    static List<List<Integer>> threeSum(int[] inNums) {
+    public static List<List<Integer>> threeSum(int[] inNums) {
         List<List<Integer>> resultList = new ArrayList<>();
         System.out.print("source input array: ");
         for (int num : inNums) {
@@ -100,7 +102,7 @@ public class ArrayPractice {
         return resultList;
     }
 
-    static void testThreeSum() {
+    public static void testThreeSum() {
         int[] nums = {-1, 0, 1, 2, -1, -4};
         System.out.println("result: " + threeSum(nums));
     }
@@ -113,7 +115,7 @@ public class ArrayPractice {
      * @param nums input array
      * @return the first missing positive
      */
-    static int firstMissingPositive(int[] nums) {
+    public static int firstMissingPositive(int[] nums) {
         int len = nums.length;
         int result = len + 1;
         /*
@@ -148,7 +150,7 @@ public class ArrayPractice {
         return result;
     }
 
-    static void testFirstMissingPositive() {
+    public static void testFirstMissingPositive() {
         int[] nums = {3, 4, -1, 1, 9};
         System.out.print("input array: ");
         for (int num : nums) {
@@ -156,5 +158,41 @@ public class ArrayPractice {
         }
         System.out.println();
         System.out.println("result: " + firstMissingPositive(nums));
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/solution/mian-shi-ti-21-diao-zheng-shu-zu-shun-xu-shi-qi-4/
+     * Time complexity: O(n)
+     * Spatial complexity: O(1)
+     * @param nums
+     */
+    public static void subject21Exchange(int[] nums) {
+        if (nums == null) {
+            return;
+        }
+        int len = nums.length;
+        int start = 0, end = len - 1;
+        while (start < end) {
+            while (start < end && nums[start] % 2 == 1) start++;
+            while (start < end && nums[end] % 2 == 0) end--;
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+        }
+    }
+
+    public static void testSubject21Exchange() {
+        int[] nums = {1, 2, 3, 4, 5};
+        System.out.print("before: ");
+        for (int num : nums) {
+            System.out.print(num + ", ");
+        }
+        System.out.println();
+
+        subject21Exchange(nums);
+        System.out.print("after: ");
+        for (int num : nums) {
+            System.out.print(num + ", ");
+        }
     }
 }
