@@ -1,11 +1,14 @@
 package jv.com.cain.algorithm.recursion;
 
+@SuppressWarnings("JavaDoc")
 public class MyRecursion {
     public static void main(String[] args) {
         System.out.println("==========test fibonacci Sequence==========");
         testFibonacciSequence();
         System.out.println("==========test subject11 MyPow==========");
         testSubject11MyPow();
+        System.out.println("==========test subject17 Print1ToMaxOfNDigits==========");
+        testSubject17Print1ToMaxOfNDigits();
     }
 
     /**
@@ -46,7 +49,6 @@ public class MyRecursion {
      * Spatial complexity: O(logn)
      */
     public static double subject11MyPow(double x, long y) {
-        long result = 0;
         if (x == 0) {
             return 0;
         }
@@ -66,4 +68,62 @@ public class MyRecursion {
         int y = 5;
         System.out.println("pow(" + 2 + "," + y + ") = " + subject11MyPow(x, y));
     }
+
+    /**
+     * refe: https://leanote.com/note/59827b86ab6441231e000e18
+     * Time complexity: O(10^n)
+     * Spatial complexity: O(10^n)
+     *
+     * @param n
+     */
+    public static void subject17Print1ToMaxOfNDigits(int n) {
+        if (n < 1) {
+            return;
+        }
+
+        int[] numbers = new int[n];
+        for (int i = 0; i < 10; i++) {
+            numbers[0] = i;
+            print1ToMaxOfNDigitsRecursive(numbers, 1);
+        }
+    }
+
+    /**
+     * @param numbers
+     * @param index   the index of array that to be assigned
+     */
+    private static void print1ToMaxOfNDigitsRecursive(int[] numbers, int index) {
+        // every index place is assigned, so just print the number
+        if (index == numbers.length) {
+            printNum(numbers);
+            return;
+        }
+
+        for (int i = 0; i < 10; i++) {
+            numbers[index] = i;
+            print1ToMaxOfNDigitsRecursive(numbers, index + 1);
+        }
+    }
+
+    private static void printNum(int[] numbers) {
+        boolean flag = false;
+        for (int number : numbers) {
+            // 0 before valid number should not be printed
+            if (number != 0 && !flag) {
+                flag = true;
+            }
+            if (flag) {
+                System.out.print(number);
+            }
+        }
+        if (flag) {
+            System.out.print(", ");
+        }
+    }
+
+    public static void testSubject17Print1ToMaxOfNDigits() {
+        int n = 2;
+        subject17Print1ToMaxOfNDigits(n);
+    }
+
 }

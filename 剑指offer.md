@@ -207,6 +207,27 @@ return y > 0 ? quickPowByRecursion(x, y) : 1 / quickPowByRecursion(x, -y);
 
 **源码：**/java_pro/jv.com.cain.algorithm.recursion/MyRecursion/ subject11MyPow()
 
+# Subject 17-打印1到最大的n位数
+
+**递归核心思想：**
+
+- 从高位到低位，每一位做全排列，每位上的数字取值：0~9；
+- 在打印时候，数字之前的无效的0可以不必输出：
+
+```java
+for (int number : numbers) {
+    // 0 before valid number should not be printed
+    if (number != 0 && !flag) {
+        flag = true;
+    }
+    if (flag) {
+        System.out.print(number);
+    }
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.recursion/MyRecursion/ subject17Print1ToMaxOfNDigits()
+
 # 参考
 
 - 《键指offer》
