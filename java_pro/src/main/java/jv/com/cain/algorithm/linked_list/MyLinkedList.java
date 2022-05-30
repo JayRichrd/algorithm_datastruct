@@ -47,7 +47,7 @@ public class MyLinkedList {
      *
      * @param head
      */
-    static void subject5PrintRevertLinkedList(Node head) {
+    public static void subject5PrintRevertLinkedList(Node head) {
         Stack<Node> stk = new Stack<>();
         Node temp = head;
         while (temp != null) {
@@ -63,7 +63,7 @@ public class MyLinkedList {
         } while (!stk.isEmpty());
     }
 
-    static void subject5PrintRevertLinkedListByRecursion(Node head) {
+    public static void subject5PrintRevertLinkedListByRecursion(Node head) {
         if (head != null) {
             if (head.getNext() != null) {
                 subject5PrintRevertLinkedListByRecursion(head.getNext());
@@ -72,7 +72,7 @@ public class MyLinkedList {
         }
     }
 
-    static void testSubject5PrintRevertLinkedList() {
+    public static void testSubject5PrintRevertLinkedList() {
         Node node5 = new Node(5, null);
         Node node4 = new Node(4, node5);
         Node node3 = new Node(3, node4);
@@ -89,7 +89,7 @@ public class MyLinkedList {
      * @param head
      * @param node
      */
-    static void subject18DeleteNode(Node head, Node node) {
+    public static void subject18DeleteNode(Node head, Node node) {
         if (head == null || node == null) {
             return;
         }
@@ -110,4 +110,59 @@ public class MyLinkedList {
             preNode.next = null;
         }
     }
+
+    /**
+     * refe: https://leetcode.cn/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof/solution/lian-biao-zhong-dao-shu-di-kge-jie-dian-1pz9l/ method2
+     * Time complexity: O(n)
+     * Spatial complexity: O(1)
+     *
+     * @param head
+     * @param k
+     * @return
+     */
+    public static Node subject22GetKthFromEnd(Node head, int k) {
+        if (head == null || k <= 0) {
+            return null;
+        }
+        Node fast = head;
+        Node slow = head;
+        while (fast != null && k > 0) {
+            fast = fast.next;
+            k--;
+        }
+        if (k > 0) {
+            return null;
+        }
+        while (fast != null) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/fan-zhuan-lian-biao-lcof/solution/fan-zhuan-lian-biao-by-leetcode-solution-jvs5/ method1
+     * Time complexity: O(n)
+     * Spatial complexity: O(1)
+     *
+     * @param head
+     * @return
+     */
+    public static Node subject24RevertLinkedList(Node head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        Node pre = null;
+        Node cur = head;
+        while (cur != null) {
+            Node next = cur.next;
+            // revert
+            cur.next = pre;
+            // be careful, update pre first, and then update cur
+            pre = cur;
+            cur = next;
+        }
+        return pre;
+    }
+
 }

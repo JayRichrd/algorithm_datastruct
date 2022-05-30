@@ -257,6 +257,33 @@ if (node.next != null) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.array/ArrayPractice/ subject21Exchange()
 
+# subject 22-链表中倒数第k个结点
+
+**核心思想：**
+
+- 双指针，看倒数第k个节点月尾节点，他们之间相差k-1;
+- 那么可以假设两个快慢指针，最开始都指向第1个节点，然后快指针移动到第k个节点后再开始同事移动快慢指针，直到快指针到达尾部。
+
+**源码：**/java_pro/jv.com.cain.algorithm.linked_list/MyLinkedList/ subject22GetKthFromEnd()
+
+# subject 24-反转链表
+
+**迭代核心思想：**
+
+- 单链表容易丢失next域，所以在反转之需要先将next域保存下来；
+- 时刻保存当前节点cur和前节点pre，反转就是将cur的next域指向pre，然后再往后滑动，更新pre和cur的值。这里需要注意更新顺序：先更新pre，在更新cur:
+
+```java
+while (cur != null) {
+	Node next = cur.next;
+	cur.next = pre;
+	pre = cur;
+	cur = next;
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.linked_list/MyLinkedList/ subject24RevertLinkedList()
+
 # 参考
 
 - 《键指offer》
