@@ -207,7 +207,7 @@ return y > 0 ? quickPowByRecursion(x, y) : 1 / quickPowByRecursion(x, -y);
 
 **源码：**/java_pro/jv.com.cain.algorithm.recursion/MyRecursion/ subject11MyPow()
 
-# Subject 17-打印1到最大的n位数
+# subject 17-打印1到最大的n位数
 
 **递归核心思想：**
 
@@ -227,6 +227,26 @@ for (int number : numbers) {
 ```
 
 **源码：**/java_pro/jv.com.cain.algorithm.recursion/MyRecursion/ subject17Print1ToMaxOfNDigits()
+
+# subject 18-在O（1）时间删除链表结点
+
+**核心思想：**
+
+- 这里的待删节点是完整的节点，既有数值，也有next域；
+- 常规的删除是通过操作待删节点的前一个节点，这里的思路是使用待删节点的下一个节点直接覆盖上去，也能达到删除节点的目的；
+
+```java
+if (node.next != null) {
+    Node nextNode = node.next;
+    node.data = nextNode.data;
+    node.next = nextNode.next;
+    nextNode.next = null;
+}
+```
+
+- 注意边界条件：待删节点是尾节点、链表只有一个节点。
+
+**源码：**/java_pro/jv.com.cain.algorithm.linked_list/MyLinkedList/ subject18DeleteNode()
 
 # 参考
 

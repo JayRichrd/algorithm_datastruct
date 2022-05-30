@@ -11,8 +11,8 @@ public class MyLinkedList {
 
     @SuppressWarnings("unused")
     static class Node {
-        private int data;
-        private Node next = null;
+        public int data;
+        public Node next = null;
 
         public Node(int data) {
             this.data = data;
@@ -81,5 +81,33 @@ public class MyLinkedList {
         subject5PrintRevertLinkedList(node1);
         System.out.println();
         subject5PrintRevertLinkedListByRecursion(node1);
+    }
+
+    /**
+     * refe: https://leanote.com/note/59827b86ab6441231e000e18
+     *
+     * @param head
+     * @param node
+     */
+    static void subject18DeleteNode(Node head, Node node) {
+        if (head == null || node == null) {
+            return;
+        }
+        if (node.next != null) {
+            Node nextNode = node.next;
+            node.data = nextNode.data;
+            node.next = nextNode.next;
+            nextNode.next = null;
+        } else if (node == head) {
+            // c++
+            node.next = null;
+            head.next = null;
+        } else {
+            Node preNode = head;
+            while (preNode.next != node) {
+                preNode = preNode.next;
+            }
+            preNode.next = null;
+        }
     }
 }
