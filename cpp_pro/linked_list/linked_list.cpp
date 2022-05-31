@@ -12,13 +12,12 @@ namespace linked_list {
         while (linked_list_1 != nullptr && linked_list_2 != nullptr) {
             if (linked_list_1->data >= linked_list_2->data) {
                 cur->next = linked_list_2;
-                cur = cur->next;
                 linked_list_2 = linked_list_2->next;
             } else {
                 cur->next = linked_list_1;
-                cur = cur->next;
                 linked_list_1 = linked_list_1->next;
             }
+            cur = cur->next;
         }
 
         if (linked_list_1 == nullptr) {

@@ -1,4 +1,5 @@
 package jv.com.cain.algorithm.tree;
+
 import java.util.HashMap;
 
 @SuppressWarnings({"unused", "JavaDoc"})
@@ -64,5 +65,47 @@ public class MyTree {
         public TreeNode(int data) {
             this.data = data;
         }
+    }
+
+    /**
+     * refe: https://leanote.com/note/59827b86ab6441231e000e18
+     * Time complexity: O(m * n)
+     * Spatial complexity: O(m)
+     *
+     * @param root
+     * @param sub
+     * @return
+     */
+    public static boolean subject26IsSubTree(TreeNode root, TreeNode sub) {
+        boolean result = false;
+        if (root != null && sub != null) {
+            // find the same node
+            if (root.data == sub.data) {
+                result = match(root, sub);
+            }
+            // continue root left subtree and right subtree
+            if (!result) {
+                result = subject26IsSubTree(root.left, sub);
+            }
+            if (!result) {
+                result = subject26IsSubTree(root.right, sub);
+            }
+        }
+        return result;
+    }
+
+    private static boolean match(TreeNode root, TreeNode sub) {
+        // check sub tree firstly
+        if (sub == null) {
+            return true;
+        }
+        if (root == null) {
+            return false;
+        }
+        if (root.data != sub.data) {
+            return false;
+        }
+        // continue left subtree and right subtree
+        return match(root.left, sub.left) && match(root.right, sub.right);
     }
 }

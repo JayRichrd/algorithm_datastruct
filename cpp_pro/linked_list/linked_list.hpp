@@ -39,7 +39,7 @@ namespace linked_list {
         /**
          * refe: https://leetcode-cn.com/problems/merge-two-sorted-lists/
          * merge sorted linked list
-         * Time complexity: O(m+size)
+         * Time complexity: O(m+n)
          * Spatial complexity: O(1)
          *
          * @param linked_list_1 ascending linked list

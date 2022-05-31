@@ -311,6 +311,40 @@ cur.next = head1 == null ? head2 : head1;
 
 **源码：**/java_pro/jv.com.cain.algorithm.linked_list/MyLinkedList/ subject25MergeSortedLinkedList()
 
+# subject 26-树的子结构
+
+**递归核心思想：**
+
+- 母树和子树都从根节点开始匹配，如果配上某个节点就开始树的配对。否则母树分别用左、右子树来重复与子树匹配：
+
+```java
+ // find the same node
+ if (root.data == sub.data) {
+     result = match(root, sub);
+ }
+ // continue root left subtree and right subtree
+ if (!result) {
+     result = subject26IsSubTree(root.left, sub);
+ }
+ if (!result) {
+     result = subject26IsSubTree(root.right, sub);
+ }
+```
+
+- 关于树的配对，也是用递归。在递归结束条件中，应该将子树判空放在最前面：
+
+```java
+// check sub firstly
+if (sub == null) {
+    return true;
+}
+if (root == null) {
+    return false;
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject26IsSubTree()
+
 # 参考
 
 - 《键指offer》
