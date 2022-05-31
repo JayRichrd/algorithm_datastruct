@@ -13,6 +13,8 @@ public class ArrayPractice {
         testFirstMissingPositive();
         System.out.println("==========test Subject21 Exchange==========");
         testSubject21Exchange();
+        System.out.println("==========test Subject29 PrintMatrixSpiral==========");
+        testSubject29PrintMatrixSpiral();
     }
 
     /**
@@ -165,6 +167,7 @@ public class ArrayPractice {
      * refe: https://leetcode.cn/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/solution/mian-shi-ti-21-diao-zheng-shu-zu-shun-xu-shi-qi-4/
      * Time complexity: O(n)
      * Spatial complexity: O(1)
+     *
      * @param nums
      */
     public static void subject21Exchange(int[] nums) {
@@ -195,5 +198,67 @@ public class ArrayPractice {
         for (int num : nums) {
             System.out.print(num + ", ");
         }
+        System.out.println();
+    }
+
+    /**
+     * refe: https://leanote.com/note/59827b86ab6441231e000e18
+     * Time complexity: O(m*n)
+     * Spatial complexity: O(1)
+     *
+     * @param matrix
+     */
+    public static void subject29PrintMatrixSpiral(int[][] matrix) {
+        if (matrix == null) {
+            return;
+        }
+        int rows = matrix.length;
+        if (rows <= 0) {
+            return;
+        }
+        int columns = matrix[0].length;
+        if (columns <= 0) {
+            return;
+        }
+
+        int start = 0;
+        while (2 * start < rows && 2 * start < columns) {
+            System.out.print("the " + start + "th circle: ");
+            printMatrixCircle(matrix, start, rows, columns);
+            System.out.println();
+            start++;
+        }
+    }
+
+    private static void printMatrixCircle(int[][] matrix, int start, int rows, int columns) {
+        int endX = columns - start - 1;
+        int endY = rows - start - 1;
+        // left -> right
+        for (int i = start; i <= endX; i++) {
+            System.out.print(matrix[start][i] + ", ");
+        }
+        // top -> bottom
+        if (start < endY) {
+            for (int i = start + 1; i <= endY; i++) {
+                System.out.print(matrix[i][endX] + ", ");
+            }
+        }
+        // right -> left
+        if (start < endX && start < endY) {
+            for (int i = endX - 1; i >= start; i--) {
+                System.out.print(matrix[endY][i] + ", ");
+            }
+        }
+        // bottom -> top
+        if (start < endY - 1 && start < endX) {
+            for (int i = endY - 1; i > start; i--) {
+                System.out.print(matrix[i][start] + ", ");
+            }
+        }
+    }
+
+    public static void testSubject29PrintMatrixSpiral() {
+        int[][] matrix = {{1, 2, 3, 4, 5}, {6, 7, 8, 9, 10}, {11, 12, 13, 14, 15}, {16, 17, 18, 19, 20}, {21, 22, 23, 24, 25}};
+        subject29PrintMatrixSpiral(matrix);
     }
 }

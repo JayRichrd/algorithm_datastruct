@@ -358,6 +358,47 @@ root.right = subject27RevertTree(root.left);
 
 **源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject27RevertTree()
 
+# subject 29-顺时针打印矩阵
+
+**核心思想：**
+
+- 从左上角开始"画圈”便利，结束的的条件：
+
+```java
+while (2 * start < rows && 2 * start < columns) {
+   ……
+}
+```
+
+- 每次打印某一圈，注意各个方向的边界：
+
+```java
+// left -> right
+for (int i = start; i <= endX; i++) {
+    System.out.print(matrix[start][i] + ", ");
+}
+// top -> bottom
+if (start < endY) {
+    for (int i = start + 1; i <= endY; i++) {
+        System.out.print(matrix[i][endX] + ", ");
+    }
+}
+// right -> left
+if (start < endX && start < endY) {
+    for (int i = endX - 1; i >= start; i--) {
+        System.out.print(matrix[endY][i] + ", ");
+    }
+}
+// bottom -> top
+if (start < endY - 1 && start < endX) {
+    for (int i = endY - 1; i > start; i--) {
+        System.out.print(matrix[i][start] + ", ");
+    }
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.array/ArrayPractice/ subject29PrintMatrixSpiral()
+
 # 参考
 
 - 《键指offer》
