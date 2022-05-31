@@ -345,6 +345,19 @@ if (root == null) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject26IsSubTree()
 
+# subject 27-二叉树的镜像
+
+**递归核心思想：**
+
+- 只要要某个节点的左右子树交换了，那么剩下的就是交换当前节点的左右子树：
+
+```java
+root.left = subject27RevertTree(root.right);
+root.right = subject27RevertTree(root.left);
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject27RevertTree()
+
 # 参考
 
 - 《键指offer》

@@ -108,4 +108,21 @@ public class MyTree {
         // continue left subtree and right subtree
         return match(root.left, sub.left) && match(root.right, sub.right);
     }
+
+    /**
+     * refe: https://leetcode.cn/problems/invert-binary-tree/solution/fan-zhuan-er-cha-shu-by-leetcode-solution/
+     * Time complexity: O(n)
+     * Spatial complexity: O(n)
+     *
+     * @param root
+     * @return
+     */
+    public static TreeNode subject27RevertTree(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+        root.left = subject27RevertTree(root.right);
+        root.right = subject27RevertTree(root.left);
+        return root;
+    }
 }
