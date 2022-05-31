@@ -2,7 +2,7 @@ package jv.com.cain.algorithm.linked_list;
 
 import java.util.Stack;
 
-@SuppressWarnings("JavaDoc")
+@SuppressWarnings({"JavaDoc", "unused"})
 public class MyLinkedList {
     public static void main(String[] args) {
         System.out.println("==========test Subject5 PrintRevertLinkedList==========");
@@ -13,6 +13,9 @@ public class MyLinkedList {
     static class Node {
         public int data;
         public Node next = null;
+
+        public Node() {
+        }
 
         public Node(int data) {
             this.data = data;
@@ -163,6 +166,40 @@ public class MyLinkedList {
             cur = next;
         }
         return pre;
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/solution/he-bing-liang-ge-pai-xu-de-lian-biao-by-g3z6g/ method2
+     * Time complexity: O(m + n)
+     * Spatial complexity: O(1)
+     *
+     * @param head1
+     * @param head2
+     * @return
+     */
+    public static Node subject25MergeSortedLinkedList(Node head1, Node head2) {
+        if (head1 == null) {
+            return head2;
+        }
+        if (head2 == null) {
+            return head1;
+        }
+
+        // temp head node
+        Node head = new Node();
+        Node cur = head;
+        while (head1 != null && head2 != null) {
+            if (head1.data < head2.data) {
+                cur.next = head1;
+                head1 = head1.next;
+            } else {
+                cur.next = head2;
+                head2 = head2.next;
+            }
+            cur = cur.next;
+        }
+        cur.next = head1 == null ? head2 : head1;
+        return head.next;
     }
 
 }

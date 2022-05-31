@@ -284,6 +284,33 @@ while (cur != null) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.linked_list/MyLinkedList/ subject24RevertLinkedList()
 
+# subject 25-合并两个排序的链表
+
+**迭代核心思想：**
+
+- 每次从两个排序的链表取出元素进行比较，根据大小确定哪个元素作为新的链表元素。只有被选中的链表头结点才向后移动。
+
+```java
+while (head1 != null && head2 != null) {
+    if (head1.data < head2.data) {
+        cur.next = head1;
+        head1 = head1.next;
+    } else {
+        cur.next = head2;
+        head2 = head2.next;
+    }
+    cur = cur.next;
+}
+```
+
+- 当某一个链表便利结束，直接将另一个链表放到新链表尾部即可:
+
+```java
+cur.next = head1 == null ? head2 : head1;
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.linked_list/MyLinkedList/ subject25MergeSortedLinkedList()
+
 # 参考
 
 - 《键指offer》

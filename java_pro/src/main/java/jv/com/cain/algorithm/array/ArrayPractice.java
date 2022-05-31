@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@SuppressWarnings("JavaDoc")
 public class ArrayPractice {
     public static void main(String[] args) {
         System.out.println("==========test threeSum==========");
