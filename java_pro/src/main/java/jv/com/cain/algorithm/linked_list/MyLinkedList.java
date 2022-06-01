@@ -203,20 +203,30 @@ public class MyLinkedList {
         return head.next;
     }
 
+    /**
+     * refe: https://leetcode.cn/problems/fu-za-lian-biao-de-fu-zhi-lcof/solution/fu-za-lian-biao-de-fu-zhi-by-leetcode-so-9ik5/ method2
+     * Time complexity: O(n)
+     * Spatial complexity: O(1)
+     *
+     * @param head
+     * @return
+     */
     public static Node subject35CopyLinkedList(Node head) {
         if (head == null) {
             return null;
         }
-        // step1 construct node and insert after
+        // step1 construct node and insert behind
         Node node = head;
         while (node != null) {
             Node newNode = new Node();
             newNode.data = node.data;
             newNode.next = node.next;
             node.next = newNode;
+            // be careful
             node = node.next.next;
         }
 
+        // step2 assign random
         node = head;
         while (node != null) {
             Node newNode = node.next;
@@ -226,6 +236,7 @@ public class MyLinkedList {
 
         Node newHead = head.next;
         node = head;
+        // step3 divide
         while (node != null) {
             Node newNode = node.next;
             node.next = node.next != null ? node.next.next : null;

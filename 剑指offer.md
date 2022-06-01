@@ -526,6 +526,52 @@ sumPath.pollLast();
 
 **源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject33isBstPostVisit()
 
+# subject 35-复制复杂链表
+
+**核心思想：**
+
+- 利用原来链表的节点之前的关系，将复制出来的链表节点放在对应原来链表后面，最后再根据奇偶分开两个链表：
+
+  1.从前往后复制每个节点，并将其插入到原始对应节点后面
+
+```java
+// step1 construct node and insert behind
+Node node = head;
+while (node != null) {
+	Node newNode = new Node();
+	newNode.data = node.data;
+	newNode.next = node.next;
+	node.next = newNode;
+	node = node.next.next;
+}
+```
+
+2.然后给复制出来的节点的random赋值，同样使用的是原始节点的关系
+
+```java
+// step2 assign random
+node = head;
+while (node != null) {
+	Node newNode = node.next;
+	newNode.random = node.random == null ? null : node.random.next;
+	node = node.next.next;
+}
+```
+
+3.最后将奇数位置的节点和偶数位置的节点分别分离开，偶数位置分离出来的节点就是新复制的链表：
+
+```java
+// step3 divide
+while (node != null) {
+	Node newNode = node.next;
+	node.next = node.next != null ? node.next.next : null;
+	newNode.next = newNode.next != null ? newNode.next.next : null;
+	node = node.next;
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.linked_list/MyLinkedList/ subject35CopyLinkedList()
+
 # 参考
 
 - 《键指offer》
