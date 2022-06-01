@@ -11,6 +11,8 @@ public class MyTree {
     public static void main(String[] args) {
         System.out.println("==========test Subject32 LeveOrderVisit==========");
         testSubject32LeveOrderVisit();
+        System.out.println("==========test Subject33 isBstPostVisit==========");
+        testSubject33isBstPostVisit();
     }
 
     /**
@@ -171,5 +173,39 @@ public class MyTree {
         TreeNode node2 = new TreeNode(6, node4, node5);
         TreeNode node1 = new TreeNode(8, node2, node3);
         subject32LeveOrderVisit(node1);
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/er-cha-sou-suo-shu-de-hou-xu-bian-li-xu-lie-lcof/solution/mian-shi-ti-33-er-cha-sou-suo-shu-de-hou-xu-bian-6/ method1
+     * Time complexity: O(n)
+     * Spatial complexity: O(n)
+     *
+     * @param tree
+     * @return
+     */
+    public static boolean subject33isBstPostVisit(int[] tree) {
+        int len = tree.length;
+        if (len <= 0) {
+            return false;
+        }
+        return isBstPostVisitRecursive(tree, 0, tree.length - 1);
+    }
+
+    private static boolean isBstPostVisitRecursive(int[] tree, int left, int right) {
+        if (left >= right) {
+            return true;
+        }
+        int pivot = left;
+        while (tree[pivot] < tree[right]) pivot++;
+        int div = pivot;
+        while (tree[pivot] > tree[right]) pivot++;
+        return pivot == right/*the key point*/ && isBstPostVisitRecursive(tree, left, div - 1) && isBstPostVisitRecursive(tree, div, right - 1);
+    }
+
+    public static void testSubject33isBstPostVisit() {
+        int[] tree1 = {5, 7, 6, 9, 11, 10, 8};
+        int[] tree2 = {7, 4, 6, 5};
+        System.out.println("tree1 is BST post order: " + subject33isBstPostVisit(tree1));
+        System.out.println("tree2 is BST post order: " + subject33isBstPostVisit(tree2));
     }
 }

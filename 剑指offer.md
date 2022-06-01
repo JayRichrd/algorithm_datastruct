@@ -475,6 +475,30 @@ while (!assistQueue.isEmpty()) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject32LeveOrderVisit()
 
+# subject 33-二叉搜索树的后序遍历序列
+
+**递归核心思想：**
+
+- 弄清楚二叉搜索树的概念：左子树<根节点<右边子树
+- 后续遍历，最后一个节点是根节点，前半部分是左子树（比根节点小），后半部分是右子树（比根节点大）
+- 拆分出左子树、右子树、根节点。然后对左子树和右子树采用相同的方法判定。
+- 关键点就是pivot == right，表明本次递归按照上面的先左子树、再右子树、最后根节点拆分完成。
+
+```java
+private static boolean isBstPostVisitRecursive(int[] tree, int left, int right) {
+    if (left >= right) {
+        return true;
+    }
+    int pivot = left;
+    while (tree[pivot] < tree[right]) pivot++;
+    int div = pivot;
+    while (tree[pivot] > tree[right]) pivot++;
+    return pivot == right/*the key point*/ && isBstPostVisitRecursive(tree, left, div - 1) && isBstPostVisitRecursive(tree, div, right - 1);
+}
+```
+
+ **源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject33isBstPostVisit()
+
 # 参考
 
 - 《键指offer》
