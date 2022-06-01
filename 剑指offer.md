@@ -444,6 +444,37 @@ return helpStack.isEmpty();
 
 **源码：**/java_pro/jv.com.cain.algorithm.stack/MinStack/ subject31ValidStackSequence()
 
+# subject 32-从上往下打印二叉树
+
+**核心思想：**
+
+- 使用一个队列来保存每层的节点
+- 一边遍历某一层，一遍遍历到的当前节点左右子节点加入到队列中
+- 每次遍历某层时，队列中存储的就是当前这一层的节点数
+
+```java
+ Queue<TreeNode> assistQueue = new LinkedList<>();
+assistQueue.offer(head);
+while (!assistQueue.isEmpty()) {
+    int curLevelSize = assistQueue.size();
+    // visit every level
+    for (int i = 0; i < curLevelSize; i++) {
+        TreeNode node = assistQueue.poll();
+        System.out.print(node.data + ", ");
+        // add leaf node to assistQueue when visiting
+        if (node.left != null) {
+            assistQueue.offer(node.left);
+        }
+        if (node.right != null) {
+            assistQueue.offer(node.right);
+        }
+    }
+    System.out.println();
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject32LeveOrderVisit()
+
 # 参考
 
 - 《键指offer》

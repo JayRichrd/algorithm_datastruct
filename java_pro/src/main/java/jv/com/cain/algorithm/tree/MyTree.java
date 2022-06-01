@@ -1,13 +1,16 @@
 package jv.com.cain.algorithm.tree;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
 
 @SuppressWarnings({"unused", "JavaDoc"})
 public class MyTree {
     public static HashMap<Integer, Integer> treeNodeIndex;
 
     public static void main(String[] args) {
-
+        System.out.println("==========test Subject32 LeveOrderVisit==========");
+        testSubject32LeveOrderVisit();
     }
 
     /**
@@ -124,5 +127,49 @@ public class MyTree {
         root.left = subject27RevertTree(root.right);
         root.right = subject27RevertTree(root.left);
         return root;
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/binary-tree-level-order-traversal/solution/er-cha-shu-de-ceng-xu-bian-li-by-leetcode-solution/
+     * Time complexity: O(n)
+     * Spatial complexity: O(n)
+     *
+     * @param head
+     */
+    public static void subject32LeveOrderVisit(TreeNode head) {
+        if (head == null) {
+            return;
+        }
+
+        Queue<TreeNode> assistQueue = new LinkedList<>();
+        assistQueue.offer(head);
+        while (!assistQueue.isEmpty()) {
+            int curLevelSize = assistQueue.size();
+            // visit every level
+            for (int i = 0; i < curLevelSize; i++) {
+                TreeNode node = assistQueue.poll();
+                assert node != null;
+                System.out.print(node.data + ", ");
+                // add leaf node to assistQueue when visiting
+                if (node.left != null) {
+                    assistQueue.offer(node.left);
+                }
+                if (node.right != null) {
+                    assistQueue.offer(node.right);
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public static void testSubject32LeveOrderVisit() {
+        TreeNode node7 = new TreeNode(11, null, null);
+        TreeNode node6 = new TreeNode(9, null, null);
+        TreeNode node5 = new TreeNode(7, null, null);
+        TreeNode node4 = new TreeNode(5, null, null);
+        TreeNode node3 = new TreeNode(10, node6, node7);
+        TreeNode node2 = new TreeNode(6, node4, node5);
+        TreeNode node1 = new TreeNode(8, node2, node3);
+        subject32LeveOrderVisit(node1);
     }
 }
