@@ -410,6 +410,40 @@ if (start < endY - 1 && start < endX) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.stack/MinStack
 
+# subject 31-栈的压入、弹出序列
+
+**核心思想：**
+
+- 输入的入栈序列，并不是一次性的入栈序列，可能是先入栈一部分，然后出栈，再入栈。只是说各个元素入栈的顺序如输入序列一样。
+
+- 使用一个辅助栈来模拟入栈出栈操作。
+
+- 按照给定入栈序列，每次将序列的一个元素入栈，然后将栈顶元素与出栈序列的元素比较：
+
+  - 如果正好相同，则辅助栈就出栈，且出栈序列往后滑动一个位置。
+
+  - 如果不相同，则继续按照入栈序列讲元素入栈到辅助栈
+
+  ```java
+  for (int element : push) {
+      // push element
+      helpStack.push(element);
+      // depend on pop array to pop helpStack
+      while (!helpStack.isEmpty() && helpStack.peek() == pop[i]) {
+          helpStack.pop();
+          i++;
+      }
+  }
+  ```
+
+- 然后根据最后辅助栈的空与否，判定有效性
+
+```java
+return helpStack.isEmpty();
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.stack/MinStack/ subject31ValidStackSequence()
+
 # 参考
 
 - 《键指offer》
