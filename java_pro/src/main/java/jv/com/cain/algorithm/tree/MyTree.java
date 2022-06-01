@@ -1,10 +1,8 @@
 package jv.com.cain.algorithm.tree;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
-@SuppressWarnings({"unused", "JavaDoc"})
+@SuppressWarnings({"unused", "JavaDoc", "DuplicatedCode"})
 public class MyTree {
     public static HashMap<Integer, Integer> treeNodeIndex;
 
@@ -13,6 +11,8 @@ public class MyTree {
         testSubject32LeveOrderVisit();
         System.out.println("==========test Subject33 isBstPostVisit==========");
         testSubject33isBstPostVisit();
+        System.out.println("==========test Subject34 SumPath==========");
+        testSubject34SumPath();
     }
 
     /**
@@ -207,5 +207,62 @@ public class MyTree {
         int[] tree2 = {7, 4, 6, 5};
         System.out.println("tree1 is BST post order: " + subject33isBstPostVisit(tree1));
         System.out.println("tree2 is BST post order: " + subject33isBstPostVisit(tree2));
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/er-cha-shu-zhong-he-wei-mou-yi-zhi-de-lu-jing-lcof/solution/er-cha-shu-zhong-he-wei-mou-yi-zhi-de-lu-68dg/ method1
+     * Time complexity: O(n)
+     * Spatial complexity: O(logn)
+     *
+     * @param head
+     * @param target
+     * @return
+     */
+    public static List<List<Integer>> subject34SumPath(TreeNode head, int target) {
+        List<List<Integer>> result = new ArrayList<>();
+        if (head == null) {
+            return result;
+        }
+        Deque<Integer> sumPath = new ArrayDeque<>();
+        sumPathDfsRecursive(head, target, result, sumPath);
+        return result;
+    }
+
+    private static void sumPathDfsRecursive(TreeNode node, int target, List<List<Integer>> result, Deque<Integer> sumPath) {
+        if (node == null) {
+            return;
+        }
+
+        sumPath.offerLast(node.data);
+        target -= node.data;
+        // find leaf node and check
+        if (node.left == null && node.right == null && target == 0) {
+            result.add(new LinkedList<>(sumPath));
+            return;
+        }
+
+        sumPathDfsRecursive(node.left, target, result, sumPath);
+        sumPathDfsRecursive(node.right, target, result, sumPath);
+        // pop and continue
+        sumPath.pollLast();
+    }
+
+    public static void testSubject34SumPath() {
+        TreeNode node7 = new TreeNode(11, null, null);
+        TreeNode node6 = new TreeNode(9, null, null);
+        TreeNode node5 = new TreeNode(7, null, null);
+        TreeNode node4 = new TreeNode(5, null, null);
+        TreeNode node3 = new TreeNode(10, node6, node7);
+        TreeNode node2 = new TreeNode(6, node4, node5);
+        TreeNode node1 = new TreeNode(8, node2, node3);
+        int target = 21;
+        List<List<Integer>> result = subject34SumPath(node1, target);
+        for (List<Integer> path : result) {
+            System.out.print("sumPath: ");
+            for (Integer node : path) {
+                System.out.print(node + ", ");
+            }
+            System.out.println();
+        }
     }
 }

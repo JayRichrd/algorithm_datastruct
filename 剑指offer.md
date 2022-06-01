@@ -499,6 +499,33 @@ private static boolean isBstPostVisitRecursive(int[] tree, int left, int right) 
 
  **源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject33isBstPostVisit()
 
+# subject 34-二叉树中和为某一值的路径
+
+**递归核心思想：**
+
+- 注意叶子节点的判定：
+
+```java
+sumPath.offerLast(node.data);
+target -= node.data;
+// find leaf node and check
+if (node.left == null && node.right == null && target == 0) {
+    result.add(new LinkedList<>(sumPath));
+    return;
+}
+```
+
+- 路径使用一个双端队列保存下来，使用完后记得在最后退回当当前节点的前一个节点：
+
+```java
+sumPathDfsRecursive(node.left, target, result, sumPath);
+sumPathDfsRecursive(node.right, target, result, sumPath);
+// pop and continue
+sumPath.pollLast();
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject33isBstPostVisit()
+
 # 参考
 
 - 《键指offer》
