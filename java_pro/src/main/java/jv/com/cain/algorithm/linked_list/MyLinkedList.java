@@ -13,6 +13,7 @@ public class MyLinkedList {
     static class Node {
         public int data;
         public Node next = null;
+        public Node random = null;
 
         public Node() {
         }
@@ -200,6 +201,38 @@ public class MyLinkedList {
         }
         cur.next = head1 == null ? head2 : head1;
         return head.next;
+    }
+
+    public static Node subject35CopyLinkedList(Node head) {
+        if (head == null) {
+            return null;
+        }
+        // step1 construct node and insert after
+        Node node = head;
+        while (node != null) {
+            Node newNode = new Node();
+            newNode.data = node.data;
+            newNode.next = node.next;
+            node.next = newNode;
+            node = node.next.next;
+        }
+
+        node = head;
+        while (node != null) {
+            Node newNode = node.next;
+            newNode.random = node.random == null ? null : node.random.next;
+            node = node.next.next;
+        }
+
+        Node newHead = head.next;
+        node = head;
+        while (node != null) {
+            Node newNode = node.next;
+            node.next = node.next != null ? node.next.next : null;
+            newNode.next = newNode.next != null ? newNode.next.next : null;
+            node = node.next;
+        }
+        return newHead;
     }
 
 }
