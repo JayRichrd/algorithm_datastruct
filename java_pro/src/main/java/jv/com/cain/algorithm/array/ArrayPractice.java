@@ -17,6 +17,8 @@ public class ArrayPractice {
         testSubject29PrintMatrixSpiral();
         System.out.println("==========test Subject39 MajorElement==========");
         testSubject39MajorElement();
+        System.out.println("==========test Subject42 MaxSubArray==========");
+        testSubject42MaxSubArray();
     }
 
     /**
@@ -292,5 +294,31 @@ public class ArrayPractice {
     public static void testSubject39MajorElement() {
         int[] nums = {1, 2, 3, 2, 2, 2, 5, 4, 2};
         System.out.println("major element: " + subject39MajorElement(nums));
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/lian-xu-zi-shu-zu-de-zui-da-he-lcof/solution/lian-xu-zi-shu-zu-de-zui-da-he-by-leetco-tiui/ method
+     * Time complexity: O(n)
+     * Spatial complexity: O(1)
+     *
+     * @param nums
+     * @return
+     */
+    public static Integer subject42MaxSubArray(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return null;
+        }
+        int max = nums[0], pre = 0;
+        for (int num : nums) {
+            // think about num should be added into pre or num is single
+            pre = Math.max(pre + num, num);
+            max = Math.max(pre, max);
+        }
+        return max;
+    }
+
+    public static void testSubject42MaxSubArray() {
+        int[] nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        System.out.println("max sub array sum: " + subject42MaxSubArray(nums));
     }
 }
