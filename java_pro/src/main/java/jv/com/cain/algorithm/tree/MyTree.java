@@ -265,4 +265,54 @@ public class MyTree {
             System.out.println();
         }
     }
+
+    /**
+     * refe: https://leanote.com/note/59827b86ab6441231e000e18
+     * Time complexity: O(n)
+     * Spatial complexity: O(n)
+     *
+     * @param root
+     * @return
+     */
+    public static TreeNode subject36Bst2LinkedList(TreeNode root) {
+        // linked list tail node, use array as c++ pointer
+        TreeNode[] tail = new TreeNode[1];
+        tail[0] = null;
+        midConvertRecursive(root, tail);
+        if (tail[0] == null) {
+            return null;
+        }
+        TreeNode head = tail[0];
+        while (head.left != null) {
+            head = head.left;
+        }
+        return head;
+    }
+
+    /**
+     * middle order visit
+     *
+     * @param root
+     * @param tail
+     */
+    private static void midConvertRecursive(TreeNode root, TreeNode[] tail) {
+        if (root == null) {
+            return;
+        }
+
+        if (root.left != null) {
+            midConvertRecursive(root, tail);
+        }
+
+        // link root and tail node
+        root.left = tail[0];
+        if (tail[0] != null) {
+            tail[0].right = root;
+        }
+        tail[0] = root;
+
+        if (root.right != null) {
+            midConvertRecursive(root, tail);
+        }
+    }
 }

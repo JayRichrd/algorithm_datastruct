@@ -572,6 +572,48 @@ while (node != null) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.linked_list/MyLinkedList/ subject35CopyLinkedList()
 
+# subject 36-二叉搜索树与双向链表
+
+**递归核心思想：**
+
+- 二叉树的节点有两个指针域，正好可以当成链表节点的前后指针域。
+- 中序遍历二叉搜索树正好就是排序的。
+- 这里要始终记住已经转换成链表的尾结点tail，在Java中使用数组当成C++中的指针使用。
+
+```java
+private static void midConvertRecursive(TreeNode root, TreeNode[] tail) {
+    if (root == null) {
+        return;
+    }
+
+    if (root.left != null) {
+        midConvertRecursive(root, tail);
+    }
+
+    // link root and tail node
+    root.left = tail[0];
+    if (tail[0] != null) {
+        tail[0].right = root;
+    }
+    tail[0] = root;
+
+    if (root.right != null) {
+        midConvertRecursive(root, tail);
+    }
+}
+```
+
+- 最后再从尾结点开始倒序遍历，并可以得到头节点：
+
+```java
+TreeNode head = tail[0];
+while (head.left != null) {
+    head = head.left;
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject36Bst2LinkedList()
+
 # 参考
 
 - 《键指offer》
