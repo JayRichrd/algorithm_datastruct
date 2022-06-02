@@ -87,6 +87,4 @@ public class MyString {
         subject38Permutation(str);
         System.out.println();
     }
-
-
 }

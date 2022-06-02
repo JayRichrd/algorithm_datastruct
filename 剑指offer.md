@@ -640,6 +640,27 @@ if (begin == len - 1) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.string/MyString/ subject38Permutation()
 
+# subject 39-数组中出现次数超过一半的数字
+
+**核心思想：**
+
+- 跟平常生活中的头条类比。
+
+- 如果候选人不是major，则真正的major会和其他非候选人一起反对当前候选人(count减少)，那么当前候选人最终一定会下台(count==0时发生换届选举)；
+- 如果候选人是major , 则major会支持自己(count增加)，虽然其他候选人会反对，但因为major票数超过一半，所以最终major一定会成功当选。即最终candidate一定是major。
+
+```java
+for (int num : nums) {
+    // change candidate value
+    if (count == 0) {
+        candidate = num;
+    }
+    count += num == candidate ? +1 : -1;
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.array/ArrayPractice/ subject39MajorElement()
+
 # 参考
 
 - 《键指offer》

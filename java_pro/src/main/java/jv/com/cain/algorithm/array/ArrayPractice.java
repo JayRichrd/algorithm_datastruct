@@ -15,6 +15,8 @@ public class ArrayPractice {
         testSubject21Exchange();
         System.out.println("==========test Subject29 PrintMatrixSpiral==========");
         testSubject29PrintMatrixSpiral();
+        System.out.println("==========test Subject39 MajorElement==========");
+        testSubject39MajorElement();
     }
 
     /**
@@ -260,5 +262,35 @@ public class ArrayPractice {
     public static void testSubject29PrintMatrixSpiral() {
         int[][] matrix = {{1, 2, 3, 4, 5}, {6, 7, 8, 9, 10}, {11, 12, 13, 14, 15}, {16, 17, 18, 19, 20}, {21, 22, 23, 24, 25}};
         subject29PrintMatrixSpiral(matrix);
+    }
+
+    /**
+     * refe: https://leetcode-cn.com/problems/majority-element/solution/duo-shu-yuan-su-by-leetcode-solution/ method5
+     * Time complexity: O(n)
+     * Spatial complexity: O(1)
+     *
+     * @param nums data which search major element from
+     * @return the major element
+     */
+    public static Integer subject39MajorElement(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return null;
+        }
+
+        int count = 0;
+        Integer candidate = null;
+        for (int num : nums) {
+            // change candidate value
+            if (count == 0) {
+                candidate = num;
+            }
+            count += num == candidate ? +1 : -1;
+        }
+        return candidate;
+    }
+
+    public static void testSubject39MajorElement() {
+        int[] nums = {1, 2, 3, 2, 2, 2, 5, 4, 2};
+        System.out.println("major element: " + subject39MajorElement(nums));
     }
 }
