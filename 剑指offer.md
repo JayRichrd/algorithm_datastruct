@@ -691,6 +691,16 @@ for (int i = k; i < len; i++) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject40GetLeastNumbers()
 
+# subject 42-连续子数组的最大和
+
+**动态规划思想：**
+
+- 记录f(i)为以i为结束元素的最大和，考虑f(i) = max(f(i-1)+num[i],num[i]);这里注意，必须包含num[i]
+
+[参考leetcode](https://leetcode.cn/problems/lian-xu-zi-shu-zu-de-zui-da-he-lcof/solution/lian-xu-zi-shu-zu-de-zui-da-he-by-leetco-tiui/)
+
+**源码：**/java_pro/jv.com.cain.algorithm.array/ArrayPractice/ subject42MaxSubArray()
+
 # 参考
 
 - 《键指offer》
