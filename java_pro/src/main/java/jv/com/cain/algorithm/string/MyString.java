@@ -5,6 +5,8 @@ public class MyString {
     public static void main(String[] args) {
         System.out.println("==========test Subject4 ReplaceSpace==========");
         testSubject4ReplaceSpace();
+        System.out.println("==========test Subject38 Permutation==========");
+        testSubject38Permutation();
     }
 
     /**
@@ -39,4 +41,52 @@ public class MyString {
         String str = "we are happy.";
         System.out.println("replaced str: " + subject4ReplaceSpace(str));
     }
+
+    /**
+     * refe: https://leanote.com/note/59827b86ab6441231e000e18
+     * Time complexity: O(n * n!)
+     * Spatial complexity: O(n)
+     *
+     * @param str
+     */
+    public static void subject38Permutation(String str) {
+        if (str.isEmpty()) {
+            return;
+        }
+        char[] chars = str.toCharArray();
+        permutationRecursive(chars, 0);
+    }
+
+    private static void permutationRecursive(char[] chars, int begin) {
+        int len = chars.length;
+        // finish recursive and print
+        if (begin == len - 1) {
+            for (char c : chars) {
+                System.out.print(c);
+            }
+            System.out.print(", ");
+        } else {
+            for (int i = begin; i < len; i++) {
+                swap(chars, begin, i);
+                permutationRecursive(chars, begin + 1);
+                // must restore
+                swap(chars, begin, i);
+            }
+        }
+    }
+
+    private static void swap(char[] chars, int i, int j) {
+        char temp = chars[i];
+        chars[i] = chars[j];
+        chars[j] = temp;
+    }
+
+    public static void testSubject38Permutation() {
+        String str = "abc";
+        System.out.println("permutation of " + str + ": ");
+        subject38Permutation(str);
+        System.out.println();
+    }
+
+
 }

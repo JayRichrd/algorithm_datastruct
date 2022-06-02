@@ -614,6 +614,32 @@ while (head.left != null) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject36Bst2LinkedList()
 
+# subjcet 38-字符串的排列
+
+**递归核心思想：**
+
+- 先固定第一个位子的字符串，每次将后面的字符串与第一个位置的字符串交换，然后再递归求除了第一个字符串外的后续字符串的全排列。
+- 一定要记得求完后续字符串的全排列后需要复原：
+
+```java
+// finish recursive and print
+if (begin == len - 1) {
+    for (char c : chars) {
+        System.out.print(c);
+    }
+    System.out.print(", ");
+} else {
+    for (int i = begin; i < len; i++) {
+        swap(chars, begin, i);
+        permutationRecursive(chars, begin + 1);
+        // must restore
+        swap(chars, begin, i);
+    }
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.string/MyString/ subject38Permutation()
+
 # 参考
 
 - 《键指offer》
