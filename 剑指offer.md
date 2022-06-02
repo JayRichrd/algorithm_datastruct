@@ -661,6 +661,36 @@ for (int num : nums) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.array/ArrayPractice/ subject39MajorElement()
 
+# subject 40-最小的k个数
+
+**堆思想：**
+
+- 这里需要求解最小问题，使用大顶堆。
+- 首先将堆填满。
+
+```java
+// default is small heap, so use our custom comparator
+PriorityQueue<Integer> largeHeap = new PriorityQueue<>(k, (num1, num2) -> num2 - num1);
+// fill largeHeap firstly
+for (int i = 0; i < k; i++) {
+    largeHeap.offer(nums[i]);
+}
+```
+
+然后再继续遍历数组与堆顶元素比较，如果比堆顶小，就先删除大顶堆的堆顶的元素，再将该元素插入。
+
+```java
+for (int i = k; i < len; i++) {
+    // find less element to replace
+    if (nums[i] < largeHeap.peek()) {
+        largeHeap.poll();
+        largeHeap.offer(nums[i]);
+    }
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject40GetLeastNumbers()
+
 # 参考
 
 - 《键指offer》

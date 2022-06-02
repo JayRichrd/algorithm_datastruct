@@ -13,6 +13,8 @@ public class MyTree {
         testSubject33isBstPostVisit();
         System.out.println("==========test Subject34 SumPath==========");
         testSubject34SumPath();
+        System.out.println("==========test Subject40 GetLeastNumbers==========");
+        testSubject40GetLeastNumbers();
     }
 
     /**
@@ -314,5 +316,60 @@ public class MyTree {
         if (root.right != null) {
             midConvertRecursive(root, tail);
         }
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/zui-xiao-de-kge-shu-lcof/solution/zui-xiao-de-kge-shu-by-leetcode-solution/ method5
+     * Time complexity: O(n * logk)
+     * Spatial complexity: O(k)
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
+    @SuppressWarnings("ConstantConditions")
+    public static List<Integer> subject40GetLeastNumbers(int[] nums, int k) {
+        if (nums == null || nums.length == 0) {
+            return null;
+        }
+
+        if (k == 0) {
+            return null;
+        }
+
+        int len = nums.length;
+        List<Integer> result = new ArrayList<>();
+        if (k >= len) {
+            for (int num : nums) {
+                result.add(num);
+            }
+            return result;
+        }
+        // default is small heap, so use our custom comparator
+        PriorityQueue<Integer> largeHeap = new PriorityQueue<>(k, (num1, num2) -> num2 - num1);
+        // fill largeHeap firstly
+        for (int i = 0; i < k; i++) {
+            largeHeap.offer(nums[i]);
+        }
+        for (int i = k; i < len; i++) {
+            // find less element to replace
+            if (nums[i] < largeHeap.peek()) {
+                largeHeap.poll();
+                largeHeap.offer(nums[i]);
+            }
+        }
+        // result is descending
+        for (int i = 0; i < k; i++) {
+            result.add(largeHeap.poll());
+        }
+        Collections.reverse(result);
+        return result;
+    }
+
+    public static void testSubject40GetLeastNumbers() {
+        int[] nums = {4, 5, 1, 6, 2, 7, 3, 8};
+        int k = 4;
+        List<Integer> result = subject40GetLeastNumbers(nums, k);
+        System.out.println("the least " + k + " nums: " + result.toString());
     }
 }
