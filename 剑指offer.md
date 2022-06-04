@@ -701,6 +701,29 @@ for (int i = k; i < len; i++) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.array/ArrayPractice/ subject42MaxSubArray()
 
+# suject 43-求从1到n的整数中1出现的次数
+
+**核心思想：**
+
+- 拆解成求每个数位（十位、百位、千位等）上出现的1的次数，然后将他们相加。
+- 总结出1出现在某个数位上的个数公式：
+
+![image-20220603101239986](https://picgo-1256537295.cos.ap-guangzhou.myqcloud.com/pictures/image-20220603101239986.png)
+
+```java
+int multi = 1;
+int result = 0;
+while (n >= multi) {
+	result += (n / (multi * 10)) * multi + Math.min(Math.max(n % (multi * 10) - multi + 1, 0), multi);
+	multi *= 10;
+}
+return result;
+```
+
+[参考leetcode](https://leetcode.cn/problems/1nzheng-shu-zhong-1chu-xian-de-ci-shu-lcof/solution/1n-zheng-shu-zhong-1-chu-xian-de-ci-shu-umaj8/)
+
+**源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject43CuntDigitOne()
+
 # 参考
 
 - 《键指offer》
