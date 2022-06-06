@@ -46,7 +46,7 @@ public class MyAlgorithm {
         }
         int[] uglyNums = new int[n + 1];
         uglyNums[1] = 1;
-        // multiple 2、3、5 critical point
+        // multiple 2/3/5 critical point
         int p2 = 1, p3 = 1, p5 = 1;
         for (int i = 2; i <= n; i++) {
             // find next ugly num

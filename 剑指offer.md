@@ -794,6 +794,53 @@ for (int i = 0; i < len; i++) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.string/MyString/ subject50FirstUniqChar()
 
+# subject 51-数组中的逆序对
+
+**递归核心思想：**
+
+- 这里主要参考归并排序的核心思想。
+- 每次合并时，左边部分和右边部分都是从小到到拍好序的，如果左边的最大值都不大于右边的左小值，则没有跨越左右两部分之间元素的逆序对：
+
+```java
+// if left part is smaller than right part, there is no reverse pair cross
+if (nums[mid] <= nums[mid + 1]) {
+	return leftPairs + rightPairs;
+}
+```
+
+- 否则就需要求解跨越左右两部分的逆序对（核心重点）；
+- 一边合并一边求解逆序对，逆序对由两个数组成(一左一右)，这里求解右边合并数对逆序对的贡献值，然后相加即可求得总共的跨越左右两部分的逆序对。
+
+```java
+private static int mergeAndCountReversPairs(int[] nums, int left, int mid, int right, int[] temp) {
+	if (right + 1 - left >= 0) System.arraycopy(nums, left, temp, left, right + 1 - left);
+	int i = left, j = mid + 1;
+	int crossPairs = 0;
+	for (int k = left; k <= right; k++) {
+		if (i == mid + 1) {// just remain right part
+        	nums[k] = temp[j];
+        	j++;
+		} else if (j == right + 1) {// just remain left part
+            nums[k] = temp[i];
+            i++;
+		} else if (temp[i] <= temp[j]) {
+            nums[k] = temp[i];
+            i++;
+		} else {
+			nums[k] = temp[j];
+            j++;
+            // the j index num contribute reverse pair
+            crossPairs += mid - i + 1;
+		}
+	}
+	return crossPairs;
+}
+```
+
+[leetcode参考](https://leetcode.cn/problems/shu-zu-zhong-de-ni-xu-dui-lcof/solution/shu-zu-zhong-de-ni-xu-dui-by-leetcode-solution/)
+
+**源码：**/java_pro/jv.com.cain.algorithm.sort/MySort/ subject51ReversePairs()
+
 # 参考
 
 - 《键指offer》
