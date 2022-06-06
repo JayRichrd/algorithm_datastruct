@@ -23,9 +23,11 @@ public class MySort {
         }
         int len = nums.length;
         String[] numsStr = new String[len];
+        // convert to string for big number
         for (int i = 0; i < len; i++) {
             numsStr[i] = String.valueOf(nums[i]);
         }
+        // sort
         Arrays.sort(numsStr, (x, y) -> (x + y).compareTo(y + x));
         StringBuilder resultSb = new StringBuilder();
         for (String s : numsStr) {
