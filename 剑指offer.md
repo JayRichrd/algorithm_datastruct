@@ -701,7 +701,7 @@ for (int i = k; i < len; i++) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.array/ArrayPractice/ subject42MaxSubArray()
 
-# suject 43-求从1到n的整数中1出现的次数
+# subject 43-求从1到n的整数中1出现的次数
 
 **核心思想：**
 
@@ -723,6 +723,28 @@ return result;
 [参考leetcode](https://leetcode.cn/problems/1nzheng-shu-zhong-1chu-xian-de-ci-shu-lcof/solution/1n-zheng-shu-zhong-1-chu-xian-de-ci-shu-umaj8/)
 
 **源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject43CuntDigitOne()
+
+# subject 45-把数组排成最小的数
+
+**核心思想：**
+
+- 自定义一种排序规则，根据任意两个数m、n的组合mn、nm的大小来决定m于n的大小。mn > nm，则认为m < n，否则认为m > n。然后根据这个比较规则对数组做一个从小到大排序
+- 由于组成的数mn负责nm可能超限，这里还涉及到一个大数问题，因此使用String来比较：
+
+```java
+String[] numsStr = new String[len];
+for (int i = 0; i < len; i++) {
+    numsStr[i] = String.valueOf(nums[i]);
+}
+```
+
+- 至于比较大小排序，则可以使用系统的排序函数(默认升序)：
+
+```java
+ Arrays.sort(numsStr, (x, y) -> (x + y).compareTo(y + x));
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.sort/MySort/ subject45minNums()
 
 # 参考
 
