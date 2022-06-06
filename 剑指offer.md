@@ -776,6 +776,24 @@ if (next == num5) {
 
 **源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject49NthUglyNumber()
 
+# subject 50-第一个只出现一次的字符
+
+**核心思想：**
+
+- 使用HashMap来保存每个字符出现的次数，注意char的包装类Character。
+- 由于HashMap中的key是无序的，因此需要再使用字符串的顺序来查找第一个出现一次的字符：
+
+```java
+for (int i = 0; i < len; i++) {
+    // use str sequence
+    if (frequency.get(str.charAt(i)) == 1) {
+        return str.charAt(i);
+    }
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.string/MyString/ subject50FirstUniqChar()
+
 # 参考
 
 - 《键指offer》

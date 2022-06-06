@@ -1,5 +1,8 @@
 package jv.com.cain.algorithm.string;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @SuppressWarnings("JavaDoc")
 public class MyString {
     public static void main(String[] args) {
@@ -86,5 +89,33 @@ public class MyString {
         System.out.println("permutation of " + str + ": ");
         subject38Permutation(str);
         System.out.println();
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/di-yi-ge-zhi-chu-xian-yi-ci-de-zi-fu-lcof/solution/di-yi-ge-zhi-chu-xian-yi-ci-de-zi-fu-by-3zqv5/ method1
+     * Time complexity: O(n)
+     * Spatial complexity: O(1)
+     *
+     * @param str
+     * @return
+     */
+    public static char subject50FirstUniqChar(String str) {
+        // hashmap key is not sorted
+        Map<Character, Integer> frequency = new HashMap<>();
+        int len = str.length();
+        if (len <= 0) {
+            return ' ';
+        }
+        for (int i = 0; i < len; i++) {
+            char c = str.charAt(i);
+            frequency.put(c, frequency.getOrDefault(c, 0) + 1);
+        }
+        for (int i = 0; i < len; i++) {
+            // use str sequence
+            if (frequency.get(str.charAt(i)) == 1) {
+                return str.charAt(i);
+            }
+        }
+        return ' ';
     }
 }
