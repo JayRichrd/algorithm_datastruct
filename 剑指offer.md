@@ -947,6 +947,63 @@ if (sum == target) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.array/ArrayPractice/ subject57TwoSum()
 
+# subject 58-翻转单词顺序(字符串)
+
+**核心思想：**
+
+- 首先记得清除前后空格：
+
+```java
+// trim
+int begin = 0, end = str.length() - 1;
+while (begin <= end && str.charAt(begin) == ' ') {
+    begin++;
+}
+while (begin <= end && str.charAt(end) == ' ') {
+    end--;
+}
+```
+
+- 是用java中的栈——Deque（默认栈底在索引为0的这一边，与数组正好相反）。来根据空格来保存每个单词
+
+```java
+// find an whole word, and push it
+if (ch == ' ' && word.length() != 0) {
+    que.push(word.toString());
+    // clear word
+    word.setLength(0);
+} else if (ch != ' ') {
+    word.append(ch);
+}
+// remember the last word
+// 最后一定要记得将最后一个单词加入
+que.push(word.toString());
+```
+
+- 然后使用String的拼接函数join从索引为0开始拼接返回翻转的字符串：
+
+```java
+return String.join(" ", que);
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.string/MyString/ subject58RevertWords()
+
+# subject 58II-左旋转字符
+
+**核心思想：**
+
+- 使用取余思想，从k位置到len+k。
+
+```java
+StringBuilder sb = new StringBuilder();
+int len = str.length();
+for (int i = k; i < len + k; i++) {
+    sb.append(str.charAt(i % len));
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.string/MyString/ subject58RevertWords()
+
 # 参考
 
 - 《键指offer》

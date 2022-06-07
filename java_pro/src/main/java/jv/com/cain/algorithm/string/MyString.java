@@ -1,6 +1,8 @@
 package jv.com.cain.algorithm.string;
 
+import java.util.Deque;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 @SuppressWarnings("JavaDoc")
@@ -10,6 +12,10 @@ public class MyString {
         testSubject4ReplaceSpace();
         System.out.println("==========test Subject38 Permutation==========");
         testSubject38Permutation();
+        System.out.println("==========test Subject58 RevertWords==========");
+        testSubject58RevertWords();
+        System.out.println("==========test Subject58II RevertLeftWord==========");
+        testSubject58IIRevertLeftWord();
     }
 
     /**
@@ -117,5 +123,80 @@ public class MyString {
             }
         }
         return ' ';
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/fan-zhuan-dan-ci-shun-xu-lcof/solution/fan-zhuan-dan-ci-shun-xu-by-leetcode-sol-vnwj/ method3
+     * Time complexity: O(n)
+     * Spatial complexity: O(n)
+     *
+     * @param str
+     * @return
+     */
+    public static String subject58RevertWords(String str) {
+        if (str == null || str.length() == 0) {
+            return "";
+        }
+        // trim
+        int begin = 0, end = str.length() - 1;
+        while (begin <= end && str.charAt(begin) == ' ') {
+            begin++;
+        }
+        while (begin <= end && str.charAt(end) == ' ') {
+            end--;
+        }
+
+        // tail is index 0
+        Deque<String> que = new LinkedList<>();
+        StringBuilder word = new StringBuilder();
+        while (begin <= end) {
+            char ch = str.charAt(begin);
+            // find an whole word, and push it
+            if (ch == ' ' && word.length() != 0) {
+                //que.offerFirst(word.toString());
+                que.push(word.toString());
+                // clear word
+                word.setLength(0);
+            } else if (ch != ' ') {
+                word.append(ch);
+            }
+            begin++;
+        }
+        // remember the last word
+        //que.offerFirst(word.toString());
+        que.push(word.toString());
+        return String.join(" ", que);
+    }
+
+    public static void testSubject58RevertWords() {
+        String str = "I am a student.";
+        System.out.println(" revert str: " + subject58RevertWords(str));
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/solution/mian-shi-ti-58-ii-zuo-xuan-zhuan-zi-fu-chuan-qie-p/ method2
+     * Time complexity: O(n)
+     * Spatial complexity: O(n)
+     *
+     * @param str
+     * @param k
+     * @return
+     */
+    public static String subject58IIRevertLeftWord(String str, int k) {
+        if (k <= 0) {
+            return str;
+        }
+        StringBuilder sb = new StringBuilder();
+        int len = str.length();
+        for (int i = k; i < len + k; i++) {
+            sb.append(str.charAt(i % len));
+        }
+        return sb.toString();
+    }
+
+    public static void testSubject58IIRevertLeftWord() {
+        String str = "abcdefgh";
+        int k = 3;
+        System.out.println("left revert " + k + " char result: " + subject58IIRevertLeftWord(str, k));
     }
 }
