@@ -1,5 +1,8 @@
 package jv.com.cain.algorithm;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SuppressWarnings("JavaDoc")
 public class MyAlgorithm {
     public static void main(String[] args) {
@@ -7,6 +10,8 @@ public class MyAlgorithm {
         testSubject43CuntDigitOne();
         System.out.println("==========test Subject49 NthUglyNumber==========");
         testSubject49NthUglyNumber();
+        System.out.println("==========test Subject56 SingleNum==========");
+        testSubject56SingleNum();
     }
 
     /**
@@ -70,5 +75,46 @@ public class MyAlgorithm {
     public static void testSubject49NthUglyNumber() {
         int n = 10;
         System.out.println("the " + n + "th ugly num = " + subject49NthUglyNumber(n));
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-lcof/solution/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-by-leetcode/ method1
+     * Time complexity: O(n)
+     * Spatial complexity: O(1)
+     *
+     * @param nums
+     * @return
+     */
+    public static List<Integer> subject56SingleNum(int[] nums) {
+        if (nums == null || nums.length < 2) {
+            return null;
+        }
+        int result = 0;
+        for (int num : nums) {
+            result ^= num;
+        }
+
+        int div = 1;
+        while ((div & result) == 0) {
+            div <<= 1;
+        }
+
+        int a = 0, b = 0;
+        for (int num : nums) {
+            if ((div & num) != 0) {
+                a ^= num;
+            } else {
+                b ^= num;
+            }
+        }
+        List<Integer> singleNums = new ArrayList<>();
+        singleNums.add(a);
+        singleNums.add(b);
+        return singleNums;
+    }
+
+    public static void testSubject56SingleNum() {
+        int[] nums = {1, 1, 2, 3, 3, 4, 5, 5};
+        System.out.println("single nums: " + subject56SingleNum(nums));
     }
 }

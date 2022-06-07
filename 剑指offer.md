@@ -905,7 +905,26 @@ while (!que.isEmpty()) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject53numOfTarget()
 
+# subject 56-数组中只出现一次的数字
 
+**核心思想：**
+
+- 异或，自己与自己异或结果为0。如果只有一个不同的数，则全员异或后就能得到这个数。
+- 按照全员异或的结果的某一位(第一位不为0的位)，对这些数进行分组，一定能把这两个数分到不同的组去
+
+```java
+for (int num : nums) {
+    if ((div & num) != 0) {
+        a ^= num;
+    } else {
+        b ^= num;
+    }
+}
+```
+
+- 最后对每组分别做异或，得到的结果就是所求的两个数。
+
+**源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject56SingleNum()
 
 # 参考
 
