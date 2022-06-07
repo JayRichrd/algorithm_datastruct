@@ -880,6 +880,33 @@ if ((lower && nums[mid] >= target)/*first >= target index*/ || nums[mid] > targe
 
 **源码：**/java_pro/jv.com.cain.algorithm.search/MySearch/ subject53numOfTarget()
 
+# subject 55-二叉树的深度
+
+**迭代核心思想：**
+
+- 使用一个辅助队列，按层遍历二叉树；
+- 没遍历一层，深度值自增1.
+
+```java
+while (!que.isEmpty()) {
+    int curLevelSum = que.size();
+    for (int i = 0; i < curLevelSum; i++) {
+        TreeNode treeNode = que.poll();
+        if (treeNode.left != null) {
+            que.offer(treeNode.left);
+        }
+        if (treeNode.right != null) {
+            que.offer(treeNode.right);
+        }
+    }
+    depth++;
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject53numOfTarget()
+
+
+
 # 参考
 
 - 《键指offer》

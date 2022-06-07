@@ -372,4 +372,36 @@ public class MyTree {
         List<Integer> result = subject40GetLeastNumbers(nums, k);
         System.out.println("the least " + k + " nums: " + result.toString());
     }
+
+    /**
+     * refe: https://leetcode.cn/problems/er-cha-shu-de-shen-du-lcof/solution/er-cha-shu-de-shen-du-by-leetcode-soluti-dk8c/ method2
+     * Time complexity: O(n)
+     * Spatial complexity: O(n)
+     *
+     * @param root
+     * @return
+     */
+    public static int subject55MaxDepth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        Deque<TreeNode> que = new LinkedList<>();
+        que.offer(root);
+        int depth = 0;
+        while (!que.isEmpty()) {
+            int curLevelSum = que.size();
+            for (int i = 0; i < curLevelSum; i++) {
+                TreeNode treeNode = que.poll();
+                if (treeNode.left != null) {
+                    que.offer(treeNode.left);
+                }
+                if (treeNode.right != null) {
+                    que.offer(treeNode.right);
+                }
+            }
+            depth++;
+        }
+        return depth;
+    }
 }
