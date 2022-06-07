@@ -841,6 +841,25 @@ private static int mergeAndCountReversPairs(int[] nums, int left, int mid, int r
 
 **源码：**/java_pro/jv.com.cain.algorithm.sort/MySort/ subject51ReversePairs()
 
+# subject 52-两个链表的第一个公共结点
+
+**双指针核心思想：**
+
+- A链表的前半部分为a,后面的公共部分为c。B链表的前半部分为b，后面的公共部分为c。
+- 两个头指针分别指向各自的头结点开始往后便利，直到各自的尾结点。
+- 当头指针遍历到当前链表尾部时候，跳跃到另一个链表的头部开始往后遍历。
+- 直到两个头指针相等，他们指向的这个相等节点就是第一个公共节点或者为null。此时两个指针走过的路程都是a+b+c。
+
+```java
+while (pA != pB) {
+    // switch linked list to visit continue when arriving at tail
+    pA = pA == null ? headB : pA.next;
+    pB = pB == null ? headA : pB.next;
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.linked_list/MyLinkedList/ subject52GetFirstIntersectionNode()
+
 # 参考
 
 - 《键指offer》

@@ -7,6 +7,8 @@ public class MyLinkedList {
     public static void main(String[] args) {
         System.out.println("==========test Subject5 PrintRevertLinkedList==========");
         testSubject5PrintRevertLinkedList();
+        System.out.println("==========test Subject52 GetFirstIntersectionNode==========");
+        testSubject52GetFirstIntersectionNode();
     }
 
     @SuppressWarnings("unused")
@@ -41,6 +43,16 @@ public class MyLinkedList {
 
         public void setData(int data) {
             this.data = data;
+        }
+
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+            sb.append("node[");
+            sb.append("data =").append(data);
+            sb.append(", next =").append(next.hashCode());
+            sb.append("]");
+            return sb.toString();
         }
     }
 
@@ -85,6 +97,7 @@ public class MyLinkedList {
         subject5PrintRevertLinkedList(node1);
         System.out.println();
         subject5PrintRevertLinkedListByRecursion(node1);
+        System.out.println();
     }
 
     /**
@@ -246,4 +259,39 @@ public class MyLinkedList {
         return newHead;
     }
 
+    /**
+     * refe: https://leetcode.cn/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/solution/liang-ge-lian-biao-de-di-yi-ge-gong-gong-pzbs/ method2
+     * Time complexity: O(m + n)
+     * Spatial complexity: O(1)
+     *
+     * @param headA
+     * @param headB
+     * @return
+     */
+    public static Node subject52GetFirstIntersectionNode(Node headA, Node headB) {
+        if (headA == null || headB == null) {
+            return null;
+        }
+
+        Node pA = headA;
+        Node pB = headB;
+        while (pA != pB) {
+            // switch linked list to visit continue when arriving at tail
+            pA = pA == null ? headB : pA.next;
+            pB = pB == null ? headA : pB.next;
+        }
+        return pA;
+    }
+
+    public static void testSubject52GetFirstIntersectionNode() {
+        Node nodeA5 = new Node(7, null);
+        Node nodeA4 = new Node(6, nodeA5);
+        Node nodeA3 = new Node(3, nodeA4);
+        Node nodeA2 = new Node(2, nodeA3);
+        Node nodeA1 = new Node(1, nodeA2);
+
+        Node nodeB2 = new Node(5, nodeA4);
+        Node nodeB1 = new Node(4, nodeB2);
+        System.out.println("linked list 1 and linked list 2 first intersection node: " + subject52GetFirstIntersectionNode(nodeA1, nodeB1));
+    }
 }
