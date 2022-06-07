@@ -926,6 +926,27 @@ for (int num : nums) {
 
 **源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject56SingleNum()
 
+# subject 57-和为s的两个数字
+
+**核心思想：**
+
+- 由于数组是排序的，这里采用一头一尾双指针；
+- 根据每次两个指针指向的数之和与target的大小，来判定头尾指针的移动。
+
+```java
+if (sum == target) {
+    result.add(nums[i]);
+    result.add(nums[j]);
+    break;
+} else if (sum < target) {
+    i++;
+} else {
+    j--;
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.array/ArrayPractice/ subject57TwoSum()
+
 # 参考
 
 - 《键指offer》

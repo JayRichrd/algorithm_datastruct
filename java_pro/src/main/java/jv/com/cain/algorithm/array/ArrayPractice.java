@@ -19,6 +19,8 @@ public class ArrayPractice {
         testSubject39MajorElement();
         System.out.println("==========test Subject42 MaxSubArray==========");
         testSubject42MaxSubArray();
+        System.out.println("==========test Subject57 TwoSum==========");
+        testSubject57TwoSum();
     }
 
     /**
@@ -320,5 +322,41 @@ public class ArrayPractice {
     public static void testSubject42MaxSubArray() {
         int[] nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
         System.out.println("max sub array sum: " + subject42MaxSubArray(nums));
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/he-wei-sde-liang-ge-shu-zi-lcof/solution/mian-shi-ti-57-he-wei-s-de-liang-ge-shu-zi-shuang-/ method1
+     * Time complexity: O(n)
+     * Spatial complexity: O(1)
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static List<Integer> subject57TwoSum(int[] nums, int target) {
+        if (nums == null || nums.length < 2) {
+            return null;
+        }
+        List<Integer> result = new ArrayList<>();
+        int i = 0, j = nums.length - 1;
+        while (i <= j) {
+            int sum = nums[i] + nums[j];
+            if (sum == target) {
+                result.add(nums[i]);
+                result.add(nums[j]);
+                break;
+            } else if (sum < target) {
+                i++;
+            } else {
+                j--;
+            }
+        }
+        return result;
+    }
+
+    public static void testSubject57TwoSum() {
+        int[] nums = {2, 7, 11, 15};
+        int target = 9;
+        System.out.println("sum = " + target + ": " + subject57TwoSum(nums, target));
     }
 }
