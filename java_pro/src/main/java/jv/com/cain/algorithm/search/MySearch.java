@@ -8,6 +8,8 @@ public class MySearch {
         System.out.println();
         System.out.println("==========test Subject8 MinArray==========");
         testSubject8MinArray();
+        System.out.println("==========test Subject53 numOfTarget==========");
+        testSubject53numOfTarget();
     }
 
     /**
@@ -64,7 +66,7 @@ public class MySearch {
             } else if (numbers[pivot] > numbers[high]) {
                 low = pivot + 1;
             } else {
-                high --;
+                high--;
             }
         }
         return numbers[low];
@@ -77,5 +79,46 @@ public class MySearch {
         int[] numbers2 = {1, 0, 1, 1, 1};
         min = subject8MinArray(numbers2);
         System.out.println("min = " + min);
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/zai-pai-xu-shu-zu-zhong-cha-zhao-shu-zi-lcof/solution/zai-pai-xu-shu-zu-zhong-cha-zhao-shu-zi-wl6kr/ method1
+     * Time complexity: O(logn)
+     * Spatial complexity: O(1)
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static Integer subject53numOfTarget(int[] nums, int target) {
+        if (nums == null) {
+            return null;
+        }
+        int leftIndex = binarySearch(nums, target, true);
+        int rightIndex = binarySearch(nums, target, false) - 1;
+        if (rightIndex <= nums.length - 1 && leftIndex <= rightIndex && nums[leftIndex] == target && nums[rightIndex] == target) {
+            return rightIndex - leftIndex + 1;
+        }
+        return 0;
+    }
+
+    private static int binarySearch(int[] nums, int target, boolean lower) {
+        int left = 0, right = nums.length - 1, result = nums.length;
+        while (left <= right) {
+            int mid = left + ((right - left) >> 1);
+            if ((lower && nums[mid] >= target)/*first >= target index*/ || nums[mid] > target/*first large target index*/) {
+                right = mid - 1;
+                result = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return result;
+    }
+
+    public static void testSubject53numOfTarget() {
+        int[] nums = {1, 2, 3, 3, 3, 3, 4, 5, 6};
+        int target = 7;
+        System.out.println("num of " + target + ": " + subject53numOfTarget(nums, target));
     }
 }

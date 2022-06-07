@@ -860,6 +860,26 @@ while (pA != pB) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.linked_list/MyLinkedList/ subject52GetFirstIntersectionNode()
 
+# subject 53-数字在排序数组中出现的次数
+
+**二分查找核心思想：**
+
+- 主要就是查找到第一个等于target的索引，和最后一个等于target的索引。
+- 尺寸为了代码简洁，将两部分逻辑写在一个方法中：
+
+```java
+if ((lower && nums[mid] >= target)/*first >= target index*/ || nums[mid] > target/*first large target index*/) {
+    right = mid - 1;
+    result = mid;
+} else {
+    left = mid + 1;
+}
+```
+
+> ps:这种二分查找变种——查找第一个等于target的数，使用的都是>=的策略。如果使用<=则可能会漏掉之前的元素
+
+**源码：**/java_pro/jv.com.cain.algorithm.search/MySearch/ subject53numOfTarget()
+
 # 参考
 
 - 《键指offer》
