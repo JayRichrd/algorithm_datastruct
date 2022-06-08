@@ -1027,6 +1027,27 @@ for (int j = 0; j < len; j++) {
 
 **源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject60DicesProbability()
 
+# subject 61-扑克牌的顺子
+
+**核心思想：**
+
+- 无重复牌，大小王除外，使用Set集合；
+- 最大牌 - 最小牌 < 5.
+
+```java
+Set<Integer> hashSet = new HashSet<>();
+for (int num : nums) {
+	if (num == 0) continue;
+	max = Math.max(max, num);
+	min = Math.min(min, num);
+	if (!hashSet.add(num)) {
+		return false;
+	}
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject61IsStrait()
+
 # 参考
 
 - 《键指offer》
