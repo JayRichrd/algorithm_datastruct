@@ -1004,6 +1004,29 @@ for (int i = k; i < len + k; i++) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.string/MyString/ subject58RevertWords()
 
+# subject 60-n个骰子点数
+
+**核心思想：**
+
+- 得出n个骰子点数与n-1个骰子点数有关。
+- 要得出n个骰子的点数，只需要遍历n-1个骰子点数，然后再和新加的那1个骰子做组合（第n个骰子分别为：1、2、3、4、5、6）。
+- 注意第n个骰子为某个确定数[1,6]的概率是1/6。
+
+```java
+int maxDiceNum = 6;
+for (int j = 0; j < len; j++) {
+	for (int k = 0; k < maxDiceNum; k++) {
+		temp[j + k] += result[j] / maxDiceNum;
+	}
+}
+```
+
+[leetcode参考](https://leetcode.cn/problems/nge-tou-zi-de-dian-shu-lcof/solution/jian-zhi-offer-60-n-ge-tou-zi-de-dian-sh-z36d/)
+
+![image-20220608103127841](https://picgo-1256537295.cos.ap-guangzhou.myqcloud.com/pictures/image-20220608103127841.png)
+
+**源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject60DicesProbability()
+
 # 参考
 
 - 《键指offer》

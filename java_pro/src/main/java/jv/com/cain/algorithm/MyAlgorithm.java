@@ -1,6 +1,7 @@
 package jv.com.cain.algorithm;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("JavaDoc")
@@ -12,6 +13,8 @@ public class MyAlgorithm {
         testSubject49NthUglyNumber();
         System.out.println("==========test Subject56 SingleNum==========");
         testSubject56SingleNum();
+        System.out.println("==========test Subject60 DicesProbability==========");
+        testSubject60DicesProbability();
     }
 
     /**
@@ -116,5 +119,48 @@ public class MyAlgorithm {
     public static void testSubject56SingleNum() {
         int[] nums = {1, 1, 2, 3, 3, 4, 5, 5};
         System.out.println("single nums: " + subject56SingleNum(nums));
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/nge-tou-zi-de-dian-shu-lcof/solution/jian-zhi-offer-60-n-ge-tou-zi-de-dian-sh-z36d/ method2
+     * Time complexity: O(n^2)
+     * Spatial complexity: O(n)
+     *
+     * @param n
+     * @return
+     */
+    public static double[] subject60DicesProbability(int n) {
+        if (n <= 0) {
+            return null;
+        }
+        int maxDiceNum = 6;
+        // first dice
+        double[] result = new double[6];
+        Arrays.fill(result, 1.0 / 6.0);
+        for (int i = 2; i <= n; i++) {
+            // next number dices probability
+            double[] temp = new double[maxDiceNum * i - i + 1];
+            Arrays.fill(temp, 0.0);
+            int len = result.length;
+            for (int j = 0; j < len; j++) {
+                for (int k = 0; k < maxDiceNum; k++) {
+                    temp[j + k] += result[j] / maxDiceNum;
+                }
+            }
+            // continue
+            result = temp;
+        }
+        return result;
+    }
+
+    public static void testSubject60DicesProbability() {
+        int n = 3;
+        double[] result = subject60DicesProbability(n);
+        if (result != null) {
+            int len = result.length;
+            for (int i = 0; i < len; i++) {
+                System.out.println((i + n) + "'s probability = " + result[i]);
+            }
+        }
     }
 }

@@ -44,7 +44,7 @@ public class MySearch {
     public static void testSubject3Find() {
         int[][] matrix = new int[][]{{1, 2, 8, 9}, {2, 4, 9, 12}, {4, 7, 10, 13}, {6, 8, 11, 15}};
         int number = 20;
-        System.out.println(number + " exist in matrix：" + subject3Find(matrix, number));
+        System.out.println(number + " exist in matrix: " + subject3Find(matrix, number));
     }
 
     /**
