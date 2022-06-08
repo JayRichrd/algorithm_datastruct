@@ -1,8 +1,6 @@
 package jv.com.cain.algorithm;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @SuppressWarnings("JavaDoc")
 public class MyAlgorithm {
@@ -15,6 +13,8 @@ public class MyAlgorithm {
         testSubject56SingleNum();
         System.out.println("==========test Subject60 DicesProbability==========");
         testSubject60DicesProbability();
+        System.out.println("==========test Subject61 IsStrait==========");
+        testSubject61IsStrait();
     }
 
     /**
@@ -162,5 +162,37 @@ public class MyAlgorithm {
                 System.out.println((i + n) + "'s probability = " + result[i]);
             }
         }
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/bu-ke-pai-zhong-de-shun-zi-lcof/solution/mian-shi-ti-61-bu-ke-pai-zhong-de-shun-zi-ji-he-se/ method1
+     * Time complexity: O(1)
+     * Spatial complexity: O(1)
+     *
+     * @param nums
+     * @return
+     */
+    public static boolean subject61IsStrait(int[] nums) {
+        int threshHold = 5;
+        if (nums == null || nums.length != threshHold) {
+            return false;
+        }
+        int min = 14, max = 0;
+        Set<Integer> hashSet = new HashSet<>();
+        for (int num : nums) {
+            if (num == 0) continue;
+            max = Math.max(max, num);
+            min = Math.min(min, num);
+            // repeated num return false immediately
+            if (!hashSet.add(num)) {
+                return false;
+            }
+        }
+        return max - min < threshHold;
+    }
+
+    public static void testSubject61IsStrait() {
+        int[] nums = {0, 1, 1, 3, 4};
+        System.out.println("is strait: " + subject61IsStrait(nums));
     }
 }
