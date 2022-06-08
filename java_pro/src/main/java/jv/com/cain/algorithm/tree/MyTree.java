@@ -404,4 +404,24 @@ public class MyTree {
         }
         return depth;
     }
+
+    /**
+     * refe: https://leetcode.cn/problems/er-cha-shu-de-zui-jin-gong-gong-zu-xian-lcof/solution/er-cha-shu-de-zui-jin-gong-gong-zu-xian-6fdt7/ method1
+     * Time complexity: O(n)
+     * Spatial complexity: O(n)
+     *
+     * @param root
+     * @param p
+     * @param q
+     * @return
+     */
+    public static TreeNode subject68LowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null || p == root || q == root) {
+            return root;
+        }
+
+        TreeNode leftLowestCommon = subject68LowestCommonAncestor(root.left, p, q);
+        TreeNode rightLowestCommon = subject68LowestCommonAncestor(root.right, p, q);
+        return leftLowestCommon == null ? rightLowestCommon : (rightLowestCommon == null ? leftLowestCommon : root);
+    }
 }

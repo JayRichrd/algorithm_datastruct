@@ -1090,7 +1090,31 @@ while (b != 0) {
 return a;
 ```
 
-源码：/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject65Add()
+**源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject65Add()
+
+# subject 68-树中两个结点的最低公共祖先
+
+**核心思想：**
+
+- 递归，从底网上寻找公共节点：
+
+```java
+// 递归结束条件
+if (root == null || p == root || q == root) {
+	return root;
+}
+// 左子树寻找
+TreeNode leftLowestCommon = subject68LowestCommonAncestor(root.left, p, q);
+// 右子树寻找
+TreeNode rightLowestCommon = subject68LowestCommonAncestor(root.right, p, q);
+return leftLowestCommon == null ? rightLowestCommon : (rightLowestCommon == null ? leftLowestCommon : root);
+```
+
+参考
+
+![image-20220608195110693](https://picgo-1256537295.cos.ap-guangzhou.myqcloud.com/pictures/image-20220608195110693.png)
+
+**源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject68LowestCommonAncestor()
 
 # 参考
 
