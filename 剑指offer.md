@@ -1067,6 +1067,31 @@ return result;
 
 **源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject62LastRemain()
 
+# subject 65-不用加减乘除做加法
+
+**核心思想：**
+
+- 将相加的两个数用二进制表示；
+
+- 将加法分为三步：
+
+  - 对应的未分别做加法，但不进位，结果为n，与异或性质相同。
+
+  - 对应的位做加法，但只保留进位的结果，结果为c，与与运算结果相同，但得向左移一位。
+
+  - 最终结果就是n +c，那么就可以采用迭代(递归)继续分解出n与c，直到c为0，即没有进位。
+
+```java
+while (b != 0) {
+	int c = (a & b) << 1;
+	a ^= b;
+	b = c;
+}
+return a;
+```
+
+源码：/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject65Add()
+
 # 参考
 
 - 《键指offer》

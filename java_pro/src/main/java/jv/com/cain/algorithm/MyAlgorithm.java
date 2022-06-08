@@ -17,6 +17,8 @@ public class MyAlgorithm {
         testSubject61IsStrait();
         System.out.println("==========test Subject62 LastRemain==========");
         testSubject62LastRemain();
+        System.out.println("==========test Subject65 Add==========");
+        testSubject65Add();
     }
 
     /**
@@ -220,5 +222,28 @@ public class MyAlgorithm {
         int n = 10;
         int m = 3;
         System.out.println("f(" + n + "," + m + ") = " + subject62LastRemain(10, 3));
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/bu-yong-jia-jian-cheng-chu-zuo-jia-fa-lcof/solution/mian-shi-ti-65-bu-yong-jia-jian-cheng-chu-zuo-ji-7/ method1
+     * Time complexity: O(1)
+     * Spatial complexity: O(1)
+     *
+     * @param a
+     * @param b
+     * @return
+     */
+    public static int subject65Add(int a, int b) {
+        while (b != 0) {
+            int c = (a & b) << 1;
+            a ^= b;
+            b = c;
+        }
+        return a;
+    }
+
+    public static void testSubject65Add() {
+        int a = 3, b = -5;
+        System.out.println(a + " + " + b + " = " + subject65Add(a, b));
     }
 }
