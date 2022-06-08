@@ -1048,6 +1048,25 @@ for (int num : nums) {
 
 **源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject61IsStrait()
 
+# subject 62-约瑟夫环问题
+
+**核心思想：**
+
+- 这里是要求最后剩余的数的最初的编号
+- f(n-1,m)的结果就是将f(n,m)去掉第m个元素后从第m+1个元素重新编号开始新一轮游戏的结果。假设f(n-1,m) = x，这个x是重新编号的结果，要还原为重新编号之前的结果 = x + m。注意相加的结果不能超标。
+
+```java
+int result = 0;
+for (int i = 2; i <= n; i++) {
+	result = (result + m) % i;
+}
+return result;
+```
+
+[约瑟夫问题](https://www.youtube.com/watch?v=Yeh1_2GyS5s)
+
+**源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject62LastRemain()
+
 # 参考
 
 - 《键指offer》

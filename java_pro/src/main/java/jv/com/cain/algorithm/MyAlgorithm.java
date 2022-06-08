@@ -15,6 +15,8 @@ public class MyAlgorithm {
         testSubject60DicesProbability();
         System.out.println("==========test Subject61 IsStrait==========");
         testSubject61IsStrait();
+        System.out.println("==========test Subject62 LastRemain==========");
+        testSubject62LastRemain();
     }
 
     /**
@@ -194,5 +196,29 @@ public class MyAlgorithm {
     public static void testSubject61IsStrait() {
         int[] nums = {0, 1, 1, 3, 4};
         System.out.println("is strait: " + subject61IsStrait(nums));
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/yuan-quan-zhong-zui-hou-sheng-xia-de-shu-zi-lcof/solution/yuan-quan-zhong-zui-hou-sheng-xia-de-shu-zi-by-lee/ method2
+     * Time complexity: O(n)
+     * Spatial complexity: O(1)
+     *
+     * @param n
+     * @param m
+     * @return
+     */
+    public static int subject62LastRemain(int n, int m) {
+        int result = 0;
+        for (int i = 2; i <= n; i++) {
+            // avoid out of index
+            result = (result + m) % i;
+        }
+        return result;
+    }
+
+    public static void testSubject62LastRemain() {
+        int n = 10;
+        int m = 3;
+        System.out.println("f(" + n + "," + m + ") = " + subject62LastRemain(10, 3));
     }
 }
