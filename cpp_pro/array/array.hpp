@@ -6,6 +6,8 @@
 #ifndef CPP_PRO_ARRAY_HPP
 #define CPP_PRO_ARRAY_HPP
 namespace array_practice {
+    using namespace std;
+
     class ArrayPractice {
     public:
         /**
@@ -29,6 +31,7 @@ namespace array_practice {
          * @return the major element
          */
         static int majorElement1(std::vector<int> &nums);
+
         /**
          * refe: https://leetcode-cn.com/problems/majority-element/solution/duo-shu-yuan-su-by-leetcode-solution/ method5
          * Time complexity: O(size)
@@ -38,6 +41,16 @@ namespace array_practice {
          */
         static int majorElement2(std::vector<int> &nums);
         static void test_major_element();
+
+        /**
+         * refe: https://leetcode-cn.com/problems/first-missing-positive/solution/que-shi-de-di-yi-ge-zheng-shu-by-leetcode-solution/ method1
+         * Time complexity: O(n^2)
+         * Spatial complexity: O(1)
+         * @param nums
+         * @return
+         */
+        static vector<vector<int>> threeNumSum(vector<int> nums);
+        static void testThreeNumSum();
     };
 
 }

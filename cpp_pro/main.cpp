@@ -94,5 +94,8 @@ int main() {
     cout << endl << "==========================test revert words==============================" << endl;
     string_practice::MyString::test_revert_words();
 
+    cout << endl << "==========================test ThreeNumSum==============================" << endl;
+    array_practice::ArrayPractice::testThreeNumSum();
+
     return 0;
 }

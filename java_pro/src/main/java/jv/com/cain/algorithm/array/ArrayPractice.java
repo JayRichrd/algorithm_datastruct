@@ -24,7 +24,7 @@ public class ArrayPractice {
     }
 
     /**
-     * refe: https://leetcode-cn.com/problems/3sum/solution/pai-xu-shuang-zhi-zhen-zhu-xing-jie-shi-python3-by/
+     * refe: https://leetcode-cn.com/problems/3sum/solution/pai-xu-shuang-zhi-zhen-zhu-xing-jie-shi-python3-by/ method1
      * Time complexity：O(n^2)
      * spatial complexity：O(1)
      *
@@ -33,12 +33,6 @@ public class ArrayPractice {
      */
     public static List<List<Integer>> threeSum(int[] inNums) {
         List<List<Integer>> resultList = new ArrayList<>();
-        System.out.print("source input array: ");
-        for (int num : inNums) {
-            System.out.print(num + ", ");
-        }
-        System.out.println();
-
         if (inNums.length < 3) {
             return resultList;
         }
@@ -47,16 +41,11 @@ public class ArrayPractice {
          * sort the array firstly
          */
         Arrays.sort(inNums);
-        System.out.print("sorted input array: ");
-        for (int num : inNums) {
-            System.out.print(num + ", ");
-        }
-        System.out.println();
 
         int len = inNums.length;
         for (int i = 0; i < len; i++) {
             /*
-             * as the array is ascending, so three num sum must be more than zero since i index
+             * as the array is ascending, so three num sum must be larger than zero since i index
              * now we have to return the result.
              */
             if (inNums[i] > 0) {
@@ -71,13 +60,16 @@ public class ArrayPractice {
                 continue;
             }
 
+            // first place
             int cur = inNums[i];
             /*
              * left and right pointer
+             * second place and third place
              */
             int pL = i + 1, pR = len - 1;
             while (pL < pR) {
                 int temp = cur + inNums[pL] + inNums[pR];
+                // find one result
                 if (temp == 0) {
                     List<Integer> list = new ArrayList<>();
                     list.add(cur);

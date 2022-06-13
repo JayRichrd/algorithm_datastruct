@@ -4,6 +4,7 @@
 #include <iostream>
 #include "array.hpp"
 #include <unordered_map>
+#include <algorithm>
 
 namespace array_practice {
     using namespace std;
@@ -93,5 +94,59 @@ namespace array_practice {
         int major1 = majorElement1(nums);
         int major2 = majorElement2(nums);
         cout << "major1: " << major1 << ", major2: " << major2 << endl;
+    }
+
+    vector<vector<int>> ArrayPractice::threeNumSum(vector<int> nums) {
+        vector<vector<int>> results = {};
+        if (nums.size() < 3) {
+            return results;
+        }
+        // sort firstly
+        sort(nums.begin(), nums.end());
+        int len = nums.size();
+        for (int i = 0; i < len; ++i) {
+            int firstNum = nums[i];
+            if (firstNum > 0) {
+                break;
+            }
+            // skip duplicate num
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            int secondNumIndex = i + 1, thirdNumIndex = len - 1;
+            while (secondNumIndex < thirdNumIndex) {
+                int temp = firstNum + nums[secondNumIndex] + nums[thirdNumIndex];
+                if (temp == 0) {
+                    vector<int> result = {firstNum, nums[secondNumIndex], nums[thirdNumIndex]};
+                    results.push_back(result);
+                    // skip duplicate num
+                    while (secondNumIndex < thirdNumIndex && nums[secondNumIndex + 1] == nums[secondNumIndex]) {
+                        secondNumIndex++;
+                    }
+                    while (secondNumIndex < thirdNumIndex && nums[thirdNumIndex - 1] == nums[thirdNumIndex]) {
+                        secondNumIndex--;
+                    }
+                    secondNumIndex++;
+                    thirdNumIndex--;
+                } else if (temp < 0) {
+                    secondNumIndex++;
+                } else {
+                    thirdNumIndex--;
+                }
+            }
+        }
+        return results;
+    }
+
+    void ArrayPractice::testThreeNumSum() {
+        vector<int> nums = {-1, 0, 1, 2, -1, -4};
+        auto results = threeNumSum(nums);
+        cout << "the results: " << endl;
+        for (const auto &result: results) {
+            for (auto num: result) {
+                cout << num << ", ";
+            }
+            cout << endl;
+        }
     }
 }
