@@ -97,5 +97,8 @@ int main() {
     cout << endl << "==========================test ThreeNumSum==============================" << endl;
     array_practice::ArrayPractice::testThreeNumSum();
 
+    cout << endl << "==========================test FindFirstMissingNum==============================" << endl;
+    array_practice::ArrayPractice::testFindFirstMissingNum();
+
     return 0;
 }

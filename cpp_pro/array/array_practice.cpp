@@ -5,6 +5,7 @@
 #include "array.hpp"
 #include <unordered_map>
 #include <algorithm>
+#include <cstdlib>
 
 namespace array_practice {
     using namespace std;
@@ -148,5 +149,39 @@ namespace array_practice {
             }
             cout << endl;
         }
+    }
+
+    int ArrayPractice::findFirstMissingNum(vector<int> nums) {
+        if (nums.size() == 0) {
+            return -1;
+        }
+        int len = nums.size();
+        // the final result must belong to [1,len+1]
+        int result = len + 1;
+        // handle negative and zero
+        for (int i = 0; i < len; i++) {
+            if (nums[i] <= 0) {
+                nums[i] = len + 1;
+            }
+        }
+        // mark possible index
+        for (int i = 0; i < len; i++) {
+            int num = abs(nums[i]);
+            if (num <= len) {
+                nums[num - 1] = -abs(nums[num - 1]);
+            }
+        }
+        // find index which num is first positive num
+        for (int i = 0; i < len; i++) {
+            if (nums[i] > 0) {
+                return i + 1;
+            }
+        }
+        return result;
+    }
+
+    void ArrayPractice::testFindFirstMissingNum() {
+        vector<int> nums = {3, 4, -1, 1, 9};
+        cout << "first positive missing number = " << findFirstMissingNum(nums) << endl;
     }
 }

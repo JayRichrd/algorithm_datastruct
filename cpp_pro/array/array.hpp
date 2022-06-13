@@ -51,6 +51,16 @@ namespace array_practice {
          */
         static vector<vector<int>> threeNumSum(vector<int> nums);
         static void testThreeNumSum();
+
+        /**
+         * refe: https://leetcode-cn.com/problems/first-missing-positive/solution/que-shi-de-di-yi-ge-zheng-shu-by-leetcode-solution/ method1
+         * Time complexity: O(n)
+         * Spatial complexity: O(1)
+         * @param nums
+         * @return
+         */
+        static int findFirstMissingNum(vector<int> nums);
+        static void testFindFirstMissingNum();
     };
 
 }

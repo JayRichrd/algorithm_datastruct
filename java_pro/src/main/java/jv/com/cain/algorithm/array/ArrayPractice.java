@@ -116,8 +116,12 @@ public class ArrayPractice {
      * @param nums input array
      * @return the first missing positive
      */
-    public static int firstMissingPositive(int[] nums) {
+    public static Integer firstMissingPositive(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return null;
+        }
         int len = nums.length;
+        // the final result must belongs to [1,len+1]
         int result = len + 1;
         /*
          * change negative to len+1 for marking
