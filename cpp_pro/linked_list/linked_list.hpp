@@ -149,7 +149,7 @@ namespace linked_list {
             slow = slow->next;
             fast = fast->next;
             /**
-             * compare every move
+             * compare every step
              */
             if (fast != nullptr && slow == fast) {
                 return true;

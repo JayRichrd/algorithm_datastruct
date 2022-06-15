@@ -294,4 +294,31 @@ public class MyLinkedList {
         Node nodeB1 = new Node(4, nodeB2);
         System.out.println("linked list 1 and linked list 2 first intersection node: " + subject52GetFirstIntersectionNode(nodeA1, nodeB1));
     }
+
+    /**
+     * refe: https://leetcode-cn.com/problems/linked-list-cycle/solution/huan-xing-lian-biao-by-leetcode-solution/ method2
+     * Time complexity: O(n)
+     * Spatial complexity: O(1)
+     *
+     * @param head
+     * @return
+     */
+    public static boolean hasCircle(Node head) {
+        if (head == null || head.next == null) {
+            return false;
+        }
+        Node slow = head, fast = head.next;
+        while (slow != fast) {
+            if (fast == null || fast.next == null) {
+                return false;
+            }
+            slow = slow.next;
+            fast = fast.next;
+            if (fast == slow) {
+                return true;
+            }
+            fast = fast.next;
+        }
+        return true;
+    }
 }
