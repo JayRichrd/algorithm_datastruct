@@ -321,4 +321,89 @@ public class MyLinkedList {
         }
         return true;
     }
+
+    /**
+     * refe: https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/he-bing-kge-pai-xu-lian-biao-by-leetcode-solutio-2/ method1
+     * Time complexity: O(n^2*k)
+     * Spatial complexity: O(1)
+     *
+     * @param lists
+     * @return
+     */
+    public static Node mergeKList(Node[] lists) {
+        if (lists == null || lists.length == 0) {
+            return null;
+        }
+        Node mergedHead = lists[0];
+        int len = lists.length;
+        for (int i = 1; i < len; i++) {
+            mergedHead = mergeTwoList(mergedHead, lists[i]);
+        }
+        return mergedHead;
+    }
+
+    /**
+     * refe: https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/he-bing-kge-pai-xu-lian-biao-by-leetcode-solutio-2/ method2
+     * Time complexity: O(n*logn*k)
+     * Spatial complexity: O(logn)
+     *
+     * @param lists
+     * @return
+     */
+    public static Node mergeKList2(Node[] lists) {
+        if (lists == null || lists.length == 0) {
+            return null;
+        }
+        return mergeKListRecursive(lists, 0, lists.length - 1);
+    }
+
+    /**
+     * merge lists recursively
+     *
+     * @param lists
+     * @param left  start index
+     * @param right end index
+     * @return return merged list
+     */
+    private static Node mergeKListRecursive(Node[] lists, int left, int right) {
+        if (left == right) return lists[left];
+        if (left > right) return null;
+        // binary divide
+        int mid = left + ((right - left) >> 1);
+        return mergeTwoList(mergeKListRecursive(lists, left, mid), mergeKListRecursive(lists, mid + 1, right));
+    }
+
+    /**
+     * merge two sorted linked list
+     *
+     * @param list1
+     * @param list2
+     * @return return
+     */
+    private static Node mergeTwoList(Node list1, Node list2) {
+        Node curNode = new Node();
+        Node mergedHead = curNode;
+
+        while (list1 != null && list2 != null) {
+            // merge lists
+            if (list1.data <= list2.data) {
+                curNode.next = list1;
+                list1 = list1.next;
+            } else {
+                curNode.next = list2;
+                list2 = list2.next;
+            }
+            curNode = curNode.next;
+        }
+
+        // handle the remaining
+        if (list1 != null) {
+            curNode.next = list1;
+        }
+        if (list2 != null) {
+            curNode.next = list2;
+        }
+
+        return mergedHead.next;
+    }
 }
