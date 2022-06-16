@@ -1,9 +1,8 @@
 package jv.com.cain.algorithm.stack;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.*;
 
-@SuppressWarnings("JavaDoc")
+@SuppressWarnings({"JavaDoc", "unused"})
 public class MyStack {
     public static void main(String[] args) {
         System.out.println("==========test Subject31 ValidStackSequence==========");
@@ -38,5 +37,38 @@ public class MyStack {
         int[] push = {1, 2, 3, 4, 5};
         int[] pop = {4, 5, 3, 2, 1};
         System.out.println("is valid: " + subject31ValidStackSequence(push, pop));
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/valid-parentheses/solution/you-xiao-de-gua-hao-by-leetcode-solution/
+     * Time complexity: O(n)
+     * Spatial complexity: O(n)
+     *
+     * @param str: source string
+     * @return return true if the source string bracket valid or false
+     */
+    public static boolean isValidBrackets(String str) {
+        if (str.length() % 2 == 1 || str.length() == 0) {
+            return false;
+        }
+        // template for pair
+        Map<Character, Character> pairs = new HashMap<>(4);
+        pairs.put(')', '(');
+        pairs.put(']', '[');
+        pairs.put('}', '{');
+        int len = str.length();
+        Deque<Character> stack = new LinkedList<>();
+        for (int i = 0; i < len; i++) {
+            Character ch = str.charAt(i);
+            if (pairs.containsKey(ch)) {// handle right bracket
+                if (stack.isEmpty() || stack.peek() != pairs.get(ch)) {
+                    return false;
+                }
+                stack.pop();
+            } else {
+                stack.push(ch);
+            }
+        }
+        return stack.isEmpty();
     }
 }

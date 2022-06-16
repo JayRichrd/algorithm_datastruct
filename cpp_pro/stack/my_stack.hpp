@@ -124,7 +124,7 @@ namespace stack_practice {
         /**
          * refe: https://leetcode.cn/problems/valid-parentheses/solution/you-xiao-de-gua-hao-by-leetcode-solution/
          * Time complexity: O(n)
-         * Spatial complexity: O(1)
+         * Spatial complexity: O(n)
          * @param str: source string
          * @return return true if the source string bracket valid or false
          */
