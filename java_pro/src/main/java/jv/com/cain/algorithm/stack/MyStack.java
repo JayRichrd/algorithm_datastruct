@@ -71,4 +71,91 @@ public class MyStack {
         }
         return stack.isEmpty();
     }
+
+    /**
+     * refe: https://leetcode.cn/problems/longest-valid-parentheses/solution/zui-chang-you-xiao-gua-hao-by-leetcode-solution/ method2
+     * Time complexity: O(n)
+     * Spatial complexity: O(n)
+     *
+     * @param str source string
+     * @return the max num of valid parentheses
+     */
+    public static int longestValidBrackets(String str) {
+        if (str == null || str.length() == 0) {
+            return 0;
+        }
+        // max valid brackets
+        int max = 0;
+        Deque<Integer> stack = new LinkedList<>();
+        // avoid first char is '('
+        // assume bottom is divider ')'
+        stack.push(-1);
+        int len = str.length();
+        for (int i = 0; i < len; i++) {
+            char ch = str.charAt(i);
+            if (ch == '(') {
+                stack.push(i);
+            } else {
+                // if ch is ')', pop element for pair firstly
+                stack.pop();
+                if (stack.isEmpty()) {
+                    stack.push(i);
+                } else {
+                    max = Math.max(max, i - stack.peek());
+                }
+            }
+        }
+        return max;
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/longest-valid-parentheses/solution/zui-chang-you-xiao-gua-hao-by-leetcode-solution/ method3
+     * Time complexity: O(n)
+     * Spatial complexity: O(1)
+     *
+     * @param str source string
+     * @return the max num of valid parentheses
+     */
+    public static int longestValidBrackets1(String str) {
+        if (str == null || str.length() == 0) {
+            return 0;
+        }
+        int max = 0, leftNum = 0, rightNum = 0;
+        int len = str.length();
+        // left -> right
+        for (int i = 0; i < len; i++) {
+            char ch = str.charAt(i);
+            if (ch == 'c') {
+                leftNum++;
+            } else {
+                rightNum++;
+            }
+
+            // compute max when leftNum equals rightNum
+            if (leftNum == rightNum) {
+                max = Math.max(max, leftNum * 2);
+            } else if (leftNum < rightNum) {
+                leftNum = rightNum = 0;
+            }
+        }
+
+        //reset
+        leftNum = rightNum = 0;
+        // right -> left
+        for (int i = len - 1; i >= 0; i--) {
+            char ch = str.charAt(i);
+            if (ch == ')') {
+                rightNum++;
+            } else {
+                leftNum++;
+            }
+            // compute max when leftNum equals rightNum
+            if (rightNum == leftNum) {
+                max = Math.max(max, rightNum * 2);
+            } else if (leftNum > rightNum) {
+                rightNum = leftNum = 0;
+            }
+        }
+        return max;
+    }
 }
