@@ -39,7 +39,7 @@ CMyString &CMyString::operator=(const CMyString &other/*①*/) {
 
 **源码：**/cpp_pro/override_operator_assign
 
-# subject 03-二维数组查找
+# subject 04-二维数组查找
 
 **核心思想：**
 
@@ -66,7 +66,7 @@ while (row >= 0 && column < columns) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.search/MySearch/ subject3Find()
 
-# subject 04-替换字符串
+# subject 05-替换字符串
 
 **核心思想：**
 
@@ -75,7 +75,7 @@ while (row >= 0 && column < columns) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.string/MyString/ subject4ReplaceSpace()
 
-# subject 05-从尾到头打印链表
+# subject 06-从尾到头打印链表
 
 **核心思想：**
 
@@ -85,7 +85,7 @@ ps:栈和递归之间有着密切联系
 
 **源码：**/java_pro/jv.com.cain.algorithm.linked_list/MyLinkedList/ subject5PrintRevertLinkedList() subject5PrintRevertLinkedListByRecursion()
 
-# subject 06-重建二叉树
+# subject 07-重建二叉树
 
  **迭代核心思想：**
 
@@ -97,7 +97,7 @@ ps:栈和递归之间有着密切联系
 
 **源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ buildBinaryTree()
 
-# subject 07-用两个栈实现队列
+# subject 09-用两个栈实现队列
 
 **核心思想：**
 
@@ -117,30 +117,7 @@ if (outStack.isEmpty()) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.queue/QueueByStack
 
-# Subject 08-旋转数组的最小数字
-
-**核心思想：**
-
-- 二分法
-- 将中间元素始终与high位置的元素比较，只可能存在三种情况：大于、小于、等于。
-- 对于大于和等于比较好判定pivot位于前半部分还是后半部分，从而相应地忽略左边或者右边。当pivot<high时，要注意high的下一次取值为high = pivot，而不是pivot -1。这是由于这里求的是最小值，在pivot<high的情况下pivot有可能就是那个最小值，如果将pivot -1 赋值给high则会错误最小值。而对于pivot > high的情况，pivot肯定不是最小值，所以下一次low = pivot + 1。
-
-```java
-// can not assign high = pivot -1 to void the min
-if (numbers[pivot] < numbers[high]) {
-    high = pivot;
-} else if (numbers[pivot] > numbers[high]) {
-    low = pivot + 1;
-}else {
-    high --;
-}
-```
-
-- 对于等于的情况，pivot位于前半部分和后半部分都有可能，但此时同样可以将high--来缩小范围。
-
-**源码：**/java_pro/jv.com.cain.algorithm.search/MySearch/ subject8MinArray()
-
-# subject 09-斐波那契数列
+# subject 10-I-斐波那契数列
 
 **核心思想：**
 
@@ -163,7 +140,30 @@ for (int i = 3; i <= n; i++) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.recursion/MyRecursion/ fibonacciSequenceByRecursive()
 
-# subject 10-二进制中1的个数
+# Subject 11-旋转数组的最小数字
+
+**核心思想：**
+
+- 二分法
+- 将中间元素始终与high位置的元素比较，只可能存在三种情况：大于、小于、等于。
+- 对于大于和等于比较好判定pivot位于前半部分还是后半部分，从而相应地忽略左边或者右边。当pivot<high时，要注意high的下一次取值为high = pivot，而不是pivot -1。这是由于这里求的是最小值，在pivot<high的情况下pivot有可能就是那个最小值，如果将pivot -1 赋值给high则会错误最小值。而对于pivot > high的情况，pivot肯定不是最小值，所以下一次low = pivot + 1。
+
+```java
+// can not assign high = pivot -1 to void the min
+if (numbers[pivot] < numbers[high]) {
+    high = pivot;
+} else if (numbers[pivot] > numbers[high]) {
+    low = pivot + 1;
+}else {
+    high --;
+}
+```
+
+- 对于等于的情况，pivot位于前半部分和后半部分都有可能，但此时同样可以将high--来缩小范围。
+
+**源码：**/java_pro/jv.com.cain.algorithm.search/MySearch/ subject8MinArray()
+
+# subject 15-二进制中1的个数
 
 **核心思想：**
 
@@ -186,7 +186,7 @@ while (n != 0) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.bit/BitOperation/ subject9HammingWeight1()
 
-# subject 11-数值的整数次方
+# subject 16-数值的整数次方
 
 **递归核心思想：**
 
@@ -444,7 +444,7 @@ return helpStack.isEmpty();
 
 **源码：**/java_pro/jv.com.cain.algorithm.stack/MinStack/ subject31ValidStackSequence()
 
-# subject 32-从上往下打印二叉树
+# subject 32-I-从上往下打印二叉树
 
 **核心思想：**
 
@@ -860,7 +860,7 @@ while (pA != pB) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.linked_list/MyLinkedList/ subject52GetFirstIntersectionNode()
 
-# subject 53-数字在排序数组中出现的次数
+# subject 53-I-数字在排序数组中出现的次数
 
 **二分查找核心思想：**
 
@@ -905,7 +905,7 @@ while (!que.isEmpty()) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject53numOfTarget()
 
-# subject 56-数组中只出现一次的数字
+# subject 56-I-数组中只出现一次的数字
 
 **核心思想：**
 
@@ -988,7 +988,7 @@ return String.join(" ", que);
 
 **源码：**/java_pro/jv.com.cain.algorithm.string/MyString/ subject58RevertWords()
 
-# subject 58II-左旋转字符
+# subject 58-II-左旋转字符
 
 **核心思想：**
 
@@ -1092,7 +1092,7 @@ return a;
 
 **源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject65Add()
 
-# subject 68-树中两个结点的最低公共祖先
+# subject 68-II-树中两个结点的最低公共祖先
 
 **核心思想：**
 
