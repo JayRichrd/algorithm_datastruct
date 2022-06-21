@@ -424,4 +424,20 @@ public class MyTree {
         TreeNode rightLowestCommon = subject68LowestCommonAncestor(root.right, p, q);
         return leftLowestCommon == null ? rightLowestCommon : (rightLowestCommon == null ? leftLowestCommon : root);
     }
+
+    /**
+     * refe: https://leetcode.cn/problems/invert-binary-tree/solution/fan-zhuan-er-cha-shu-by-leetcode-solution/
+     * Time complexity: O(n)
+     * Spatial complexity: O(n)
+     * @tparam T
+     * @param root
+     */
+    public static TreeNode revertTree(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+        root.left = revertTree(root.right);
+        root.right = revertTree(root.left);
+        return root;
+    }
 }
