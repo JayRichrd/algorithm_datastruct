@@ -429,8 +429,9 @@ public class MyTree {
      * refe: https://leetcode.cn/problems/invert-binary-tree/solution/fan-zhuan-er-cha-shu-by-leetcode-solution/
      * Time complexity: O(n)
      * Spatial complexity: O(n)
-     * @tparam T
+     *
      * @param root
+     * @tparam T
      */
     public static TreeNode revertTree(TreeNode root) {
         if (root == null) {
@@ -439,5 +440,54 @@ public class MyTree {
         root.left = revertTree(root.right);
         root.right = revertTree(root.left);
         return root;
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/maximum-depth-of-binary-tree/solution/er-cha-shu-de-zui-da-shen-du-by-leetcode-solution/ method1
+     * Time complexity: O(n)
+     * Spatial complexity: O(n)
+     *
+     * @param root
+     * @return
+     * @tparam T
+     */
+    public static int treeMaxDepthByRecursion(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return Math.max(treeMaxDepthByRecursion(root.left), treeMaxDepthByRecursion(root.right)) + 1;
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/maximum-depth-of-binary-tree/solution/er-cha-shu-de-zui-da-shen-du-by-leetcode-solution/ method2
+     * Time complexity: O(n)
+     * Spatial complexity: O(n)
+     *
+     * @param root
+     * @return
+     * @tparam T
+     */
+    public static int treeMaxDepthIterator(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int depth = 0;
+        Deque<TreeNode> que = new LinkedList<>();
+        que.offer(root);
+        while (!que.isEmpty()) {
+            int curLevelSize = que.size();
+            depth++;
+            for (int i = 0; i < curLevelSize; i++) {
+                TreeNode treeNode = que.poll();
+                //noinspection ConstantConditions
+                if (treeNode.left != null) {
+                    que.offer(treeNode.left);
+                }
+                if (treeNode.right != null) {
+                    que.offer(treeNode.right);
+                }
+            }
+        }
+        return depth;
     }
 }
