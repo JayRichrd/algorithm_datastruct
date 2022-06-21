@@ -495,6 +495,7 @@ public class MyTree {
      * refe: https://leetcode.cn/problems/validate-binary-search-tree/solution/yan-zheng-er-cha-sou-suo-shu-by-leetcode-solution/ method1
      * Time complexity: O(n)
      * Spatial complexity:O(n)
+     *
      * @param root
      * @return
      */
@@ -506,5 +507,26 @@ public class MyTree {
         if (root == null) return true;
         if (root.data <= min || root.data >= max) return false;
         return isValidBST(root.left, min, root.data) && isValidBST(root.right, root.data, max);
+    }
+
+
+    /**
+     * refe: https://leetcode.cn/problems/path-sum/solution/lu-jing-zong-he-by-leetcode-solution/
+     * Time complexity: O(n)
+     * Spatial complexity: O(n)
+     *
+     * @param root
+     * @param sum  sum of path value
+     * @return return true if has path or false
+     */
+    public static boolean hasPath(TreeNode root, int sum) {
+        if (root == null) {
+            return false;
+        }
+        // arrive at the leaf node and compare
+        if (root.left == null && root.right == null) {
+            return root.data == sum;
+        }
+        return hasPath(root.left, sum - root.data) || hasPath(root.right, sum - root.data);
     }
 }
