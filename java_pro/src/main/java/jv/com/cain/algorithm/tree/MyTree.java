@@ -490,4 +490,21 @@ public class MyTree {
         }
         return depth;
     }
+
+    /**
+     * refe: https://leetcode.cn/problems/validate-binary-search-tree/solution/yan-zheng-er-cha-sou-suo-shu-by-leetcode-solution/ method1
+     * Time complexity: O(n)
+     * Spatial complexity:O(n)
+     * @param root
+     * @return
+     */
+    public static boolean isValidBST(TreeNode root) {
+        return isValidBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    }
+
+    private static boolean isValidBST(TreeNode root, int min, int max) {
+        if (root == null) return true;
+        if (root.data <= min || root.data >= max) return false;
+        return isValidBST(root.left, min, root.data) && isValidBST(root.right, root.data, max);
+    }
 }
