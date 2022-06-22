@@ -199,4 +199,24 @@ public class MyString {
         int k = 3;
         System.out.println("left revert " + k + " char result: " + subject58IIRevertLeftWord(str, k));
     }
+
+    /**
+     * refe: https://leetcode.cn/problems/reverse-string/solution/fan-zhuan-zi-fu-chuan-by-leetcode-solution/
+     * Time complexity: O(n)
+     * Spatial complexity: O(1)
+     *
+     * @param chs
+     */
+    public static void revertString(char[] chs) {
+        if (chs == null || chs.length == 0) {
+            return;
+        }
+        int left = 0, right = chs.length - 1;
+        for (; left < right; left++, right--) {
+            char temp = chs[left];
+            chs[left] = chs[right];
+            chs[right] = temp;
+        }
+    }
+
 }

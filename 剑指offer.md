@@ -964,7 +964,7 @@ while (begin <= end && str.charAt(end) == ' ') {
 }
 ```
 
-- 是用java中的栈——Deque（默认栈底在索引为0的这一边，与数组正好相反）。来根据空格来保存每个单词
+- 是用java中的栈——Deque（默认栈顶在索引为0的这一边，与数组正好相反）。根据空格来保存每个单词
 
 ```java
 // find an whole word, and push it
@@ -980,7 +980,7 @@ if (ch == ' ' && word.length() != 0) {
 que.push(word.toString());
 ```
 
-- 然后使用String的拼接函数join从索引为0开始拼接返回翻转的字符串：
+- 然后使用String的拼接函数==join()==从索引为0开始拼接返回翻转的字符串：
 
 ```java
 return String.join(" ", que);
