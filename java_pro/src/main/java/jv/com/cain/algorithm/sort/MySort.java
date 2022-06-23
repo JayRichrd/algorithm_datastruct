@@ -290,4 +290,55 @@ public class MySort {
         nums[right] = temp;
         return i;
     }
+
+    /**
+     * refe: https://leetcode.cn/problems/kth-largest-element-in-an-array/solution/shu-zu-zhong-de-di-kge-zui-da-yuan-su-by-leetcode-/ method1
+     * Time complexity: O(n)
+     * Spatial complexity: O(1)
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
+    public static Integer findKthBig(int[] nums, int k) {
+        if (nums == null || nums.length < k) {
+            return null;
+        }
+        return findKthBigRecursive(nums, 0, nums.length - 1, k);
+    }
+
+    private static Integer findKthBigRecursive(int[] nums, int start, int end, int k) {
+        if (start > end) {
+            return null;
+        }
+        // descending
+        int pivot = findKthBigPartition(nums, start, end);
+        if (pivot == k - 1) {
+            // find the kth big num
+            return nums[pivot];
+        } else if (pivot < k - 1) {
+            // in right part to find
+            return findKthBigRecursive(nums, pivot + 1, end, k);
+        } else {
+            // in left part to find
+            return findKthBigRecursive(nums, start, pivot - 1, k);
+        }
+    }
+
+    private static int findKthBigPartition(int[] nums, int start, int end) {
+        // descending
+        int pivotNum = nums[end];
+        int i = start;
+        for (int j = i; j < end; j++) {
+            if (nums[j] > pivotNum) {
+                int temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
+                i++;
+            }
+        }
+        nums[end] = nums[i];
+        nums[i] = pivotNum;
+        return i;
+    }
 }

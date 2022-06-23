@@ -173,7 +173,7 @@ namespace sort_practice {
     }
 
     int MySort::find_kth_larger_recursion(vector<int> &nums, int left, int right, int k) {
-        if (left >= right) {
+        if (left > right) {
             return INTMAX_MIN;
         }
         int pivot = find_kth_larger_partition(nums, left, right);
@@ -205,7 +205,7 @@ namespace sort_practice {
 
     void MySort::test_kth_larger() {
         vector<int> nums = {2, 8, 4, 1, 3, 5, 6, 6, 11, 3, 9, 8};
-        int k = 5;
+        int k = 7;
         cout << "nums: ";
         for (auto num: nums) {
             cout << num << ", ";
