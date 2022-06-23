@@ -199,4 +199,50 @@ public class MySort {
             }
         }
     }
+
+    /**
+     * Time complexity: O(n*logn)
+     * Spatial complexity: O(n)
+     * Stable
+     *
+     * @param nums
+     */
+    public static void mergeSort(int[] nums) {
+        if (nums == null || nums.length <= 1) {
+            return;
+        }
+        mergeSortRecursive(nums, 0, nums.length - 1);
+    }
+
+    private static void mergeSortRecursive(int[] nums, int start, int end) {
+        if (start >= end) {
+            return;
+        }
+        // divide and continue
+        int mid = start + ((end - start) >> 1);
+        mergeSortRecursive(nums, start, mid);
+        mergeSortRecursive(nums, mid + 1, end);
+        // merge left and right part
+        int[] temp = new int[end - start + 1];
+        int count = 0;
+        int i = start, j = mid + 1;
+        while (i <= mid && j <= end) {
+            if (nums[i] < nums[j]) {
+                temp[count++] = nums[i++];
+            } else {
+                temp[count++] = nums[j++];
+            }
+        }
+        while (i <= mid) {
+            temp[count++] = nums[i++];
+        }
+        while (j <= end) {
+            temp[count++] = nums[j++];
+        }
+        // copy data back
+        count = 0;
+        for (int k = start; k <= end; k++) {
+            nums[k] = temp[count++];
+        }
+    }
 }
