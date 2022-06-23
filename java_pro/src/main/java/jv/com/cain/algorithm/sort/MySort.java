@@ -118,13 +118,14 @@ public class MySort {
      * @param nums
      */
     public static void bubbleSort(int[] nums) {
-        if (nums == null || nums.length == 0) {
+        if (nums == null || nums.length <= 1) {
             return;
         }
         int len = nums.length;
         boolean exchange;
         for (int i = 0; i < len; i++) {
             exchange = false;
+            // find correct place for every element
             for (int j = 0; j < len - i - 1; j++) {
                 // do not exchange for stability when equal
                 if (nums[j] > nums[j + 1]) {
@@ -138,6 +139,36 @@ public class MySort {
             if (!exchange) {
                 break;
             }
+        }
+    }
+
+    /**
+     * Time complexity: O(n^2)
+     * Spatial complexity: O(1)
+     * Stable
+     *
+     * @param nums
+     */
+    public static void insertSort(int[] nums) {
+        if (nums == null || nums.length <= 1) {
+            return;
+        }
+        int len = nums.length;
+        for (int i = 1; i < len; i++) {
+            int num = nums[i];
+            int j = i - 1;
+            // find and move from back to front
+            while (j >= 0) {
+                // find suitable place that is first smaller num
+                if (nums[j] < num) {
+                    break;
+                }
+                // move element to back
+                nums[j + 1] = nums[j];
+                j--;
+            }
+            // insert element
+            nums[j + 1] = num;
         }
     }
 }

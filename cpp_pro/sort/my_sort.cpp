@@ -16,7 +16,7 @@ namespace sort_practice {
         if (nums.empty()) return;
         int size = nums.size();
         // ascending
-        for (int i = 0; i < nums.size(); ++i) {
+        for (int i = 0; i < size; ++i) {
             bool flag = false;
             for (int j = 0; j < size - i - 1; ++j) {
                 if (nums[j] > nums[j + 1]) {
@@ -43,7 +43,7 @@ namespace sort_practice {
             // compare each other from back to front
             while (j >= 0) {
                 // find target place
-                if (nums[j] <= value) {
+                if (nums[j] < value) {
                     break;
                 }
                 // move element to back
