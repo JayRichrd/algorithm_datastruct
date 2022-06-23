@@ -171,4 +171,32 @@ public class MySort {
             nums[j + 1] = num;
         }
     }
+
+    /**
+     * Time complexity: O(n^2)
+     * Spatial complexity: O(1)
+     * Unstable
+     *
+     * @param nums
+     */
+    public static void selectSort(int[] nums) {
+        if (nums == null || nums.length <= 1) {
+            return;
+        }
+        int len = nums.length;
+        int minIndex;
+        for (int i = 0; i < len; i++) {
+            minIndex = i;
+            for (int j = i + 1; j < len; j++) {
+                if (nums[j] < nums[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            if (minIndex != i) {
+                int temp = nums[i];
+                nums[i] = nums[minIndex];
+                nums[minIndex] = temp;
+            }
+        }
+    }
 }
