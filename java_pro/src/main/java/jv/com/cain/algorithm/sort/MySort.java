@@ -109,4 +109,35 @@ public class MySort {
         int[] nums = {7, 5, 6, 4};
         System.out.println("num of revers pair: " + subject51ReversePairs(nums));
     }
+
+    /**
+     * Time complexity: O(n^2)
+     * Spatial complexity: O(1)
+     * Stable
+     *
+     * @param nums
+     */
+    public static void bubbleSort(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return;
+        }
+        int len = nums.length;
+        boolean exchange;
+        for (int i = 0; i < len; i++) {
+            exchange = false;
+            for (int j = 0; j < len - i - 1; j++) {
+                // do not exchange for stability when equal
+                if (nums[j] > nums[j + 1]) {
+                    exchange = true;
+                    int temp = nums[j];
+                    nums[j] = nums[j + 1];
+                    nums[j + 1] = temp;
+                }
+            }
+            // if no exchange, it is sorted, finish immediately
+            if (!exchange) {
+                break;
+            }
+        }
+    }
 }
