@@ -245,4 +245,49 @@ public class MySort {
             nums[k] = temp[count++];
         }
     }
+
+    /**
+     * Time complexity: O(n*logn)
+     * Spatial complexity: O(1)
+     * Unstable
+     *
+     * @param nums
+     */
+    public static void quickSort(int[] nums) {
+        if (nums == null || nums.length <= 1) {
+            return;
+        }
+        quickSortRecursive(nums, 0, nums.length - 1);
+    }
+
+    private static void quickSortRecursive(int[] nums, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+        // divide array into two part, and find pivot index
+        int pivotIndex = quickSortPartition(nums, left, right);
+        quickSortRecursive(nums, left, pivotIndex - 1);
+        quickSortRecursive(nums, pivotIndex + 1, right);
+    }
+
+    private static int quickSortPartition(int[] nums, int left, int right) {
+        // use the last element pivot
+        int pivotNum = nums[right];
+        // i,j default value is left
+        int i = left;
+        for (int j = i; j < right; j++) {
+            // find one target num, exchange, i++
+            if (nums[j] < pivotNum) {
+                int temp = nums[j];
+                nums[j] = nums[i];
+                nums[i] = temp;
+                i++;
+            }
+        }
+        // do not forget exchange the last pivot num to i index place
+        int temp = nums[i];
+        nums[i] = pivotNum;
+        nums[right] = temp;
+        return i;
+    }
 }

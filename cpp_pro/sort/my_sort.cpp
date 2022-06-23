@@ -132,7 +132,7 @@ namespace sort_practice {
     int MySort::quick_sort_partition(vector<int> &nums, int left, int right) {
         // use the last element as pivot
         int pivot = nums[right];
-        // i indicate the next place to insert
+        // i indicate the next place to exchange
         int i = left;
         for (int j = i; j < right; j++) {
             // find the element that is less than the pivot
