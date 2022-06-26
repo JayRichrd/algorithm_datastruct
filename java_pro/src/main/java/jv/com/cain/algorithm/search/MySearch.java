@@ -121,4 +121,83 @@ public class MySearch {
         int target = 7;
         System.out.println("num of " + target + ": " + subject53numOfTarget(nums, target));
     }
+
+    /**
+     * common binary search
+     * Time complexity: O(logn)
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static int commonBinarySearch(int[] nums, int target) {
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
+        int low = 0, high = nums.length - 1;
+        while (low <= high) {
+            int mid = low + ((high - low) >> 1);
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] < target) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * find first num that equals to target using binary search
+     * Time complexity: O(logn)
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static int firstNumBinarySearch(int[] nums, int target) {
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
+        int low = 0, high = nums.length - 1;
+        while (low <= high) {
+            int mid = low + ((high - low) >> 1);
+            if (nums[mid] < target) {
+                low = mid + 1;
+            } else if (nums[mid] == target) {
+                if (mid == 0 || nums[mid - 1] != target) return mid;
+                high = mid - 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * find first num that is bigger the target using binary search
+     * Time complexity: O(logn)
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static int firstBigNumBinarySearch(int[] nums, int target) {
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
+
+        int low = 0, high = nums.length - 1;
+        while (low <= high) {
+            int mid = low + ((high - low) >> 1);
+            if (nums[mid] < target) {
+                low = mid + 1;
+            } else {
+                if (mid == 0 || nums[mid - 1] < target) return mid;
+                high = mid - 1;
+            }
+        }
+        return -1;
+    }
 }
