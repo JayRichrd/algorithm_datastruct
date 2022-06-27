@@ -39,6 +39,22 @@ CMyString &CMyString::operator=(const CMyString &other/*①*/) {
 
 **源码：**/cpp_pro/override_operator_assign
 
+# subject 03-数组中的重复数字
+
+**核心思想**
+
+- 使用Set集合，如果有重复，则调用add()方法添加元素范围false:
+
+```java
+for (int num : nums) {
+    if (!set.add(num)) {
+        return num;
+    }
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.array/ArrayPractice/ subject3RepeatNum()
+
 # subject 04-二维数组查找
 
 **核心思想：**

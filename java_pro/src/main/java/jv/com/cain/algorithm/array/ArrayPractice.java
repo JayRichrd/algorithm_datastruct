@@ -1,8 +1,6 @@
 package jv.com.cain.algorithm.array;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @SuppressWarnings("JavaDoc")
 public class ArrayPractice {
@@ -354,5 +352,26 @@ public class ArrayPractice {
         int[] nums = {2, 7, 11, 15};
         int target = 9;
         System.out.println("sum = " + target + ": " + subject57TwoSum(nums, target));
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/solution/mian-shi-ti-03-shu-zu-zhong-zhong-fu-de-shu-zi-b-4/
+     * Time complexity: O(n)
+     * Spatial complexity: O(n)
+     *
+     * @param nums
+     * @return
+     */
+    public static int subject3RepeatNum(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
+        Set<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            if (!set.add(num)) {
+                return num;
+            }
+        }
+        return -1;
     }
 }
