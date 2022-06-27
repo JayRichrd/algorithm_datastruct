@@ -143,9 +143,20 @@ ps:栈和递归之间有着密切联系
 - 前序遍历根节点后面先是左子树，再是右子树。
 - 找到左右子树后又回到问题本身重建二叉树。
 
+```java
+// 在中序遍历中找到根节点
+int rootIndexInOder = treeNodeIndex.get(preOrder[preLeft]);
+// 计算左子树长度
+int leftSubSize = rootIndexInOder - inLeft;
+TreeNode root = new TreeNode(preOrder[preLeft]);
+// 根据左子树长度递归
+root.left = buildBinaryTreeRecursive(preOrder, preLeft + 1, preLeft + leftSubSize, inOrder, inLeft, rootIndexInOder - 1);
+root.right = buildBinaryTreeRecursive(preOrder, preLeft + leftSubSize + 1, preRight, inOrder, rootIndexInOder + 1, inRight);
+```
+
 > ps:可以从中序遍历+前序/后序遍历重建出唯一的一颗树
 
-**源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ buildBinaryTree()
+**源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject7BuildBinaryTree()
 
 # subject 09-用两个栈实现队列
 

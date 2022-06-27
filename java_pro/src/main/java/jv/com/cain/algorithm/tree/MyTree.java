@@ -26,7 +26,7 @@ public class MyTree {
      * @param inOrder
      * @return return root node of tree
      */
-    public static TreeNode buildBinaryTree(int[] preOrder, int[] inOrder) {
+    public static TreeNode subject7BuildBinaryTree(int[] preOrder, int[] inOrder) {
         int length = inOrder.length;
         if (length == 0) {
             return null;
