@@ -49,6 +49,7 @@ public class MyString {
     public static void testSubject4ReplaceSpace() {
         String str = "we are happy.";
         System.out.println("replaced str: " + subject4ReplaceSpace(str));
+        System.out.println("replaced str with replaceAppApi: " + str.replaceAll(" ", "%20"));
     }
 
     /**
