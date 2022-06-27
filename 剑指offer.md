@@ -89,7 +89,22 @@ while (row >= 0 && column < columns) {
 - 从空格变成%20，字符串容量扩大了3倍，所以初始就分配一个3倍原字符串长度的空间
 - 从头开始遍历原始字符串，并将内容拷贝到新分配的空间中，同时将空格替换成%20.
 
+```java
+for (int i = 0; i < length; i++) {
+    char c = str.charAt(i);
+    if (c == ' ') {
+        strArray[capacity++] = '%';
+        strArray[capacity++] = '2';
+        strArray[capacity++] = '0';
+    } else {
+        strArray[capacity++] = c;
+    }
+}
+```
+
 **源码：**/java_pro/jv.com.cain.algorithm.string/MyString/ subject4ReplaceSpace()
+
+String提供的replaceAll()方法也可以实现
 
 # subject 06-从尾到头打印链表
 
