@@ -90,6 +90,9 @@ while (row >= 0 && column < columns) {
 - 从头开始遍历原始字符串，并将内容拷贝到新分配的空间中，同时将空格替换成%20.
 
 ```java
+int length = str.length();
+char[] strArray = new char[length * 3];
+int capacity = 0;
 for (int i = 0; i < length; i++) {
     char c = str.charAt(i);
     if (c == ' ') {
@@ -102,7 +105,7 @@ for (int i = 0; i < length; i++) {
 }
 ```
 
-**源码：**/java_pro/jv.com.cain.algorithm.string/MyString/ subject4ReplaceSpace()
+**源码：**/java_pro/jv.com.cain.algorithm.string/MyString/ subject5ReplaceSpace()
 
 String提供的replaceAll()方法也可以实现
 

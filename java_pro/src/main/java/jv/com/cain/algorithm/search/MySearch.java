@@ -21,7 +21,7 @@ public class MySearch {
      * @param num
      * @return
      */
-    public static boolean subject3Find(int[][] matrix, int num) {
+    public static boolean subject4Find(int[][] matrix, int num) {
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
             return false;
         }
@@ -44,7 +44,7 @@ public class MySearch {
     public static void testSubject3Find() {
         int[][] matrix = new int[][]{{1, 2, 8, 9}, {2, 4, 9, 12}, {4, 7, 10, 13}, {6, 8, 11, 15}};
         int number = 20;
-        System.out.println(number + " exist in matrix: " + subject3Find(matrix, number));
+        System.out.println(number + " exist in matrix: " + subject4Find(matrix, number));
     }
 
     /**

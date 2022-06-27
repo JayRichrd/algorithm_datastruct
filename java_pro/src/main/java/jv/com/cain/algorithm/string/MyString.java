@@ -26,7 +26,7 @@ public class MyString {
      * @param str
      * @return
      */
-    public static String subject4ReplaceSpace(String str) {
+    public static String subject5ReplaceSpace(String str) {
         if (str.isEmpty()) {
             return str;
         }
@@ -48,7 +48,7 @@ public class MyString {
 
     public static void testSubject4ReplaceSpace() {
         String str = "we are happy.";
-        System.out.println("replaced str: " + subject4ReplaceSpace(str));
+        System.out.println("replaced str: " + subject5ReplaceSpace(str));
         System.out.println("replaced str with replaceAppApi: " + str.replaceAll(" ", "%20"));
     }
 
