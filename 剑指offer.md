@@ -80,7 +80,7 @@ while (row >= 0 && column < columns) {
 
 取左下角，可以理解为从上到下从左边到右连接起来的话，左下角正好是二分查找的中间点。这样每次比较都能移动一行或者一列。而取左上角或者右下角则不行。
 
-**源码：**/java_pro/jv.com.cain.algorithm.search/MySearch/ subject3Find()
+**源码：**/java_pro/jv.com.cain.algorithm.search/MySearch/ subject4Find()
 
 # subject 05-替换字符串
 
@@ -115,9 +115,25 @@ String提供的replaceAll()方法也可以实现
 
 - 栈思想或者递归思想
 
+```java
+// 入栈
+while (temp != null) {
+    stk.push(temp);
+    temp = temp.next;
+}
+
+// 倒序出栈
+while (!stk.isEmpty()) {
+    Node node = stk.pop();
+    if (node != null) {
+        System.out.print(node.data + ", ");
+    }
+}
+```
+
 ps:栈和递归之间有着密切联系
 
-**源码：**/java_pro/jv.com.cain.algorithm.linked_list/MyLinkedList/ subject5PrintRevertLinkedList() subject5PrintRevertLinkedListByRecursion()
+**源码：**/java_pro/jv.com.cain.algorithm.linked_list/MyLinkedList/ subject6PrintRevertLinkedList() subject6PrintRevertLinkedListByRecursion()
 
 # subject 07-重建二叉树
 

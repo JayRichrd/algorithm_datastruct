@@ -1,6 +1,7 @@
 package jv.com.cain.algorithm.linked_list;
 
-import java.util.Stack;
+import java.util.Deque;
+import java.util.LinkedList;
 
 @SuppressWarnings({"JavaDoc", "unused"})
 public class MyLinkedList {
@@ -63,28 +64,28 @@ public class MyLinkedList {
      *
      * @param head
      */
-    public static void subject5PrintRevertLinkedList(Node head) {
-        Stack<Node> stk = new Stack<>();
+    public static void subject6PrintRevertLinkedList(Node head) {
+        Deque<Node> stk = new LinkedList<>();
         Node temp = head;
         while (temp != null) {
             stk.push(temp);
-            temp = temp.getNext();
+            temp = temp.next;
         }
 
-        do {
-            Node top = stk.pop();
-            if (top != null) {
-                System.out.print(top.getData() + ", ");
+        while (!stk.isEmpty()) {
+            Node node = stk.pop();
+            if (node != null) {
+                System.out.print(node.data + ", ");
             }
-        } while (!stk.isEmpty());
+        }
     }
 
-    public static void subject5PrintRevertLinkedListByRecursion(Node head) {
+    public static void subject6PrintRevertLinkedListByRecursion(Node head) {
         if (head != null) {
-            if (head.getNext() != null) {
-                subject5PrintRevertLinkedListByRecursion(head.getNext());
+            if (head.next != null) {
+                subject6PrintRevertLinkedListByRecursion(head.next);
             }
-            System.out.print(head.getData() + ", ");
+            System.out.print(head.data + ", ");
         }
     }
 
@@ -94,9 +95,9 @@ public class MyLinkedList {
         Node node3 = new Node(3, node4);
         Node node2 = new Node(2, node3);
         Node node1 = new Node(1, node2);
-        subject5PrintRevertLinkedList(node1);
+        subject6PrintRevertLinkedList(node1);
         System.out.println();
-        subject5PrintRevertLinkedListByRecursion(node1);
+        subject6PrintRevertLinkedListByRecursion(node1);
         System.out.println();
     }
 
