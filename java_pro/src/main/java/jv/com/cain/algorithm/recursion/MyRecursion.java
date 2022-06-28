@@ -25,7 +25,7 @@ public class MyRecursion {
     }
 
     public static int fibonacciSequenceByIteration(int n) {
-        if(n <= 0){
+        if (n <= 0) {
             return 0;
         }
         if (n <= 2) {
@@ -47,6 +47,31 @@ public class MyRecursion {
         int n = 10;
         System.out.println("f(" + n + ") = " + fibonacciSequenceByRecursive(n));
         System.out.println("f(" + n + ") = " + fibonacciSequenceByIteration(n));
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/qing-wa-tiao-tai-jie-wen-ti-lcof/solution/mian-shi-ti-10-ii-qing-wa-tiao-tai-jie-wen-ti-dong/
+     * Time complexity: O(n)
+     * Spatial complexity: O(1)
+     *
+     * @param n
+     * @return
+     */
+    public static int subject10UpStairs(int n) {
+        if (n < 0) {
+            return 0;
+        }
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+        int fn1 = 1, fn2 = 1;
+        int fn = fn1 + fn2;
+        for (int i = 2; i <= n; i++) {
+            fn = fn1 + fn2;
+            fn2 = fn1;
+            fn1 = fn;
+        }
+        return fn;
     }
 
     /**

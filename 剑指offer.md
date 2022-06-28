@@ -201,7 +201,28 @@ for (int i = 3; i <= n; i++) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.recursion/MyRecursion/ fibonacciSequenceByRecursive()
 
-# Subject 11-旋转数组的最小数字
+# subject 10-II-青蛙跳台阶问题
+
+**迭代核心思想**
+
+注意f(0)  = 1的情况：
+
+```java
+if (n == 0 || n == 1) {
+    return 1;
+}
+int fn1 = 1, fn2 = 1;
+int fn = fn1 + fn2;
+for (int i = 2; i <= n; i++) {
+    fn = fn1 + fn2;
+    fn2 = fn1;
+    fn1 = fn;
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.recursion/MyRecursion/ subject10UpStairs()
+
+# subject 11-旋转数组的最小数字
 
 **核心思想：**
 
