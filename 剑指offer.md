@@ -228,14 +228,17 @@ for (int i = 2; i <= n; i++) {
 
 - 二分法
 - 将中间元素始终与high位置的元素比较，只可能存在三种情况：大于、小于、等于。
-- 对于大于和等于比较好判定pivot位于前半部分还是后半部分，从而相应地忽略左边或者右边。当pivot<high时，要注意high的下一次取值为high = pivot，而不是pivot -1。这是由于这里求的是最小值，在pivot<high的情况下pivot有可能就是那个最小值，如果将pivot -1 赋值给high则会错误最小值。而对于pivot > high的情况，pivot肯定不是最小值，所以下一次low = pivot + 1。
+- 始终保持分界点(最小值)在区间内，夹逼准则直达low=high
+- 对于大于和小于比较好判定pivot位于前半部分还是后半部分，从而相应地忽略左边或者右边。当pivot<high时，要注意high的下一次取值为high = pivot，而不是pivot -1。这是由于这里求的是最小值，在pivot<high的情况下pivot有可能就是那个最小值，如果将pivot -1 赋值给high则会错过最小值。而对于pivot > high的情况，pivot肯定不是最小值，所以下一次low = pivot + 1。
 
 ```java
 // can not assign high = pivot -1 to void the min
 if (numbers[pivot] < numbers[high]) {
-    high = pivot;
+  // pivot 可能就是最小值，所以此处high = pivot。如果是求最大值，则此处high = pivot -1  
+  high = pivot;
 } else if (numbers[pivot] > numbers[high]) {
-    low = pivot + 1;
+  // 因为是求最小值，所以此处pivot一定不是，那此处low = pivot。如果是求最大值，则此处low = pivot  
+  low = pivot + 1;
 }else {
     high --;
 }
@@ -243,7 +246,22 @@ if (numbers[pivot] < numbers[high]) {
 
 - 对于等于的情况，pivot位于前半部分和后半部分都有可能，但此时同样可以将high--来缩小范围。
 
-**源码：**/java_pro/jv.com.cain.algorithm.search/MySearch/ subject8MinArray()
+**源码：**/java_pro/jv.com.cain.algorithm.search/MySearch/ subject11MinArray()
+
+Ps：同样可以使用二分夹逼准则求最大值
+
+```java
+// can not assign high = pivot -1 to void the min
+if (numbers[pivot] < numbers[high]) {
+  // 求最大值，则此处high = pivot -1  
+  high = pivot - 1;
+} else if (numbers[pivot] > numbers[high]) {
+  // 求最大值，则此处low = pivot  
+  low = pivot;
+}else {
+    high --;
+}
+```
 
 # subject 15-二进制中1的个数
 

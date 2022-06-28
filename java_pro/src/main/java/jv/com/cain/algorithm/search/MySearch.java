@@ -6,8 +6,8 @@ public class MySearch {
         System.out.println("==========test Subject3 Find==========");
         testSubject3Find();
         System.out.println();
-        System.out.println("==========test Subject8 MinArray==========");
-        testSubject8MinArray();
+        System.out.println("==========test Subject11 MinArray==========");
+        testSubject11MinArray();
         System.out.println("==========test Subject53 numOfTarget==========");
         testSubject53numOfTarget();
     }
@@ -55,29 +55,31 @@ public class MySearch {
      * @param numbers
      * @return
      */
-    public static int subject8MinArray(int[] numbers) {
+    public static int subject11MinArray(int[] numbers) {
         int low = 0;
         int high = numbers.length - 1;
+        // when low = high break
         while (low < high) {
             int pivot = low + ((high - low) >> 1);
             // can not assign high = pivot -1 to void the min
             if (numbers[pivot] < numbers[high]) {
                 high = pivot;
             } else if (numbers[pivot] > numbers[high]) {
-                low = pivot + 1;
+                low = pivot +1;
             } else {
                 high--;
             }
         }
+        // low = high
         return numbers[low];
     }
 
-    public static void testSubject8MinArray() {
+    public static void testSubject11MinArray() {
         int[] numbers1 = {3, 4, 5, 1, 2};
-        int min = subject8MinArray(numbers1);
+        int min = subject11MinArray(numbers1);
         System.out.println("min = " + min);
         int[] numbers2 = {1, 0, 1, 1, 1};
-        min = subject8MinArray(numbers2);
+        min = subject11MinArray(numbers2);
         System.out.println("min = " + min);
     }
 
