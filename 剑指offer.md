@@ -162,8 +162,8 @@ root.right = buildBinaryTreeRecursive(preOrder, preLeft + leftSubSize + 1, preRi
 
 **核心思想：**
 
-- 用一个栈inStack，每次入队列都压栈进入；
-- 用一个栈outStack，每次出队都从当中弹出，如果没有就将inStack的全部元素“倒”到outStack中来：
+- 用一个栈inStack，每次入队列都压栈到inStack中；
+- 用一个栈outStack，每次出队都从中出栈，如果没有就将inStack的==全部元素==“倒”入outStack中：
 
 ```java
 if (outStack.isEmpty()) {
@@ -182,7 +182,7 @@ if (outStack.isEmpty()) {
 
 **核心思想：**
 
-- 在迭代方法中，注意fn1和fn2的赋值顺序，需要先将fn1的值赋值给fn2，再将fn的值赋值给fn1
+- 在迭代方法中，注意fn1和fn2的赋值顺序，先将fn1的值赋值给fn2，再将fn的值赋值给fn1
 
 ```java
 // 正确示例

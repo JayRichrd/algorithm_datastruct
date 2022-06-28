@@ -15,6 +15,9 @@ public class MyRecursion {
      * refe: https://leetcode.cn/problems/fei-bo-na-qi-shu-lie-lcof/
      */
     public static int fibonacciSequenceByRecursive(int n) {
+        if (n <= 0) {
+            return 0;
+        }
         if (n <= 2) {
             return 1;
         }
@@ -22,6 +25,9 @@ public class MyRecursion {
     }
 
     public static int fibonacciSequenceByIteration(int n) {
+        if(n <= 0){
+            return 0;
+        }
         if (n <= 2) {
             return 1;
         }
