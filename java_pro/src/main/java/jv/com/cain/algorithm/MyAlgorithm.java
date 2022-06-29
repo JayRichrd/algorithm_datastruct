@@ -310,4 +310,34 @@ public class MyAlgorithm {
         }
         return res;
     }
+
+    /**
+     * refe: https://leetcode.cn/problems/jian-sheng-zi-lcof/solution/mian-shi-ti-14-i-jian-sheng-zi-tan-xin-si-xiang-by/ method1
+     * Time complexity: O(1)
+     * Spatial complexity: O(1)
+     *
+     * @param n
+     * @return
+     */
+    public static int subject14CuttingRope(int n) {
+        if (n <= 0) {
+            return 0;
+        }
+        if (n == 1) {
+            return 1;
+        }
+        if (n <= 3) {
+            return n - 1;
+        }
+        // n = a*3 + b
+        int a = n / 3;
+        int b = n % 3;
+        if (b == 0) {
+            return (int) Math.pow(3, a);
+        }
+        if (b == 1) {
+            return (int) (Math.pow(3, a - 1) * 2 * 2);
+        }
+        return (int) (Math.pow(3, a) * 2);
+    }
 }
