@@ -371,7 +371,7 @@ while (n != 0) {
 }
 ```
 
-**源码：**/java_pro/jv.com.cain.algorithm.bit/BitOperation/ subject9HammingWeight1()
+**源码：**/java_pro/jv.com.cain.algorithm.bit/BitOperation/ subject15HammingWeight1()
 
 # subject 16-数值的整数次方
 
@@ -392,7 +392,7 @@ return y % 2 == 0 ? result * result : result * result * x;
 return y > 0 ? quickPowByRecursion(x, y) : 1 / quickPowByRecursion(x, -y);
 ```
 
-**源码：**/java_pro/jv.com.cain.algorithm.recursion/MyRecursion/ subject11MyPow()
+**源码：**/java_pro/jv.com.cain.algorithm.recursion/MyRecursion/ subject16MyPow()
 
 # subject 17-打印1到最大的n位数
 

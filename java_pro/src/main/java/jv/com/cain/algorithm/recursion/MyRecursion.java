@@ -6,7 +6,7 @@ public class MyRecursion {
         System.out.println("==========test fibonacci Sequence==========");
         testFibonacciSequence();
         System.out.println("==========test subject11 MyPow==========");
-        testSubject11MyPow();
+        testSubject16MyPow();
         System.out.println("==========test subject17 Print1ToMaxOfNDigits==========");
         testSubject17Print1ToMaxOfNDigits();
     }
@@ -79,7 +79,7 @@ public class MyRecursion {
      * Time complexity: O(logn)
      * Spatial complexity: O(logn)
      */
-    public static double subject11MyPow(double x, long y) {
+    public static double subject16MyPow(double x, long y) {
         if (x == 0) {
             return 0;
         }
@@ -94,10 +94,10 @@ public class MyRecursion {
         return y % 2 == 0 ? result * result : result * result * x;
     }
 
-    public static void testSubject11MyPow() {
+    public static void testSubject16MyPow() {
         long x = 2;
         int y = 5;
-        System.out.println("pow(" + 2 + "," + y + ") = " + subject11MyPow(x, y));
+        System.out.println("pow(" + 2 + "," + y + ") = " + subject16MyPow(x, y));
     }
 
     /**
