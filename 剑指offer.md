@@ -271,6 +271,52 @@ if (numbers[pivot] < numbers[high]) {
 
 **源码：**
 
+# subject 13-机器人的运动范围
+
+**广度优先遍历思想**
+
+首先需要明确位数之和的计算，就是把某一个数的每一位上的数字相加：依次对10取余并处以10，直到为0。
+
+```java
+private static int get(int x) {
+    int res = 0;
+    while (x != 0) {
+        res += x % 10;
+        x /= 10;
+    }
+    return res;
+}
+```
+
+通过举例，发现从左上角开始，位数之和向右下角依次增大，且每次增大的范围都是“一层”，就是已知区域的外层分别向右和向下而来。这个就是典型的广度优先遍历。
+
+因此使用广度优先遍历队列，和是否访问数组来标记，从左上角依次向右和向下扩散。
+
+每次得到新的坐标元素，需要进行判定。
+
+```java
+while (!queue.isEmpty()) {
+    int[] cell = queue.poll();
+    // to right and down
+    for (int i = 0; i < 2; i++) {
+        int nextX = cell[0] + dx[i];
+        int nextY = cell[1] + dy[i];
+        // check next element is ok
+        if (nextX < 0 || nextX >= n || nextY < 0 || nextY >= m || visited[nextX][nextY] || (get(nextX) + get(nextY) > k)) {
+            continue;
+        }
+        queue.offer(new int[]{nextX, nextY});
+        result++;
+    }
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject13MovingCount()
+
+Ps：注意Leetcode结题思路中，大于10的区域好像也满足。其实不然，因为机器人只能一步一步往外扩散，一旦遇到外围不满足条件，是无法跳跃过“墙”的，不可能一下跳到[10,0]的位置:
+
+![image-20220629164447908](https://picgo-1256537295.cos.ap-guangzhou.myqcloud.com/pictures/202206291644878.png)
+
 # subject 15-二进制中1的个数
 
 **核心思想：**

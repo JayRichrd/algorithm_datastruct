@@ -2,7 +2,7 @@ package jv.com.cain.algorithm;
 
 import java.util.*;
 
-@SuppressWarnings("JavaDoc")
+@SuppressWarnings({"JavaDoc", "SuspiciousNameCombination"})
 public class MyAlgorithm {
     public static void main(String[] args) {
         System.out.println("==========test Subject43 CuntDigitOne==========");
@@ -245,5 +245,68 @@ public class MyAlgorithm {
     public static void testSubject65Add() {
         int a = 3, b = -5;
         System.out.println(a + " + " + b + " = " + subject65Add(a, b));
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/ji-qi-ren-de-yun-dong-fan-wei-lcof/solution/ji-qi-ren-de-yun-dong-fan-wei-by-leetcode-solution/ method1
+     * Time complexity: O(m*n)
+     * Spatial complexity: O(m*n)
+     *
+     * @param m
+     * @param n
+     * @param k
+     * @return
+     */
+    public static int subject13MovingCount(int m, int n, int k) {
+        if (m <= 0 || n <= 0 || k < 0) {
+            return 0;
+        }
+        if (k == 0) {
+            return 1;
+        }
+
+        // bride visit que, every element is an matrix node[x,y]
+        Queue<int[]> queue = new LinkedList<>();
+        // some element[x,y] is visited
+        boolean[][] visited = new boolean[m][n];
+        // to right[0,1] and down[1,0]
+        int[] dx = {0, 1};
+        int[] dy = {1, 0};
+
+        // offer the first element[0,0]
+        queue.offer(new int[]{0, 0});
+        visited[0][0] = true;
+        int result = 1;
+
+        while (!queue.isEmpty()) {
+            int[] cell = queue.poll();
+            // to right and down
+            for (int i = 0; i < 2; i++) {
+                int nextX = cell[0] + dx[i];
+                int nextY = cell[1] + dy[i];
+                // check next element is ok
+                if (nextX < 0 || nextX >= n || nextY < 0 || nextY >= m || visited[nextX][nextY] || (get(nextX) + get(nextY) > k)) {
+                    continue;
+                }
+                queue.offer(new int[]{nextX, nextY});
+                result++;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * get sum of every digit
+     *
+     * @param x
+     * @return
+     */
+    private static int get(int x) {
+        int res = 0;
+        while (x != 0) {
+            res += x % 10;
+            x /= 10;
+        }
+        return res;
     }
 }
