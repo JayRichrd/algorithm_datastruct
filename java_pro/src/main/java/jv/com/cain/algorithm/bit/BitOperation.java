@@ -12,7 +12,7 @@ public class BitOperation {
      * @param n
      * @return
      */
-    public static int subject9HammingWeight1(int n) {
+    public static int subject15HammingWeight1(int n) {
         int result = 0;
         for (int i = 0; i < 32; i++) {
             if ((n & (1 << i)) != 0) {
@@ -28,19 +28,19 @@ public class BitOperation {
      * @param n
      * @return
      */
-    public static int subject9HammingWeight2(int n) {
+    public static int subject15HammingWeight2(int n) {
         int result = 0;
         while (n != 0) {
-            n = n & (n - 1);
             result++;
+            n = n & (n - 1);
         }
         return result;
     }
 
     public static void testSubject9HammingWeight(){
         int n = 6;
-        System.out.println("num of 1 = " + subject9HammingWeight1(n));
-        System.out.println("num of 1 = " + subject9HammingWeight2(n));
+        System.out.println("num of 1 = " + subject15HammingWeight1(n));
+        System.out.println("num of 1 = " + subject15HammingWeight2(n));
     }
 }
 
