@@ -289,6 +289,7 @@ public class MyAlgorithm {
                     continue;
                 }
                 queue.offer(new int[]{nextX, nextY});
+                visited[nextX][nextY] = true;
                 result++;
             }
         }
