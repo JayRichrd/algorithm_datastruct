@@ -420,13 +420,15 @@ for (int number : numbers) {
 **核心思想：**
 
 - 这里的待删节点是完整的节点，既有数值，也有next域；
-- 常规的删除是通过操作待删节点的前一个节点，这里的思路是使用待删节点的下一个节点直接覆盖上去，也能达到删除节点的目的；
+- 常规的删除是通过操作待删节点的前一个节点，这里的思路是使用待删节点的下一个节点直接覆盖上去，也能达到删除节点的目的；因为只能从当前节点往后操作，之前的节点没法操作。
 
 ```java
 if (node.next != null) {
+  	// 将待删节点的下一个节点覆盖待删节点
     Node nextNode = node.next;
     node.data = nextNode.data;
     node.next = nextNode.next;
+  	// 释放(删除)待删节点的下一个节点
     nextNode.next = null;
 }
 ```

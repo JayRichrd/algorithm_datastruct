@@ -111,16 +111,19 @@ public class MyLinkedList {
         if (head == null || node == null) {
             return;
         }
-        if (node.next != null) {
+        if (node.next != null) {// node is not last node
             Node nextNode = node.next;
+
             node.data = nextNode.data;
             node.next = nextNode.next;
+
             nextNode.next = null;
-        } else if (node == head) {
+            nextNode = null;
+        } else if (node == head) {// node and head is last node
             // c++
-            node.next = null;
-            head.next = null;
-        } else {
+            node = null;
+            head = null;
+        } else {// node is last node
             Node preNode = head;
             while (preNode.next != node) {
                 preNode = preNode.next;
