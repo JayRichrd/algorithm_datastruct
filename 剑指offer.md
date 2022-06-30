@@ -444,6 +444,17 @@ if (node.next != null) {
 - 一前一后双指针，保证奇数在前，偶数在后；
 - 前后指针往中间靠拢
 
+```java
+while (start < end) {
+    while (start < end && nums[start] % 2 == 1) start++;
+    while (start < end && nums[end] % 2 == 0) end--;
+    // exchange
+    int temp = nums[start];
+    nums[start] = nums[end];
+    nums[end] = temp;
+}
+```
+
 **源码：**/java_pro/jv.com.cain.algorithm.array/ArrayPractice/ subject21Exchange()
 
 # subject 22-链表中倒数第k个结点

@@ -171,7 +171,7 @@ public class ArrayPractice {
      * @param nums
      */
     public static void subject21Exchange(int[] nums) {
-        if (nums == null) {
+        if (nums == null || nums.length == 0) {
             return;
         }
         int len = nums.length;
@@ -179,6 +179,7 @@ public class ArrayPractice {
         while (start < end) {
             while (start < end && nums[start] % 2 == 1) start++;
             while (start < end && nums[end] % 2 == 0) end--;
+            // exchange
             int temp = nums[start];
             nums[start] = nums[end];
             nums[end] = temp;
