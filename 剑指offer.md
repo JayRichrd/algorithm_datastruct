@@ -398,16 +398,16 @@ return y > 0 ? quickPowByRecursion(x, y) : 1 / quickPowByRecursion(x, -y);
 
 **递归核心思想：**
 
-- 从高位到低位，每一位做全排列，每位上的数字取值：0~9；
+- 从高位到低位，每一位做==全排列==，每位上的数字取值：0~9；
 - 在打印时候，数字之前的无效的0可以不必输出：
 
 ```java
 for (int number : numbers) {
     // 0 before valid number should not be printed
-    if (number != 0 && !flag) {
-        flag = true;
+    if (number != 0 && !startedPrint) {
+        startedPrint = true;
     }
-    if (flag) {
+    if (startedPrint) {
         System.out.print(number);
     }
 }

@@ -137,17 +137,17 @@ public class MyRecursion {
     }
 
     private static void printNum(int[] numbers) {
-        boolean flag = false;
+        boolean startedPrint = false;
         for (int number : numbers) {
             // 0 before valid number should not be printed
-            if (number != 0 && !flag) {
-                flag = true;
+            if (number != 0 && !startedPrint) {
+                startedPrint = true;
             }
-            if (flag) {
+            if (startedPrint) {
                 System.out.print(number);
             }
         }
-        if (flag) {
+        if (startedPrint) {
             System.out.print(", ");
         }
     }
