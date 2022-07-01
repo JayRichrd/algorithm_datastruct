@@ -222,6 +222,7 @@ public class MyLinkedList {
         // temp head node
         Node head = new Node();
         Node cur = head;
+
         while (head1 != null && head2 != null) {
             if (head1.data < head2.data) {
                 cur.next = head1;
@@ -232,7 +233,9 @@ public class MyLinkedList {
             }
             cur = cur.next;
         }
+
         cur.next = head1 == null ? head2 : head1;
+
         return head.next;
     }
 
