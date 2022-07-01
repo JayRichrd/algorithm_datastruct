@@ -101,6 +101,12 @@ public class MyTree {
         return result;
     }
 
+    /**
+     * check if root tree contains sub tree
+     * @param root
+     * @param sub
+     * @return
+     */
     private static boolean match(TreeNode root, TreeNode sub) {
         // check sub tree firstly
         if (sub == null) {
