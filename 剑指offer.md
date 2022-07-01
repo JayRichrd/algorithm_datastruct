@@ -461,8 +461,26 @@ while (start < end) {
 
 **核心思想：**
 
-- 双指针，看倒数第k个节点月尾节点，他们之间相差k-1;
-- 那么可以假设两个快慢指针，最开始都指向第1个节点，然后快指针移动到第k个节点后再开始同事移动快慢指针，直到快指针到达尾部。
+- 双指针，看倒数第k个节点与尾节点(倒数第1个节点)，他们之间相差k-1;
+- 那么可以假设两个快慢指针，最开始都指向第1个节点，然后快指针移动到第k个节点后再开始同时移动快慢指针，直到快指针到达尾节点(倒数第1个节点)。
+
+```java
+while (fast != null && k > 1) {
+    fast = fast.next;
+    k--;
+}
+// fast should not arrive at tail node
+if(fast == null){
+    return null;
+}
+// 此时slow指向第1个节点，fast指向第k个节点
+
+while (fast != null) {
+    fast = fast.next;
+    slow = slow.next;
+}
+// fast 指向倒数第1个节点，slow指向倒数第k个节点
+```
 
 **源码：**/java_pro/jv.com.cain.algorithm.linked_list/MyLinkedList/ subject22GetKthFromEnd()
 

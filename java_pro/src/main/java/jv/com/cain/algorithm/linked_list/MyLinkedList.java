@@ -10,6 +10,8 @@ public class MyLinkedList {
         testSubject5PrintRevertLinkedList();
         System.out.println("==========test Subject52 GetFirstIntersectionNode==========");
         testSubject52GetFirstIntersectionNode();
+        System.out.println("==========test Subject22 GetKthFromEnd==========");
+        testSubject22GetKthFromEnd();
     }
 
     @SuppressWarnings("unused")
@@ -147,18 +149,31 @@ public class MyLinkedList {
         }
         Node fast = head;
         Node slow = head;
-        while (fast != null && k > 0) {
+        while (fast != null && k > 1) {
             fast = fast.next;
             k--;
         }
-        if (k > 0) {
+        // fast should not arrive at tail node
+        if(fast == null){
             return null;
         }
-        while (fast != null) {
+        while (fast.next != null) {
             fast = fast.next;
             slow = slow.next;
         }
         return slow;
+    }
+
+    public static void testSubject22GetKthFromEnd(){
+        Node node6 = new Node(6,null);
+        Node node5 = new Node(5,node6);
+        Node node4 = new Node(4,node5);
+        Node node3 = new Node(3,node4);
+        Node node2 = new Node(2,node3);
+        Node node1 = new Node(1,node2);
+        int k = 3;
+        Node  node = subject22GetKthFromEnd(node1,k);
+        System.out.println(k+"th node from end: " + node.data);
     }
 
     /**
