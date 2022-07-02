@@ -576,6 +576,33 @@ root.right = subject27RevertTree(root.left);
 
 **源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject27RevertTree()
 
+# subject 28-对称的二叉树
+
+递归核心思想：
+
+一个树的左子树与右子树镜像对称，那么这个树是对称的。如果同时满足下面的条件，两个树互为镜像：
+
+- 它们的两个根结点具有相同的值
+- 每个树的右子树都与另一个树的左子树镜像对称(递归)
+
+这里使用两个指针分别向左右移动，代表左右子树来递归判定两棵树是否互为镜像：
+
+```java
+private static boolean checkMirror(TreeNode p, TreeNode q) {
+    // 注意判定顺序，先判定都为空，在判定至少有一个为空，然后是两个都不为空
+	if (p == null && q == null) {
+		return true;
+	}
+	if (p == null || q == null) {
+        return false;
+	}
+	// p != null && q != null
+	return p.data == q.data && checkMirror(p.left, q.right) && checkMirror(p.right, q.left);
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject28IsSymmetric()
+
 # subject 29-顺时针打印矩阵
 
 **核心思想：**

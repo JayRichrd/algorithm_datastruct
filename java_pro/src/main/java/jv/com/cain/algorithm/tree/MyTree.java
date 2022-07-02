@@ -103,6 +103,7 @@ public class MyTree {
 
     /**
      * check if root tree contains sub tree
+     *
      * @param root
      * @param sub
      * @return
@@ -534,5 +535,35 @@ public class MyTree {
             return root.data == sum;
         }
         return hasPath(root.left, sum - root.data) || hasPath(root.right, sum - root.data);
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/dui-cheng-de-er-cha-shu-lcof/solution/dui-cheng-de-er-cha-shu-by-leetcode-solu-rgks/ method1
+     * Time complexity: O(n)
+     * Spatial complexity: O(n)
+     *
+     * @param root
+     * @return
+     */
+    public static boolean subject28IsSymmetric(TreeNode root) {
+        return checkMirror(root, root);
+    }
+
+    /**
+     * check p tree is mirror of q tree
+     *
+     * @param p
+     * @param q
+     * @return
+     */
+    private static boolean checkMirror(TreeNode p, TreeNode q) {
+        if (p == null && q == null) {
+            return true;
+        }
+        if (p == null || q == null) {
+            return false;
+        }
+        // p != null && q != null
+        return p.data == q.data && checkMirror(p.left, q.right) && checkMirror(p.right, q.left);
     }
 }
