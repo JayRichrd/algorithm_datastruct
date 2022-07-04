@@ -580,7 +580,7 @@ root.right = subject27RevertTree(root.left);
 
 **核心思想：**
 
-- 从左上角开始"画圈”便利，结束的的条件：
+- 从左上角开始"画圈”遍历，结束的的条件：
 
 ```java
 while (2 * start < rows && 2 * start < columns) {
@@ -616,6 +616,8 @@ if (start < endY - 1 && start < endX) {
 ```
 
 **源码：**/java_pro/jv.com.cain.algorithm.array/ArrayPractice/ subject29PrintMatrixSpiral()
+
+> ps:从右->左和下->上开始，需要同时考虑行和列
 
 # subject 30-包含min函数的栈
 
