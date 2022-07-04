@@ -22,9 +22,9 @@ public class MyStack {
         Deque<Integer> helpStack = new ArrayDeque<>();
         int i = 0;
         for (int element : push) {
-            // push element
+            // push element firstly
             helpStack.push(element);
-            // depend on pop array to pop helpStack
+            // helpStack pop element depend on pop array
             while (!helpStack.isEmpty() && helpStack.peek() == pop[i]) {
                 helpStack.pop();
                 i++;
