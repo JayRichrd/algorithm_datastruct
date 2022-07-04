@@ -623,10 +623,41 @@ if (start < endY - 1 && start < endX) {
 
 **核心思想:**
 
-- 添加一个辅助栈，每次往数据栈添加一个元素的时候，都比较这元素与辅助栈顶元素大小。将小者入辅助栈，保持数据栈与辅助栈数量一样。
+- 添加一个辅助栈，每次往数据栈添加一个元素的时候，都比较改元素与辅助栈顶元素大小。将小者入辅助栈，==保持数据栈与辅助栈数量一样==。
+
+```java
+public void push(int data) {
+    dataStack.push(data);
+    if (minStack.isEmpty()) {
+        minStack.push(data);
+    } else {
+        // every time push one min element
+        minStack.push(Math.min(minStack.peek(), data));
+    }
+}
+```
+
 - 每次数据栈pop操作，辅助栈也要pop栈顶数据。
+
+```java
+@Nullable
+public Integer pop() throws NoSuchElementException {
+    // also pop one element
+    minStack.pop();
+    return dataStack.pop();
+}
+```
+
 - 添加辅助栈就是为了能持续找到剩余元素中的最小值。
-- 条用min函数获取最小值，只返回辅助栈顶元素，但不出栈。
+- 调用min()函数获取最小值，只返回辅助栈顶元素，但不出栈。
+
+```java
+@Nullable
+public Integer min() {
+    // just return min, not pop
+    return minStack.peek();
+}
+```
 
 **源码：**/java_pro/jv.com.cain.algorithm.stack/MinStack
 
