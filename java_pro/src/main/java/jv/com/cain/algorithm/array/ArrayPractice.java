@@ -232,8 +232,8 @@ public class ArrayPractice {
     }
 
     private static void printMatrixCircle(int[][] matrix, int start, int rows, int columns) {
-        int endX = columns - start - 1;
-        int endY = rows - start - 1;
+        int endX = columns - 1 - start;
+        int endY = rows - 1 - start;
         // left -> right
         for (int i = start; i <= endX; i++) {
             System.out.print(matrix[start][i] + ", ");
