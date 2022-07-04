@@ -152,21 +152,22 @@ public class MyTree {
             return;
         }
 
-        Queue<TreeNode> assistQueue = new LinkedList<>();
-        assistQueue.offer(head);
-        while (!assistQueue.isEmpty()) {
-            int curLevelSize = assistQueue.size();
+        Queue<TreeNode> helpQueue = new LinkedList<>();
+        helpQueue.offer(head);
+
+        while (!helpQueue.isEmpty()) {
+            int curLevelSize = helpQueue.size();
             // visit every level
             for (int i = 0; i < curLevelSize; i++) {
-                TreeNode node = assistQueue.poll();
+                TreeNode node = helpQueue.poll();
                 assert node != null;
                 System.out.print(node.data + ", ");
-                // add leaf node to assistQueue when visiting
+                // add leaf node to helpQueue when visiting
                 if (node.left != null) {
-                    assistQueue.offer(node.left);
+                    helpQueue.offer(node.left);
                 }
                 if (node.right != null) {
-                    assistQueue.offer(node.right);
+                    helpQueue.offer(node.right);
                 }
             }
             System.out.println();
