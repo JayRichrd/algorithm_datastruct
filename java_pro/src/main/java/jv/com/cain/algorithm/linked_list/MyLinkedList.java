@@ -270,8 +270,8 @@ public class MyLinkedList {
             node = node.next.next;
         }
 
-        Node newHead = head.next;
         node = head;
+        Node newHead = head.next;
         // step3 divide
         while (node != null) {
             Node newNode = node.next;
