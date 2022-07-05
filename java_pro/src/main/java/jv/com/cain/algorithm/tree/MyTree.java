@@ -242,7 +242,7 @@ public class MyTree {
         if (node == null) {
             return;
         }
-
+        // offer data firstly
         sumPath.offerLast(node.data);
         target -= node.data;
         // find leaf node and check
