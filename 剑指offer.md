@@ -857,7 +857,7 @@ while (node != null) {
 
 - 二叉树的节点有两个指针域，正好可以当成链表节点的前后指针域。
 - 中序遍历二叉搜索树正好就是排序的。
-- 这里要始终记住已经转换成链表的尾结点tail，在Java中使用数组当成C++中的指针使用。
+- 这里要始终记住已经转换成链表的尾结点tail，在Java中使用数组来类比C++中的指针。
 
 ```java
 private static void midConvertRecursive(TreeNode root, TreeNode[] tail) {

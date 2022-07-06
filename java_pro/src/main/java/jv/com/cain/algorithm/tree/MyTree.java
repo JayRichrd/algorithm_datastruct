@@ -289,13 +289,17 @@ public class MyTree {
         TreeNode[] tail = new TreeNode[1];
         tail[0] = null;
         midConvertRecursive(root, tail);
+
         if (tail[0] == null) {
             return null;
         }
+
+        // find head node
         TreeNode head = tail[0];
         while (head.left != null) {
             head = head.left;
         }
+
         return head;
     }
 
@@ -310,19 +314,21 @@ public class MyTree {
             return;
         }
 
+        // handle left sub tree
         if (root.left != null) {
-            midConvertRecursive(root, tail);
+            midConvertRecursive(root.left, tail);
         }
 
-        // link root and tail node
+        // link root and tail node, change root node as tail node
         root.left = tail[0];
         if (tail[0] != null) {
             tail[0].right = root;
         }
         tail[0] = root;
 
+        // handle right sub tree
         if (root.right != null) {
-            midConvertRecursive(root, tail);
+            midConvertRecursive(root.right, tail);
         }
     }
 
