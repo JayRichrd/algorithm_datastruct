@@ -893,6 +893,14 @@ while (head.left != null) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject36Bst2LinkedList()
 
+# subject 37-序列化二叉树
+
+**递归核心思想**
+
+这里采用前序遍历来遍历二叉树。具体算法逻辑参见[leetcode](https://leetcode.cn/problems/xu-lie-hua-er-cha-shu-lcof/solution/xu-lie-hua-er-cha-shu-by-leetcode-soluti-4duq/)
+
+**源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ serializeTree()|rSerializeTree()
+
 # subjcet 38-字符串的排列
 
 **递归核心思想：**

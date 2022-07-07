@@ -333,6 +333,56 @@ public class MyTree {
     }
 
     /**
+     * refe: https://leetcode.cn/problems/xu-lie-hua-er-cha-shu-lcof/solution/xu-lie-hua-er-cha-shu-by-leetcode-soluti-4duq/ method1
+     * Time complexity: O(n)
+     * Spatial complexity: O(n)
+     *
+     * @param root
+     * @return
+     */
+    public static String serializeTree(TreeNode root) {
+        StringBuilder serializeSb = new StringBuilder();
+        return doSerializeRecursive(root, serializeSb).toString();
+    }
+
+    private static StringBuilder doSerializeRecursive(TreeNode root, StringBuilder serializeSb) {
+        if (root == null) {
+            serializeSb.append("None,");
+        } else {
+            serializeSb.append(root.data).append(",");
+            serializeSb = doSerializeRecursive(root.left, serializeSb);
+            serializeSb = doSerializeRecursive(root.right, serializeSb);
+        }
+        return serializeSb;
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/xu-lie-hua-er-cha-shu-lcof/solution/xu-lie-hua-er-cha-shu-by-leetcode-soluti-4duq/ method1
+     * Time complexity: O(n)
+     * Spatial complexity: O(n)
+     *
+     * @param treeStr
+     * @return
+     */
+    public static TreeNode rSerializeTree(String treeStr) {
+        String[] dataArray = treeStr.split(",");
+        List<String> dataList = Arrays.asList(dataArray);
+        return doRserializeRecursive(dataList);
+    }
+
+    private static TreeNode doRserializeRecursive(List<String> dataList) {
+        if (dataList.isEmpty() || dataList.get(0).equals("None")) {
+            return null;
+        }
+        String data = dataList.get(0);
+        dataList.remove(0);
+        TreeNode root = new TreeNode(Integer.parseInt(data));
+        root.left = doRserializeRecursive(dataList);
+        root.right = doRserializeRecursive(dataList);
+        return root;
+    }
+
+    /**
      * refe: https://leetcode.cn/problems/zui-xiao-de-kge-shu-lcof/solution/zui-xiao-de-kge-shu-by-leetcode-solution/ method5
      * Time complexity: O(n * logk)
      * Spatial complexity: O(k)
