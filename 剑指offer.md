@@ -992,7 +992,7 @@ for (int i = k; i < len; i++) {
 
 **核心思想：**
 
-- 拆解成求每个数位（十位、百位、千位等）上出现的1的次数，然后将他们相加。
+- 拆解成求每个数位（十位、百位、千位等）上1出现的次数，然后将他们相加。
 - 总结出1出现在某个数位上的个数公式：
 
 ![image-20220603101239986](https://picgo-1256537295.cos.ap-guangzhou.myqcloud.com/pictures/image-20220603101239986.png)
@@ -1011,11 +1011,19 @@ return result;
 
 **源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject43CuntDigitOne()
 
+# subject 44-数字序列中某一位的数字
+
+**核心思想：**
+
+
+
+**源码：**
+
 # subject 45-把数组排成最小的数
 
 **核心思想：**
 
-- 自定义一种排序规则，根据任意两个数m、n的组合mn、nm的大小来决定m于n的大小。mn > nm，则认为m < n，否则认为m > n。然后根据这个比较规则对数组做一个从小到大排序
+- 自定义一种排序规则，根据任意两个数m、n的组合mn、nm的大小来决定m与n的大小。mn > nm，则认为m > n，否则认为m > n。然后根据这个比较规则对数组做一个从小到大排序
 - 由于组成的数mn负责nm可能超限，这里还涉及到一个大数问题，因此使用String来比较：
 
 ```java
@@ -1028,7 +1036,8 @@ for (int i = 0; i < len; i++) {
 - 至于比较大小排序，则可以使用系统的排序函数(默认升序)：
 
 ```java
- Arrays.sort(numsStr, (x, y) -> (x + y).compareTo(y + x));
+// x+y表示拼接成的数字为xy,y+x表示拼接成的数字为yx 
+Arrays.sort(numsStr, (x, y) -> (x + y).compareTo(y + x));
 ```
 
 **源码：**/java_pro/jv.com.cain.algorithm.sort/MySort/ subject45minNums()

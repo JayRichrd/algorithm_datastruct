@@ -13,7 +13,7 @@ public class MySort {
 
     /**
      * refe: https://leetcode.cn/problems/ba-shu-zu-pai-cheng-zui-xiao-de-shu-lcof/solution/mian-shi-ti-45-ba-shu-zu-pai-cheng-zui-xiao-de-s-4/ method2
-     * Time complexity: O(logn)
+     * Time complexity: O(n * logn)
      * Spatial complexity: O(n)
      *
      * @param nums
