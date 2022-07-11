@@ -1042,6 +1042,14 @@ Arrays.sort(numsStr, (x, y) -> (x + y).compareTo(y + x));
 
 **源码：**/java_pro/jv.com.cain.algorithm.sort/MySort/ subject45minNums()
 
+# subject 46-把数字翻译成字符串
+
+**核心思想：**
+
+
+
+**源码：**
+
 # suject 49-丑数
 
 **核心思想：**
