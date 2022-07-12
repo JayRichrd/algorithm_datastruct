@@ -340,4 +340,34 @@ public class MyAlgorithm {
         }
         return (int) (Math.pow(3, a) * 2);
     }
+
+    /**
+     * refe: https://leetcode.cn/problems/li-wu-de-zui-da-jie-zhi-lcof/solution/mian-shi-ti-47-li-wu-de-zui-da-jie-zhi-dong-tai-gu/ method1
+     * Time complexity: O(m*n)
+     * Spatial complexity: O(1)
+     *
+     * @param matrix
+     * @return
+     */
+    public static Integer subject47MaxValue(int[][] matrix) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return null;
+        }
+
+        int rows = matrix.length;
+        int columns = matrix[0].length;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                if (i == 0 && j == 0) {
+                } else if (i == 0) {// first row
+                    matrix[i][j] += matrix[i][j - 1];
+                } else if (j == 0) {// first column
+                    matrix[i][j] += matrix[i - 1][j];
+                } else {// from left and up to current
+                    matrix[i][j] += Math.max(matrix[i - 1][j], matrix[i][j - 1]);
+                }
+            }
+        }
+        return matrix[rows - 1][columns - 1];
+    }
 }

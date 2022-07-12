@@ -1061,6 +1061,44 @@ Arrays.sort(numsStr, (x, y) -> (x + y).compareTo(y + x));
 
 **源码：**
 
+# subject 47-礼物的最大价值
+
+**动态规划核心思想：**
+
+- f(i,j)表示到达(i,j)位置的最大值，则得到递推公式：
+
+$$
+f(i,j)=max[f(i,j−1),f(i−1,j)]+grid(i,j)
+$$
+
+ grid(i,j)：当前单元格礼物价值。
+
+- 每个单元格只能从上、左方向来到。在结合边界条件：第一行、第一列。可得到如下递推公式：
+
+![状态转移方程](https://picgo-1256537295.cos.ap-guangzhou.myqcloud.com/pictures/image-20220712114802364.png)
+
+那么最后输出的就是dp(m-1,n-1)的值。
+
+- 此外可以原地利用输入的矩阵(二维数组)来存储当前位置的最大礼物值。
+
+```java
+for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < columns; j++) {
+        if (i == 0 && j == 0) {
+        } else if (i == 0) {// first row
+            matrix[i][j] += matrix[i][j - 1];
+        } else if (j == 0) {// first column
+            matrix[i][j] += matrix[i - 1][j];
+        } else {// from left and up to current
+            matrix[i][j] += Math.max(matrix[i - 1][j], matrix[i][j - 1]);
+        }
+    }
+}
+return matrix[rows - 1][columns - 1];
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject47MaxValue()
+
 # suject 49-丑数
 
 **核心思想：**
