@@ -1099,7 +1099,39 @@ return matrix[rows - 1][columns - 1];
 
 **源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject47MaxValue()
 
-# suject 49-丑数
+# subject 48-最长不含重复字符的子字符串
+
+**核心思想：**
+
+- 双指针，一左一右滑动；
+- 右指针默认从-1开始，且每次指向的都是不重复的字符串的末尾；
+- 依次移动左指针，每次找出一个最长子串得到并计算得到最大值。
+
+```java
+int right = -1, ans = 0;
+for (int i = 0; i < strLen; i++) {
+    // remove left char every time
+  	// 每次都移除左指针指向的字符，occ中包含的都是不重复的字符
+    if (i != 0) {
+        occ.remove(str.charAt(i - 1));
+    }
+    // move right index
+  	// 依次移动右边指针，直到到达末尾或者重复
+    while (right + 1 < strLen && !occ.contains(str.charAt(right + 1))) {
+        right++;
+        occ.add(str.charAt(right));
+    }
+    // compute max
+  	// 每次根据左右指针计算字符串长度
+    ans = Math.max(ans, right - i + 1);
+}
+```
+
+**参考：**[最长不含重复字符的子字符串](https://leetcode.cn/problems/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-fu-chuan-lcof/solution/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-l4yo/)
+
+**源码：**/java_pro/jv.com.cain.algorithm.string/MyString/ subject48LengthOfLongestSubString()
+
+# subject 49-丑数
 
 **核心思想：**
 

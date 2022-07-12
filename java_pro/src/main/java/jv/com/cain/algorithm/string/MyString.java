@@ -1,9 +1,6 @@
 package jv.com.cain.algorithm.string;
 
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.*;
 
 @SuppressWarnings("JavaDoc")
 public class MyString {
@@ -218,6 +215,33 @@ public class MyString {
             chs[left] = chs[right];
             chs[right] = temp;
         }
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-fu-chuan-lcof/solution/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-l4yo/ method1
+     * Time complexity: O(n)
+     * Spatial complexity: O(1)
+     * @param str
+     * @return
+     */
+    public static int subject48LengthOfLongestSubString(String str) {
+        Set<Character> occ = new HashSet<>();
+        int strLen = str.length();
+        int right = -1, ans = 0;
+        for (int i = 0; i < strLen; i++) {
+            // remove left char every time
+            if (i != 0) {
+                occ.remove(str.charAt(i - 1));
+            }
+            // move right index
+            while (right + 1 < strLen && !occ.contains(str.charAt(right + 1))) {
+                right++;
+                occ.add(str.charAt(right));
+            }
+            // compute max
+            ans = Math.max(ans, right - i + 1);
+        }
+        return ans;
     }
 
 }
