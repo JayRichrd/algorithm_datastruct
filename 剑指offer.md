@@ -982,7 +982,18 @@ for (int i = k; i < len; i++) {
 
 **动态规划思想：**
 
-- 记录f(i)为以i为结束元素的最大和，考虑f(i) = max(f(i-1)+num[i],num[i]);这里注意，必须包含num[i]
+- 记录f(i)为以i为结束元素的最大和，考虑f(i) = max(f(i-1)+num[i],num[i]);这里注意，==必须包含num[i]==
+
+```java
+// 迭代计算
+int max = nums[0], pre = 0;
+for (int num : nums) {
+	// think about num should be added into pre or num is single
+	pre = Math.max(pre + num, num);
+	max = Math.max(pre, max);
+}
+return max;
+```
 
 [参考leetcode](https://leetcode.cn/problems/lian-xu-zi-shu-zu-de-zui-da-he-lcof/solution/lian-xu-zi-shu-zu-de-zui-da-he-by-leetco-tiui/)
 
