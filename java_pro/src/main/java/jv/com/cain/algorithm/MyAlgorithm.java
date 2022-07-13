@@ -67,11 +67,9 @@ public class MyAlgorithm {
             // point increment
             if (next == num2) {
                 p2++;
-            }
-            if (next == num3) {
+            } else if (next == num3) {
                 p3++;
-            }
-            if (next == num5) {
+            } else {// next == num5
                 p5++;
             }
             uglyNums[i] = next;

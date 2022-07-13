@@ -1135,8 +1135,8 @@ for (int i = 0; i < strLen; i++) {
 
 **核心思想：**
 
-- 判定一个数是否是丑数，就把一个数分别不断除以2、3、5，然后看最后剩余的数是否为1。
-- 后续的丑数，是前面的某个丑数乘以2、3、5得到的。那么就不断迭代寻找下一个丑数：
+- 判定一个数是否是丑数，只需把一个数分别不断除以2、3、5，然后看最后剩余的数是否为1。
+- 后续的丑数，是前面的某个丑数乘以2、3、5得到的。那么可以不断迭代寻找下一个丑数：
 
 ```java
 // find next ugly num
@@ -1144,7 +1144,7 @@ int num2 = uglyNums[p2] * 2, num3 = uglyNums[p3] * 3, num5 = uglyNums[p5] * 5;
 int next = Math.min(Math.min(num2, num3), num5);
 ```
 
-- 然后记得将临界点自增，重复寻找下一个丑数：
+- 最后记得将临界点自增，重复寻找下一个丑数：
 
 ```java
 // point increment
@@ -1159,7 +1159,7 @@ if (next == num5) {
 }
 ```
 
-**源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject49NthUglyNumber()
+**源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ [subject49NthUglyNumber]()()
 
 # subject 50-第一个只出现一次的字符
 
