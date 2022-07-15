@@ -98,7 +98,7 @@ public class MyString {
     /**
      * refe: https://leetcode.cn/problems/di-yi-ge-zhi-chu-xian-yi-ci-de-zi-fu-lcof/solution/di-yi-ge-zhi-chu-xian-yi-ci-de-zi-fu-by-3zqv5/ method1
      * Time complexity: O(n)
-     * Spatial complexity: O(1)
+     * Spatial complexity: O(n)
      *
      * @param str
      * @return
