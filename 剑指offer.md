@@ -1184,7 +1184,7 @@ for (int i = 0; i < len; i++) {
 **递归核心思想：**
 
 - 这里主要参考归并排序的核心思想。
-- 每次合并时，左边部分和右边部分都是从小到到拍好序的，如果左边的最大值都不大于右边的左小值，则没有跨越左右两部分之间元素的逆序对：
+- 每次合并时，左边部分和右边部分都是从小到到排好序的，如果左边的最大值都不大于右边的左小值，则没有跨越左右两部分之间元素的逆序对：
 
 ```java
 // if left part is smaller than right part, there is no reverse pair cross
@@ -1194,7 +1194,7 @@ if (nums[mid] <= nums[mid + 1]) {
 ```
 
 - 否则就需要求解跨越左右两部分的逆序对（核心重点）；
-- 一边合并一边求解逆序对，逆序对由两个数组成(一左一右)，这里求解右边合并数对逆序对的贡献值，然后相加即可求得总共的跨越左右两部分的逆序对。
+- 一边合并一边求解逆序对，逆序对由两个数组成(一左一右)，这里只求解右边合并数对逆序对的贡献值，然后相加即可求得总共的跨越左右两部分的逆序对。
 
 ```java
 private static int mergeAndCountReversPairs(int[] nums, int left, int mid, int right, int[] temp) {
@@ -1212,8 +1212,9 @@ private static int mergeAndCountReversPairs(int[] nums, int left, int mid, int r
             nums[k] = temp[i];
             i++;
 		} else {
-			nums[k] = temp[j];
+						nums[k] = temp[j];
             j++;
+      			// 只有这一种情况才对逆序对有贡献
             // the j index num contribute reverse pair
             crossPairs += mid - i + 1;
 		}
