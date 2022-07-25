@@ -202,4 +202,29 @@ public class MySearch {
         }
         return -1;
     }
+
+    /**
+     * refe: https://leetcode.cn/problems/que-shi-de-shu-zi-lcof/solution/mian-shi-ti-53-ii-0n-1zhong-que-shi-de-shu-zi-er-f/
+     * Time complexity: O(logn)
+     * Spatial complexity: O(1)
+     *
+     * @param nums
+     * @return
+     */
+    public static Integer subject53IIMissingNum(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return null;
+        }
+        int low = 0, high = nums.length - 1;
+        while (low <= high) {
+            int mid = low + ((high - low) >> 1);
+            if (nums[mid] == mid) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        // low == high at time
+        return low;
+    }
 }

@@ -1232,8 +1232,8 @@ private static int mergeAndCountReversPairs(int[] nums, int left, int mid, int r
 **双指针核心思想：**
 
 - A链表的前半部分为a,后面的公共部分为c。B链表的前半部分为b，后面的公共部分为c。
-- 两个头指针分别指向各自的头结点开始往后便利，直到各自的尾结点。
-- 当头指针遍历到当前链表尾部时候，跳跃到另一个链表的头部开始往后遍历。
+- 两个头指针分别指向各自的头结点开始往后遍历，直到各自的尾结点。
+- 当某个链表的头指针遍历到当前链表尾部时候，跳跃到另一个链表的头部开始往后遍历。
 - 直到两个头指针相等，他们指向的这个相等节点就是第一个公共节点或者为null。此时两个指针走过的路程都是a+b+c。
 
 ```java
@@ -1251,7 +1251,7 @@ while (pA != pB) {
 **二分查找核心思想：**
 
 - 主要就是查找到第一个等于target的索引，和最后一个等于target的索引。
-- 尺寸为了代码简洁，将两部分逻辑写在一个方法中：
+- 为了代码简洁，将两部分逻辑写在一个方法中：
 
 ```java
 if ((lower && nums[mid] >= target)/*first >= target index*/ || nums[mid] > target/*first large target index*/) {
@@ -1265,6 +1265,35 @@ if ((lower && nums[mid] >= target)/*first >= target index*/ || nums[mid] > targe
 > ps:这种二分查找变种——查找第一个等于target的数，使用的都是>=的策略。如果使用<=则可能会漏掉之前的元素
 
 **源码：**/java_pro/jv.com.cain.algorithm.search/MySearch/ subject53numOfTarget()
+
+**二分查找变种**
+
+# subject 53-II-0～n-1中缺失的数字
+
+ **核心思想：**
+
+- 由于是有序数组，因此此处考虑使用二分法；
+
+- 数组可以分为两部分：
+
+    - **左子数组：** nums[i] = i ；
+
+    - **右子数组：** nums[i] != i ；
+
+- 要找的就是右边数组的第一个元素。
+
+```java
+while (low <= high) {
+    int mid = low + ((high - low) >> 1);
+    if (nums[mid] == mid) {
+        low = mid + 1;
+    } else {
+        high = mid - 1;
+    }
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.search/MySearch/ subject53IIMissingNum()
 
 # subject 55-二叉树的深度
 
