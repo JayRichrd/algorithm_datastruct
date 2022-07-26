@@ -623,4 +623,41 @@ public class MyTree {
         // p != null && q != null
         return p.data == q.data && checkMirror(p.left, q.right) && checkMirror(p.right, q.left);
     }
+
+    /**
+     * refe: https://leetcode.cn/problems/er-cha-sou-suo-shu-de-di-kda-jie-dian-lcof/solution/mian-shi-ti-54-er-cha-sou-suo-shu-de-di-k-da-jie-d/
+     * Time complexity: O(n)
+     * Spatial complexity: O(n)
+     */
+    public static int k = 0;
+    public static int kLargeResult = 0;
+
+    public static int subject54KLarge(TreeNode root, int k) {
+        MyTree.k = k;
+        reDfsRecursive(root);
+        return kLargeResult;
+    }
+
+    /**
+     * revert dfs for descend
+     *
+     * @param root
+     */
+    private static void reDfsRecursive(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        // first right sub tree
+        reDfsRecursive(root.right);
+        // root node
+        if (MyTree.k == 0) {
+            return;
+        }
+        if (--MyTree.k == 0) {
+            MyTree.kLargeResult = root.data;
+            return;
+        }
+        // last left sub tree
+        reDfsRecursive(root.left);
+    }
 }

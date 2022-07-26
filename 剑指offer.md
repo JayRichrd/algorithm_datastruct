@@ -1295,6 +1295,31 @@ while (low <= high) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.search/MySearch/ subject53IIMissingNum()
 
+# subject 54-二叉搜索树的第k大节点
+
+**核心思想：**
+
+- 二叉搜索树的中序遍历是递增的
+- 此处要求解递增数列的倒数第k个数，所以考虑对中序遍历做变形，即按照右、根、左的顺序进行中序遍历
+- 使用递归时对计数的k做递减和判断，当遍历访问了k个节点即可停止递归，并将结果返回
+
+```java
+// first right sub tree
+reDfsRecursive(root.right);
+// root node
+if (MyTree.k == 0) {
+    return;
+}
+if (--MyTree.k == 0) {
+    MyTree.kLargeResult = root.data;
+    return;
+}
+// last left sub tree
+reDfsRecursive(root.left);
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject54KLarge()
+
 # subject 55-二叉树的深度
 
 **迭代核心思想：**
