@@ -1325,7 +1325,7 @@ reDfsRecursive(root.left);
 **迭代核心思想：**
 
 - 使用一个辅助队列，按层遍历二叉树；
-- 没遍历一层，深度值自增1.
+- 每遍历一层，深度值自增1.
 
 ```java
 while (!que.isEmpty()) {
@@ -1343,7 +1343,7 @@ while (!que.isEmpty()) {
 }
 ```
 
-**源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject53numOfTarget()
+**源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject55MaxDepth()
 
 # subject 56-I-数组中只出现一次的数字
 
