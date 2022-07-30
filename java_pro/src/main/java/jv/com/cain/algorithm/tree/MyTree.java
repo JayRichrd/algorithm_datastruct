@@ -660,4 +660,37 @@ public class MyTree {
         // last left sub tree
         reDfsRecursive(root.left);
     }
+
+    /**
+     * refe: https://leetcode.cn/problems/ping-heng-er-cha-shu-lcof/solution/mian-shi-ti-55-ii-ping-heng-er-cha-shu-cong-di-zhi/ method1
+     * Time complexity: O(n)
+     * Spatial complexity: O(n)
+     *
+     * @param root
+     * @return
+     */
+    public static boolean subject55IIisBalanceTree(TreeNode root) {
+        return checkBalanceTree(root) != -1;
+    }
+
+    /**
+     * check root is balanced tree
+     *
+     * @param root
+     * @return root tree depth or -1 if root tree is not balanced tree
+     */
+    private static int checkBalanceTree(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftDepth = checkBalanceTree(root.left);
+        if (leftDepth == -1) {
+            return -1;
+        }
+        int rightDepth = checkBalanceTree(root.right);
+        if (rightDepth == -1) {
+            return -1;
+        }
+        return Math.abs(leftDepth - rightDepth) < 2 ? Math.max(rightDepth, leftDepth) + 1 : -1;
+    }
 }

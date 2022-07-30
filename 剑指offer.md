@@ -1345,6 +1345,27 @@ while (!que.isEmpty()) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject55MaxDepth()
 
+# subject 55-II-平衡二叉树
+
+**迭代核心思想：**
+
+- 关键在于二叉树的深度就是左右子树的深度加1；
+- 因此递归求解二叉树的深度看看是否超过1，来判定平衡二叉树：
+
+```java
+int leftDepth = checkBalanceTree(root.left);
+if (leftDepth == -1) {
+    return -1;
+}
+int rightDepth = checkBalanceTree(root.right);
+if (rightDepth == -1) {
+    return -1;
+}
+return Math.abs(leftDepth - rightDepth) < 2 ? Math.max(rightDepth, leftDepth) + 1 : -1;
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject55IIisBalanceTree()
+
 # subject 56-I-数组中只出现一次的数字
 
 **核心思想：**
