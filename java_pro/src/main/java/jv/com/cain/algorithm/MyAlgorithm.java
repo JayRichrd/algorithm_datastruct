@@ -11,6 +11,8 @@ public class MyAlgorithm {
         testSubject49NthUglyNumber();
         System.out.println("==========test Subject56 SingleNum==========");
         testSubject56SingleNum();
+        System.out.println("==========test Subject56II SingleNum==========");
+        testSubject56IISingleNum();
         System.out.println("==========test Subject60 DicesProbability==========");
         testSubject60DicesProbability();
         System.out.println("==========test Subject61 IsStrait==========");
@@ -117,6 +119,38 @@ public class MyAlgorithm {
         singleNums.add(a);
         singleNums.add(b);
         return singleNums;
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-ii-lcof/solution/mian-shi-ti-56-ii-shu-zu-zhong-shu-zi-chu-xian-d-4/ method2
+     * Time complexity: O(n)
+     * Spatial complexity: O(1)
+     *
+     * @param nums
+     * @return
+     */
+    public static int subject56IISingleNum(int[] nums) {
+        int[] counts = new int[32];
+        for (int num : nums) {
+            for (int i = 0; i < 32; i++) {
+                // index 0 is low digit, from low digit to high digit
+                counts[i] += num & 1;
+                num >>>= 1;
+            }
+        }
+
+        int res = 0;
+        for (int i = 0; i < 32; i++) {
+            res <<= 1;
+            // from high digit to low digit
+            res |= counts[31 - i] % 3;
+        }
+        return res;
+    }
+
+    public static void testSubject56IISingleNum() {
+        int[] nums = {3, 4, 3, 3};
+        System.out.println("single nums: " + subject56IISingleNum(nums));
     }
 
     public static void testSubject56SingleNum() {

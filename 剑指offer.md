@@ -1387,6 +1387,36 @@ for (int num : nums) {
 
 **源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject56SingleNum()
 
+# subject 56II-数组中数字出现的次数 II
+
+**核心思想：**
+
+- 对于出现三次的数字，各二进制位出现的次数都是3的倍数。
+- 统计所有数字的各二进制位中1的出现次数，并对3求余，结果则为只出现1次的数字。
+
+![](https://picgo-1256537295.cos.ap-guangzhou.myqcloud.com/pictures/20220809163352.png)
+
+```java
+int[] counts = new int[32];
+for (int num : nums) {
+    for (int i = 0; i < 32; i++) {
+        // 角标为0存储的是低位，从低位到高位依次求1的个数
+        counts[i] += num & 1;
+        num >>>= 1;
+    }
+}
+
+int res = 0;
+for (int i = 0; i < 32; i++) {
+    res <<= 1;
+    // 从高位到低位依次计算对3取余后剩余的数
+    res |= counts[31 - i] % 3;
+}
+return res;
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject56IISingleNum()
+
 # subject 57-和为s的两个数字
 
 **核心思想：**
