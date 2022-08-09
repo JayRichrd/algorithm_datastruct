@@ -98,7 +98,7 @@ public class MyAlgorithm {
         for (int num : nums) {
             result ^= num;
         }
-
+        // find first 1 from low to high
         int div = 1;
         while ((div & result) == 0) {
             div <<= 1;
@@ -106,6 +106,7 @@ public class MyAlgorithm {
 
         int a = 0, b = 0;
         for (int num : nums) {
+            // divide into two groups
             if ((div & num) != 0) {
                 a ^= num;
             } else {
