@@ -1522,7 +1522,7 @@ for (int i = k; i < len + k; i++) {
 }
 ```
 
-**源码：**/java_pro/jv.com.cain.algorithm.string/MyString/ subject58RevertWords()
+**源码：**/java_pro/jv.com.cain.algorithm.string/MyString/ subject58IIRevertLeftWord()
 
 # subject 60-n个骰子点数
 
