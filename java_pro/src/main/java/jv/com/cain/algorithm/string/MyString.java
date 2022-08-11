@@ -149,7 +149,7 @@ public class MyString {
         StringBuilder word = new StringBuilder();
         while (begin <= end) {
             char ch = str.charAt(begin);
-            // find an whole word, and push it
+            // find a whole word, and push it
             if (ch == ' ' && word.length() != 0) {
                 //que.offerFirst(word.toString());
                 que.push(word.toString());
