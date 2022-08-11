@@ -19,6 +19,8 @@ public class ArrayPractice {
         testSubject42MaxSubArray();
         System.out.println("==========test Subject57 TwoSum==========");
         testSubject57TwoSum();
+        System.out.println("==========test Subject57II ContinueSequence==========");
+        testSubject57IIContinueSequence();
     }
 
     /**
@@ -353,6 +355,43 @@ public class ArrayPractice {
         int[] nums = {2, 7, 11, 15};
         int target = 9;
         System.out.println("sum = " + target + ": " + subject57TwoSum(nums, target));
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof/solution/mian-shi-ti-57-ii-he-wei-sde-lian-xu-zheng-shu-x-2/ method3
+     * Time complexity: O(1)
+     * Spatial complexity: O(1)
+     *
+     * @param target
+     * @return
+     */
+    public static List<List<Integer>> subject57IIContinueSequence(int target) {
+        if (target < 2) {
+            return null;
+        }
+        List<List<Integer>> res = new ArrayList<>();
+        for (int left = 1, right = 2; left < right && right < target + 1; ) {
+            int sum = (left + right) * (right - left + 1) / 2;
+            if (sum == target) {
+                List<Integer> nums = new ArrayList<>();
+                for (int i = left; i <= right; i++) {
+                    nums.add(i);
+                }
+                res.add(nums);
+                // don't forget
+                left++;
+            } else if (sum < target) {// left and right only increase, not decrease.
+                right++;
+            } else {
+                left++;
+            }
+        }
+        return res;
+    }
+
+    public static void testSubject57IIContinueSequence() {
+        int target = 15;
+        System.out.println("continue sequence: " + subject57IIContinueSequence(target));
     }
 
     /**

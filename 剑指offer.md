@@ -1438,6 +1438,34 @@ if (sum == target) {
 
 **源码：**/java_pro/jv.com.cain.algorithm.array/ArrayPractice/ subject57TwoSum()
 
+# subject 57-II-和为s的连续正数序列
+
+**核心思想：**
+
+- 双指针，left和right，left和right只自增移动；
+- 根据区间[left,right]之和与target比较，来确定移动left还是right;
+
+```java
+for (int left = 1, right = 2; left < right && right < target + 1; ) {
+    int sum = (left + right) * (right - left + 1) / 2;
+    if (sum == target) {
+        List<Integer> nums = new ArrayList<>();
+        for (int i = left; i <= right; i++) {
+            nums.add(i);
+        }
+        res.add(nums);
+        // 找到一组后，left自增继续查找
+        left++;
+    } else if (sum < target) {// left and right only increase, not decrease.
+        right++;
+    } else {
+        left++;
+    }
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.array/ArrayPractice/ subject57IIContinueSequence()
+
 # subject 58-翻转单词顺序(字符串)
 
 **核心思想：**
