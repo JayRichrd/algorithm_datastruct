@@ -470,7 +470,7 @@ public class MyTree {
     }
 
     /**
-     * refe: https://leetcode.cn/problems/er-cha-shu-de-zui-jin-gong-gong-zu-xian-lcof/solution/er-cha-shu-de-zui-jin-gong-gong-zu-xian-6fdt7/ method1
+     * refe: https://leetcode.cn/problems/er-cha-shu-de-zui-jin-gong-gong-zu-xian-lcof/solution/mian-shi-ti-68-ii-er-cha-shu-de-zui-jin-gong-gon-7/
      * Time complexity: O(n)
      * Spatial complexity: O(n)
      *
