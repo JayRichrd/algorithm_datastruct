@@ -23,6 +23,8 @@ public class MyAlgorithm {
         testSubject65Add();
         System.out.println("==========test Subject63 MaxProfit==========");
         testSubject63MaxProfit();
+        System.out.println("==========test Subject64 SumNums==========");
+        testSubject64SumNums();
     }
 
     /**
@@ -433,5 +435,23 @@ public class MyAlgorithm {
     public static void testSubject63MaxProfit() {
         int[] nums = {7, 1, 5, 3, 6, 4};
         System.out.println("maxProfit = " + subject63MaxProfit(nums));
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/qiu-12n-lcof/solution/qiu-12n-by-leetcode-solution/ method1
+     * Time complexity: O(n)
+     * Spatial complexity: O(n)
+     *
+     * @param n
+     * @return
+     */
+    public static int subject64SumNums(int n) {
+        boolean flag = n > 0 && (n += subject64SumNums(n - 1)) > 0;
+        return n;
+    }
+
+    public static void testSubject64SumNums() {
+        int n = 3;
+        System.out.println("sum = " + subject64SumNums(n));
     }
 }

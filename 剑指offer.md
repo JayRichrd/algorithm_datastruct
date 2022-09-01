@@ -1608,6 +1608,24 @@ for (int num : nums) {
 
 **源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject63MaxProfit()
 
+# subject 64-求1+2+3+……+n
+
+**核心思想：**
+
+- 由于题目做了很多限制，导致我们仅仅可以使用的工具不多：加减、赋值、位运算和逻辑运算
+- 考虑使用递归思想，但需要条件判定递归的出口，而条件判定是被限制使用的
+- 逻辑运算的短路特性可以在一定程度上替代条件判定
+
+```java
+public static int subject64SumNums(int n) {
+  	// 逻辑与：当第一个表达式判定为false，就不会再计算判定第二个表达式。这样就可以用来代替条件判定
+    boolean flag = n > 0 && (n += subject64SumNums(n - 1)) > 0;
+    return n;
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject64SumNums()
+
 # subject 65-不用加减乘除做加法
 
 **核心思想：**
