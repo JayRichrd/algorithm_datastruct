@@ -25,6 +25,8 @@ public class MyAlgorithm {
         testSubject63MaxProfit();
         System.out.println("==========test Subject64 SumNums==========");
         testSubject64SumNums();
+        System.out.println("==========test Subject66 ConstructArr==========");
+        testSubject66ConstructArr();
     }
 
     /**
@@ -453,5 +455,43 @@ public class MyAlgorithm {
     public static void testSubject64SumNums() {
         int n = 3;
         System.out.println("sum = " + subject64SumNums(n));
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/gou-jian-cheng-ji-shu-zu-lcof/solution/mian-shi-ti-66-gou-jian-cheng-ji-shu-zu-biao-ge-fe/
+     * Time complexity: O(n)
+     * Spatial complexity: O(1)
+     *
+     * @param nums
+     * @return
+     */
+    public static int[] subject66ConstructArr(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return null;
+        }
+        int len = nums.length;
+        int[] b = new int[len];
+        b[0] = 1;
+        int temp = 1;
+        // compute bottom
+        for (int i = 1; i < len; i++) {
+            b[i] = b[i - 1] * nums[i - 1];
+        }
+        // compute top
+        for (int i = len - 2; i >= 0; i--) {
+            temp *= nums[i + 1];
+            b[i] *= temp;
+        }
+        return b;
+    }
+
+    public static void testSubject66ConstructArr() {
+        int[] nums = {1, 2, 3, 4, 5};
+        int[] b = subject66ConstructArr(nums);
+        System.out.print("b array: ");
+        for (int num : b) {
+            System.out.print(num + ", ");
+        }
+        System.out.println();
     }
 }
