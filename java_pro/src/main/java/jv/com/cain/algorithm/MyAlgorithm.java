@@ -21,6 +21,8 @@ public class MyAlgorithm {
         testSubject62LastRemain();
         System.out.println("==========test Subject65 Add==========");
         testSubject65Add();
+        System.out.println("==========test Subject63 MaxProfit==========");
+        testSubject63MaxProfit();
     }
 
     /**
@@ -402,5 +404,34 @@ public class MyAlgorithm {
             }
         }
         return matrix[rows - 1][columns - 1];
+    }
+
+    /**
+     * refe: https://leetcode.cn/problems/gu-piao-de-zui-da-li-run-lcof/solution/gu-piao-de-zui-da-li-run-by-leetcode-sol-0l1g/ method2
+     * Time complexity: O(n)
+     * Spatial complexity: O(1)
+     *
+     * @param nums
+     * @return
+     */
+    public static Integer subject63MaxProfit(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return null;
+        }
+        int minPrice = Integer.MAX_VALUE;
+        int maxProfit = 0;
+        for (int num : nums) {
+            if (num < minPrice) {// find min buy price
+                minPrice = num;
+            } else if (num - minPrice > maxProfit) {// compute max profit
+                maxProfit = num - minPrice;
+            }
+        }
+        return maxProfit;
+    }
+
+    public static void testSubject63MaxProfit() {
+        int[] nums = {7, 1, 5, 3, 6, 4};
+        System.out.println("maxProfit = " + subject63MaxProfit(nums));
     }
 }

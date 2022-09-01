@@ -1587,6 +1587,27 @@ return result;
 
 **源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject62LastRemain()
 
+# subject 63-股票的最大利润
+
+**核心思想：**
+
+- 一遍遍历，获取买入的最低值，然后再动态计算哪一天卖出获取的利润最大：
+
+```java
+int minPrice = Integer.MAX_VALUE;
+int maxProfit = 0;
+for (int num : nums) {
+    if (num < minPrice) {// find min buy price
+        minPrice = num;
+    } else if (num - minPrice > maxProfit) {// compute max profit
+      // 卖出一定在最小值买入之后  
+      maxProfit = num - minPrice;
+    }
+}
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject63MaxProfit()
+
 # subject 65-不用加减乘除做加法
 
 **核心思想：**
