@@ -470,6 +470,28 @@ public class MyTree {
     }
 
     /**
+     * refe: https://leetcode.cn/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof/solution/mian-shi-ti-68-i-er-cha-sou-suo-shu-de-zui-jin-g-7/ method1
+     * Time complexity: O(n)
+     * Spatial complexity: O(1)
+     * @param root
+     * @param p
+     * @param q
+     * @return
+     */
+    public static TreeNode subject68ILowestCommonAncestor(TreeNode root, TreeNode p,TreeNode q){
+        while (root != null){
+            if (root.data < p.data && root.data < q.data){// p、q in right subtree
+                root = root.right;
+            }else if(root.data > p.data && root.data > q.data){// p、q in left subtree
+                root = root.left;
+            }else {// find lowest common ancestor
+                break;
+            }
+        }
+        return root;
+    }
+
+    /**
      * refe: https://leetcode.cn/problems/er-cha-shu-de-zui-jin-gong-gong-zu-xian-lcof/solution/mian-shi-ti-68-ii-er-cha-shu-de-zui-jin-gong-gon-7/
      * Time complexity: O(n)
      * Spatial complexity: O(n)

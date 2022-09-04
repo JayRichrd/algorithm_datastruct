@@ -1680,6 +1680,30 @@ return b;
 
 **源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject66ConstructArr()
 
+# subject 68-I-二叉搜索树的最近公共祖先
+
+ **核心思想：**
+
+- 利用二叉搜索树的特性，与根节点root的值比较大小，可以确定p、q节点在左子树还是右子树
+  - 当p, q都在root的**右子树**中，则遍历至root.right；
+  - 否则，当p,q都在root的**左子树**中，则遍历至root.left；
+  - 否则，说明找到了最近公共祖先 ，跳出
+
+```java
+while (root != null){
+    if (root.data < p.data && root.data < q.data){// p、q in right subtree
+        root = root.right;
+    }else if(root.data > p.data && root.data > q.data){// p、q in left subtree
+        root = root.left;
+    }else {// find lowest common ancestor
+        break;
+    }
+}
+return root;
+```
+
+**源码：**/java_pro/jv.com.cain.algorithm.tree/MyTree/ subject68ILowestCommonAncestor()
+
 # subject 68-II-树中两个结点的最低公共祖先
 
 **核心思想：**
