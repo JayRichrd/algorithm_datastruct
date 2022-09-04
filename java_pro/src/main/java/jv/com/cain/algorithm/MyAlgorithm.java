@@ -494,4 +494,26 @@ public class MyAlgorithm {
         }
         System.out.println();
     }
+
+    /**
+     * refe: https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/solution/best-time-to-buy-and-sell-stock-ii-zhuan-hua-fa-ji/
+     * Time complexity: O(n)
+     * Spatial complexity: O(1)
+     * @param nums
+     * @return
+     */
+    public static Integer maxProfit(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return null;
+        }
+        int maxProfit = 0;
+        int temp;
+        for (int i = 1; i < nums.length; i++) {
+            temp = nums[i] - nums[i - 1];
+            if (temp > 0) {
+                maxProfit += temp;
+            }
+        }
+        return maxProfit;
+    }
 }
