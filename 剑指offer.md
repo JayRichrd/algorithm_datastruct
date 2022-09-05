@@ -489,7 +489,7 @@ while (fast != null) {
 **迭代核心思想：**
 
 - 单链表容易丢失next域，所以在反转之前需要先将next域保存下来；
-- 时刻保存当前节点cur和前节点pre，反转就是将cur的next域指向pre。然后再往后滑动，更新pre和cur的值。这里需要注意更新顺序：先更新pre，在更新cur:
+- 时刻保存当前节点cur和前节点pre，反转就是将cur的next域指向pre。然后再往后滑动，更新pre和cur的值。这里需要注意更新顺序：先更新pre，再更新cur:
 
 ```java
 while (cur != null) {
