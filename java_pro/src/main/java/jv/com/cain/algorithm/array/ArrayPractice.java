@@ -414,4 +414,34 @@ public class ArrayPractice {
         }
         return -1;
     }
+
+    /**
+     * refe: https://leetcode-cn.com/problems/merge-sorted-array/ method3
+     * Time complexity: O(m+size)
+     * Spatial complexity: O(1)
+     *
+     * @param array1
+     * @param m
+     * @param array2
+     * @param n
+     */
+    public static void mergeSortedArray(int[] array1, int m, int[] array2, int n) {
+        int p1 = m - 1;
+        int p2 = n - 1;
+        int tail = m + n - 1;
+        int cur;
+        while (p1 >= 0 || p2 >= 0) {
+            if (p1 < 0) {// remain array2
+                cur = array2[p2--];
+            } else if (p2 < 0) {// remain array1
+                cur = array1[p1--];
+            } else if (array1[p1] < array2[p2]) {// find larger one
+                cur = array2[p2--];
+            } else {
+                cur = array1[p1--];
+            }
+            // from tail to head
+            array1[tail--] = cur;
+        }
+    }
 }

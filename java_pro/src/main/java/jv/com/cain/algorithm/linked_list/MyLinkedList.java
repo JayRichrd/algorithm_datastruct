@@ -154,7 +154,7 @@ public class MyLinkedList {
             k--;
         }
         // fast should not arrive at tail node
-        if(fast == null){
+        if (fast == null) {
             return null;
         }
         // finish when fast arrive at tail node
@@ -165,16 +165,16 @@ public class MyLinkedList {
         return slow;
     }
 
-    public static void testSubject22GetKthFromEnd(){
-        Node node6 = new Node(6,null);
-        Node node5 = new Node(5,node6);
-        Node node4 = new Node(4,node5);
-        Node node3 = new Node(3,node4);
-        Node node2 = new Node(2,node3);
-        Node node1 = new Node(1,node2);
+    public static void testSubject22GetKthFromEnd() {
+        Node node6 = new Node(6, null);
+        Node node5 = new Node(5, node6);
+        Node node4 = new Node(4, node5);
+        Node node3 = new Node(3, node4);
+        Node node2 = new Node(2, node3);
+        Node node1 = new Node(1, node2);
         int k = 3;
-        Node  node = subject22GetKthFromEnd(node1,k);
-        System.out.println(k+"th node from end: " + node.data);
+        Node node = subject22GetKthFromEnd(node1, k);
+        System.out.println(k + "th node from end: " + node.data);
     }
 
     /**
@@ -428,5 +428,56 @@ public class MyLinkedList {
         }
 
         return mergedHead.next;
+    }
+
+    /**
+     * refe: https://leetcode-cn.com/problems/merge-two-sorted-lists/
+     * Time complexity: O(m+n)
+     * Spatial complexity: O(1)
+     *
+     * @param list1
+     * @param list2
+     * @return
+     */
+    public static Node mergeSortedLinkedList(Node list1, Node list2) {
+        Node head = new Node();
+        Node cur = head;
+        while (list1 != null && list2 != null) {
+            // merge list
+            if (list1.data < list2.data) {
+                cur.next = list1;
+                list1 = list1.next;
+            } else {
+                cur.next = list2;
+                list2 = list2.next;
+            }
+            cur = cur.next;
+        }
+        // handle remain list part
+        if (list1 != null) {
+            cur.next = list1;
+        } else {
+            cur.next = list2;
+        }
+        // return merged list head
+        return head.next;
+    }
+
+    /**
+     * refe: https://leetcode-cn.com/problems/middle-of-the-linked-list/ method3
+     * Time complexity: O(size)
+     * Spatial complexity: O(1)
+     *
+     * @param head
+     * @return
+     */
+    public static Node findMidNode(Node head) {
+        Node oneStepHead = head;
+        Node twoStepHead = head;
+        while (twoStepHead != null && twoStepHead.next != null) {
+            oneStepHead = oneStepHead.next;
+            twoStepHead = twoStepHead.next.next;
+        }
+        return oneStepHead;
     }
 }
