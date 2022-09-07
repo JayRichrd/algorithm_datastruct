@@ -27,8 +27,12 @@ public class MyTree {
      * @return return root node of tree
      */
     public static TreeNode subject7BuildBinaryTree(int[] preOrder, int[] inOrder) {
-        int length = inOrder.length;
-        if (length == 0) {
+        if (preOrder == null || inOrder == null) {
+            return null;
+        }
+        int inLen = inOrder.length;
+        int preLen = preOrder.length;
+        if (inLen != preLen || inLen == 0) {
             return null;
         }
 
@@ -36,10 +40,10 @@ public class MyTree {
             treeNodeIndex = new HashMap<>();
         }
         // for finding node index effectively
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < inLen; i++) {
             treeNodeIndex.put(inOrder[i], i);
         }
-        return buildBinaryTreeRecursive(preOrder, 0, length - 1, inOrder, 0, length - 1);
+        return buildBinaryTreeRecursive(preOrder, 0, preLen - 1, inOrder, 0, inLen - 1);
     }
 
     private static TreeNode buildBinaryTreeRecursive(int[] preOrder, int preLeft, int preRight, int[] inOrder, int inLeft, int inRight) {
@@ -473,18 +477,19 @@ public class MyTree {
      * refe: https://leetcode.cn/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof/solution/mian-shi-ti-68-i-er-cha-sou-suo-shu-de-zui-jin-g-7/ method1
      * Time complexity: O(n)
      * Spatial complexity: O(1)
+     *
      * @param root
      * @param p
      * @param q
      * @return
      */
-    public static TreeNode subject68ILowestCommonAncestor(TreeNode root, TreeNode p,TreeNode q){
-        while (root != null){
-            if (root.data < p.data && root.data < q.data){// p、q in right subtree
+    public static TreeNode subject68ILowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        while (root != null) {
+            if (root.data < p.data && root.data < q.data) {// p、q in right subtree
                 root = root.right;
-            }else if(root.data > p.data && root.data > q.data){// p、q in left subtree
+            } else if (root.data > p.data && root.data > q.data) {// p、q in left subtree
                 root = root.left;
-            }else {// find lowest common ancestor
+            } else {// find lowest common ancestor
                 break;
             }
         }

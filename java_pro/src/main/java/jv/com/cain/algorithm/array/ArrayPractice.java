@@ -402,9 +402,9 @@ public class ArrayPractice {
      * @param nums
      * @return
      */
-    public static int subject3RepeatNum(int[] nums) {
+    public static Integer subject3RepeatNum(int[] nums) {
         if (nums == null || nums.length == 0) {
-            return -1;
+            return null;
         }
         Set<Integer> set = new HashSet<>();
         for (int num : nums) {
@@ -412,7 +412,7 @@ public class ArrayPractice {
                 return num;
             }
         }
-        return -1;
+        return null;
     }
 
     /**
