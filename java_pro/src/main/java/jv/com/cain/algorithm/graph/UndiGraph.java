@@ -185,8 +185,8 @@ public class UndiGraph {
         // mark as visited
         grid[r][c] = '0';
         doDfs(grid, r - 1, c);// top
-        doDfs(grid, r + 1, c);// bottom
         doDfs(grid, r, c - 1);// left
+        doDfs(grid, r + 1, c);// bottom
         doDfs(grid, r, c + 1);// right
     }
 

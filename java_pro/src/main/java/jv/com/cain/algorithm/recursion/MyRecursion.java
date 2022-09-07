@@ -31,14 +31,14 @@ public class MyRecursion {
         if (n <= 2) {
             return 1;
         }
-        int fn1 = 1;
-        int fn2 = 1;
-        int fn = fn1 + fn2;
+        int fn_1 = 1;
+        int fn_2 = 1;
+        int fn = fn_1 + fn_2;
         for (int i = 3; i <= n; i++) {
-            fn = fn1 + fn2;
-            // assign fn1 to fn2, and then assign fn to fn1
-            fn2 = fn1;
-            fn1 = fn;
+            fn = fn_1 + fn_2;
+            // assign fn_1 to fn_2, and then assign fn to fn_1
+            fn_2 = fn_1;
+            fn_1 = fn;
         }
         return fn;
     }
@@ -61,15 +61,18 @@ public class MyRecursion {
         if (n < 0) {
             return 0;
         }
-        if (n == 0 || n == 1) {
+        if (n == 0){
             return 1;
         }
-        int fn1 = 1, fn2 = 1;
-        int fn = fn1 + fn2;
-        for (int i = 2; i <= n; i++) {
-            fn = fn1 + fn2;
-            fn2 = fn1;
-            fn1 = fn;
+        if (n <= 2) {
+            return n;
+        }
+        int fn_1 = 2, fn_2 = 1;
+        int fn = fn_1 + fn_2;
+        for (int i = 3; i <= n; i++) {
+            fn = fn_1 + fn_2;
+            fn_2 = fn_1;
+            fn_1 = fn;
         }
         return fn;
     }

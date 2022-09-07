@@ -319,7 +319,7 @@ public class MyAlgorithm {
 
         while (!queue.isEmpty()) {
             int[] cell = queue.poll();
-            // to right and down
+            // to down and right
             for (int i = 0; i < 2; i++) {
                 int nextX = cell[0] + dx[i];
                 int nextY = cell[1] + dy[i];
