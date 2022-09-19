@@ -192,6 +192,7 @@ public class MyLinkedList {
         Node pre = null;
         Node cur = head;
         while (cur != null) {
+            // store next domain to avoid dismiss
             Node next = cur.next;
             // revert
             cur.next = pre;

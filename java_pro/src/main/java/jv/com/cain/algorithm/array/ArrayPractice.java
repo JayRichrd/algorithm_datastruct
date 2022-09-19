@@ -216,11 +216,11 @@ public class ArrayPractice {
             return;
         }
         int rows = matrix.length;
-        if (rows <= 0) {
+        if (rows == 0) {
             return;
         }
         int columns = matrix[0].length;
-        if (columns <= 0) {
+        if (columns == 0) {
             return;
         }
 
