@@ -271,12 +271,13 @@ public class MyLinkedList {
             node = node.next.next;
         }
 
+        // step3 divide
         node = head;
         Node newHead = head.next;
-        // step3 divide
         while (node != null) {
             Node newNode = node.next;
             node.next = node.next != null ? node.next.next : null;
+            assert newNode != null;
             newNode.next = newNode.next != null ? newNode.next.next : null;
             node = node.next;
         }

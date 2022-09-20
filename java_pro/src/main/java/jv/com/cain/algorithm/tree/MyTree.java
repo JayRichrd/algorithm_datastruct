@@ -199,7 +199,7 @@ public class MyTree {
      */
     public static boolean subject33isBstPostVisit(int[] tree) {
         int len = tree.length;
-        if (len <= 0) {
+        if (len == 0) {
             return false;
         }
         return isBstPostVisitRecursive(tree, 0, tree.length - 1);
@@ -209,6 +209,7 @@ public class MyTree {
         if (left >= right) {
             return true;
         }
+        // bst rule
         int pivot = left;
         while (tree[pivot] < tree[right]) pivot++;
         int div = pivot;
@@ -237,6 +238,7 @@ public class MyTree {
         if (head == null) {
             return result;
         }
+        // path stack
         Deque<Integer> sumPath = new ArrayDeque<>();
         sumPathDfsRecursive(head, target, result, sumPath);
         return result;
@@ -311,7 +313,7 @@ public class MyTree {
      * middle order visit
      *
      * @param root
-     * @param tail
+     * @param tail linked list that was converted successfully tail node
      */
     private static void midConvertRecursive(TreeNode root, TreeNode[] tail) {
         if (root == null) {
