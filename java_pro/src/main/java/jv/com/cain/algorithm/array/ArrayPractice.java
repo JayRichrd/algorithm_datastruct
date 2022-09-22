@@ -307,11 +307,11 @@ public class ArrayPractice {
         if (nums == null || nums.length == 0) {
             return null;
         }
-        int max = nums[0], pre = 0;
+        int max = nums[0], fn = 0;
         for (int num : nums) {
             // think about num should be added into pre or num is single
-            pre = Math.max(pre + num, num);
-            max = Math.max(pre, max);
+            fn = Math.max(fn + num, num);
+            max = Math.max(fn, max);
         }
         return max;
     }

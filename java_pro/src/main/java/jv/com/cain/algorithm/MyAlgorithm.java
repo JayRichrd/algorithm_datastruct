@@ -64,6 +64,7 @@ public class MyAlgorithm {
         if (n <= 0) {
             return null;
         }
+        // index 0 place is unused
         int[] uglyNums = new int[n + 1];
         uglyNums[1] = 1;
         // multiple 2/3/5 critical point
@@ -398,6 +399,7 @@ public class MyAlgorithm {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 if (i == 0 && j == 0) {
+                    continue;
                 } else if (i == 0) {// first row
                     matrix[i][j] += matrix[i][j - 1];
                 } else if (j == 0) {// first column

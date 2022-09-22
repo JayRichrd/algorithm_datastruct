@@ -1032,8 +1032,8 @@ return result;
 
 **核心思想：**
 
-- 自定义一种排序规则，根据任意两个数m、n的组合mn、nm的大小来决定m与n的大小。mn > nm，则认为m > n，否则认为m > n。然后根据这个比较规则对数组做一个从小到大排序
-- 由于组成的数mn负责nm可能超限，这里还涉及到一个大数问题，因此使用String来比较：
+- 自定义一种排序规则，根据任意两个数m、n的组合mn、nm的大小来决定m与n的大小。若mn > nm，则认为m > n，否则认为m < n。根据这个比较规则对数组做从小到大排序
+- 由于组成的数mn或者nm可能超限，这里还涉及到一个大数问题，因此使用String来比较：
 
 ```java
 String[] numsStr = new String[len];
@@ -1071,7 +1071,7 @@ $$
 
  grid(i,j)：当前单元格礼物价值。
 
-- 每个单元格只能从上、左方向来到。在结合边界条件：第一行、第一列。可得到如下递推公式：
+- 每个单元格只能从上、左方向来到。再结合边界条件：第一行、第一列。可得到如下递推公式：
 
 ![状态转移方程](https://picgo-1256537295.cos.ap-guangzhou.myqcloud.com/pictures/image-20220712114802364.png)
 
@@ -1101,27 +1101,20 @@ return matrix[rows - 1][columns - 1];
 
 **核心思想：**
 
-- 双指针，一左一右滑动；
-- 右指针默认从-1开始，且每次指向的都是不重复的字符串的末尾；
-- 依次移动左指针，每次找出一个最长子串得到并计算得到最大值。
+- 动态规划；
+- d[j]是以s[j]结尾的子串的不重复长度的最大值。注意必须包含s[j]
+- 现在就是求解d[j]的最大值
 
 ```java
-int right = -1, ans = 0;
-for (int i = 0; i < strLen; i++) {
-    // remove left char every time
-  	// 每次都移除左指针指向的字符，occ中包含的都是不重复的字符
-    if (i != 0) {
-        occ.remove(str.charAt(i - 1));
+int left = -1, result = 0;
+for (int right = 0; right < strLen; right++) {
+    if (occ.containsKey(str.charAt(right))) {// update left index
+        left = Math.max(left, occ.get(str.charAt(right)));
     }
-    // move right index
-  	// 依次移动右边指针，直到到达末尾或者重复
-    while (right + 1 < strLen && !occ.contains(str.charAt(right + 1))) {
-        right++;
-        occ.add(str.charAt(right));
-    }
-    // compute max
-  	// 每次根据左右指针计算字符串长度
-    ans = Math.max(ans, right - i + 1);
+    // update character dic
+    occ.put(str.charAt(right), right);
+    // compute max value
+    result = Math.max(result, right - left);
 }
 ```
 
@@ -1134,7 +1127,7 @@ for (int i = 0; i < strLen; i++) {
 **核心思想：**
 
 - 判定一个数是否是丑数，只需把一个数分别不断除以2、3、5，然后看最后剩余的数是否为1。
-- 后续的丑数，是前面的某个丑数乘以2、3、5得到的。那么可以不断迭代寻找下一个丑数：
+- ==后续的丑数，是前面的某个丑数乘以2/3/5得到的。==那么可以不断迭代寻找下一个丑数：
 
 ```java
 // find next ugly num
@@ -1157,7 +1150,7 @@ if (next == num5) {
 }
 ```
 
-**源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ [subject49NthUglyNumber]()()
+**源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject49NthUglyNumber()
 
 # subject 50-第一个只出现一次的字符
 
