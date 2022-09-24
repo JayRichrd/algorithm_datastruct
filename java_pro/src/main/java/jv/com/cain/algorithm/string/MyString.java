@@ -162,7 +162,9 @@ public class MyString {
         }
         // remember the last word
         //que.offerFirst(word.toString());
-        que.push(word.toString());
+        if (word.length() != 0) {
+            que.push(word.toString());
+        }
         return String.join(" ", que);
     }
 

@@ -160,7 +160,7 @@ public class MySort {
             // find and move from back to front
             while (j >= 0) {
                 // find suitable place that is first smaller num
-                if (nums[j] < num) {
+                if (nums[j] <= num) {
                     break;
                 }
                 // move element to back
@@ -240,10 +240,11 @@ public class MySort {
             temp[count++] = nums[j++];
         }
         // copy data back
-        count = 0;
-        for (int k = start; k <= end; k++) {
-            nums[k] = temp[count++];
-        }
+        System.arraycopy(temp, 0, nums, start, end - start + 1);
+//        count = 0;
+//        for (int k = start; k <= end; k++) {
+//            nums[k] = temp[count++];
+//        }
     }
 
     /**
@@ -273,22 +274,22 @@ public class MySort {
     private static int quickSortPartition(int[] nums, int left, int right) {
         // use the last element pivot
         int pivotNum = nums[right];
-        // i,j default value is left
-        int i = left;
-        for (int j = i; j < right; j++) {
+        // pivot,j default value is left
+        int pivot = left;
+        for (int j = pivot; j < right; j++) {
             // find one target num, exchange, i++
             if (nums[j] < pivotNum) {
                 int temp = nums[j];
-                nums[j] = nums[i];
-                nums[i] = temp;
-                i++;
+                nums[j] = nums[pivot];
+                nums[pivot] = temp;
+                pivot++;
             }
         }
-        // do not forget exchange the last pivot num to i index place
-        int temp = nums[i];
-        nums[i] = pivotNum;
+        // do not forget exchange the last pivot num to pivot index place
+        int temp = nums[pivot];
+        nums[pivot] = pivotNum;
         nums[right] = temp;
-        return i;
+        return pivot;
     }
 
     /**
@@ -328,17 +329,17 @@ public class MySort {
     private static int findKthBigPartition(int[] nums, int start, int end) {
         // descending
         int pivotNum = nums[end];
-        int i = start;
-        for (int j = i; j < end; j++) {
+        int pivot = start;
+        for (int j = pivot; j < end; j++) {
             if (nums[j] > pivotNum) {
-                int temp = nums[i];
-                nums[i] = nums[j];
+                int temp = nums[pivot];
+                nums[pivot] = nums[j];
                 nums[j] = temp;
-                i++;
+                pivot++;
             }
         }
-        nums[end] = nums[i];
-        nums[i] = pivotNum;
-        return i;
+        nums[end] = nums[pivot];
+        nums[pivot] = pivotNum;
+        return pivot;
     }
 }
