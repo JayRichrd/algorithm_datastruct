@@ -250,6 +250,7 @@ public class MyAlgorithm {
      * @return
      */
     public static int subject62LastRemain(int n, int m) {
+        // n == 1
         int result = 0;
         for (int i = 2; i <= n; i++) {
             // avoid out of index
@@ -424,13 +425,13 @@ public class MyAlgorithm {
         if (nums == null || nums.length == 0) {
             return null;
         }
-        int minPrice = Integer.MAX_VALUE;
+        int preMinPrice = Integer.MAX_VALUE;
         int maxProfit = 0;
         for (int num : nums) {
-            if (num < minPrice) {// find min buy price
-                minPrice = num;
-            } else if (num - minPrice > maxProfit) {// compute max profit
-                maxProfit = num - minPrice;
+            if (num < preMinPrice) {// find min buy price
+                preMinPrice = num;
+            } else if (num - preMinPrice > maxProfit) {// compute max profit
+                maxProfit = num - preMinPrice;
             }
         }
         return maxProfit;
@@ -474,12 +475,12 @@ public class MyAlgorithm {
         int len = nums.length;
         int[] b = new int[len];
         b[0] = 1;
-        int temp = 1;
         // compute bottom
         for (int i = 1; i < len; i++) {
             b[i] = b[i - 1] * nums[i - 1];
         }
         // compute top
+        int temp = 1;
         for (int i = len - 2; i >= 0; i--) {
             temp *= nums[i + 1];
             b[i] *= temp;
