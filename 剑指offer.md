@@ -1175,7 +1175,7 @@ for (int i = 0; i < len; i++) {
 **递归核心思想：**
 
 - 这里主要参考归并排序的核心思想。
-- 每次合并时，左边部分和右边部分都是从小到到排好序的，如果左边的最大值都不大于右边的左小值，则没有跨越左右两部分之间元素的逆序对：
+- 每次合并时，左边部分和右边部分都是从小到大排好序的，如果左边的最大值都不大于右边的左小值，则没有跨越左右两部分之间元素的逆序对：
 
 ```java
 // if left part is smaller than right part, there is no reverse pair cross
@@ -1185,7 +1185,7 @@ if (nums[mid] <= nums[mid + 1]) {
 ```
 
 - 否则就需要求解跨越左右两部分的逆序对（核心重点）；
-- 一边合并一边求解逆序对，逆序对由两个数组成(一左一右)，这里只求解右边合并数对逆序对的贡献值，然后相加即可求得总共的跨越左右两部分的逆序对。
+- 一边合并一边求解逆序对，逆序对由两个数组成(一左一右)，每次将右边分数组中的元素放入合并后的数组时，就需要检查左边分数组的指向情况，如果不在终点位置，则此时存在逆序对。求解右边合并数对逆序对的贡献值，然后相加即可求得总共的跨越左右两部分的逆序对。
 
 ```java
 private static int mergeAndCountReversPairs(int[] nums, int left, int mid, int right, int[] temp) {
@@ -1291,7 +1291,7 @@ while (low <= high) {
 **核心思想：**
 
 - 二叉搜索树的中序遍历是递增的
-- 此处要求解递增数列的倒数第k个数，所以考虑对中序遍历做变形，即按照右、根、左的顺序进行中序遍历
+- 此处要求递增数列的倒数第k个数，所以考虑对中序遍历做变形，即按照右、根、左的顺序进行中序遍历
 - 使用递归时对计数的k做递减和判断，当遍历访问了k个节点即可停止递归，并将结果返回
 
 ```java
@@ -1362,7 +1362,7 @@ return Math.abs(leftDepth - rightDepth) < 2 ? Math.max(rightDepth, leftDepth) + 
 **核心思想：**
 
 - 异或，自己与自己异或结果为0。如果只有一个不同的数，则全员异或后就能得到这个数。
-- 按照全员异或结果的某一位(第一位不为0的位)，对这些数进行分组，一定能把这两个数分到不同的组里去
+- 按照全员异或结果的某一位(第一位不为0的位，==也就是要找的两个数不同的地方==)，对这些数进行分组，==一定能把这两个数分到不同的组里去==
 
 ```java
 for (int num : nums) {
@@ -1374,15 +1374,15 @@ for (int num : nums) {
 }
 ```
 
-- -最后对每组分别做异或，得到的结果就是所求的两个数。
+- 最后对每组分别做异或，得到的结果就是所求的两个数。
 
 **源码：**/java_pro/jv.com.cain.algorithm/MyAlgorithm/ subject56SingleNum()
 
-# subject 56II-数组中数字出现的次数 II
+# subject 56-II-数组中数字出现的次数 II
 
 **核心思想：**
 
-- 对于出现三次的数字，各二进制位出现的次数都是3的倍数。
+- 对于出现三次的数字，它的各二进制位出现的次数都是3的倍数。
 - 统计所有数字的各二进制位中1的出现次数，并对3求余，结果则为只出现1次的数字。
 
 ![](https://picgo-1256537295.cos.ap-guangzhou.myqcloud.com/pictures/20220809163352.png)
@@ -1399,8 +1399,9 @@ for (int num : nums) {
 
 int res = 0;
 for (int i = 0; i < 32; i++) {
+  	//腾出一位来做与操作
     res <<= 1;
-    // 从高位到低位依次计算对3取余后剩余的数
+    // 从高位到低位依次计算对3取余后剩余的数,按照习惯从高位到低位
     res |= counts[31 - i] % 3;
 }
 return res;
@@ -1437,7 +1438,7 @@ if (sum == target) {
 - 根据区间[left,right]之和与target比较，来确定移动left还是right;
 
 ```java
-for (int left = 1, right = 2; left < right && right < target + 1; ) {
+for (int left = 1, right = 2; left < right && right <= target/2 + 1; ) {
     int sum = (left + right) * (right - left + 1) / 2;
     if (sum == target) {
         List<Integer> nums = new ArrayList<>();

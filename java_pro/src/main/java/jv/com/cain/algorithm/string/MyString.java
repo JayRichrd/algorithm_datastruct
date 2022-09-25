@@ -107,7 +107,7 @@ public class MyString {
         // hashmap key is not sorted
         Map<Character, Integer> frequency = new HashMap<>();
         int len = str.length();
-        if (len <= 0) {
+        if (len == 0) {
             return ' ';
         }
         for (int i = 0; i < len; i++) {

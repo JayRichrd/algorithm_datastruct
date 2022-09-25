@@ -224,7 +224,7 @@ public class MySearch {
                 high = mid - 1;
             }
         }
-        // low == high at time
+        // low > high
         return low;
     }
 }

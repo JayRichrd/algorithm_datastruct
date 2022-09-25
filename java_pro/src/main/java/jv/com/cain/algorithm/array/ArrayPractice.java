@@ -370,7 +370,7 @@ public class ArrayPractice {
             return null;
         }
         List<List<Integer>> res = new ArrayList<>();
-        for (int left = 1, right = 2; left < right && right < target + 1; ) {
+        for (int left = 1, right = 2; left < right && right <= target/2 + 1; ) {
             int sum = (left + right) * (right - left + 1) / 2;
             if (sum == target) {
                 List<Integer> nums = new ArrayList<>();
